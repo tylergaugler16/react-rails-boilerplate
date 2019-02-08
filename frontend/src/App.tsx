@@ -17,7 +17,7 @@ class App extends React.Component<{}, IState> {
   }
 
   public async componentDidMount() {
-    const response = await axios.get('http://localhost:3001/greetings/hello',{
+    const response = await axios.get('http://localhost:3001/greetings/testing_greeting',{
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
