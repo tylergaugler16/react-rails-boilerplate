@@ -11,10 +11,11 @@ test:
   pool: 5
 
 
-  production:
-    adapter: postgresql
-    encoding: unicode
-    database: d3h5r40ofqiues
-    username: qnmwiabgxixcmq
-    password: <%= ENV['WIDGETLY_DATABASE_PASSWORD'] %>
-    pool: 5
+
+production:
+  database: d3h5r40ofqiues
+  adapter: postgresql
+  username: qnmwiabgxixcmq
+  host: ec2-54-83-50-174.compute-1.amazonaws.com
+  password: <%= ENV['WIDGETLY_DATABASE_PASSWORD'] %>
+  pool: 5
