@@ -51,7 +51,8 @@
     "start-js": "react-scripts-ts start",
     "start": "npm-run-all -p watch-css start-js",
     "build": "npm run build-css && react-scripts-ts build",
-    "docker-install": "npm rebuild node-sass --force"
+    "docker-install": "npm rebuild node-sass --force",
+    "production-build-client": "npm run build && aws s3 sync build/ s3://widgetly --profile tylerPersonal"
   },
   "devDependencies": {
     "@types/jest": "^23.3.5",
