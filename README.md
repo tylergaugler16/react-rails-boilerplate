@@ -23,13 +23,15 @@ $ docker-compose run backend rake db:create
 # Start
 $ docker-compose up -d (docker-compose up worked for me)
 $ open http://localhost:3000
-```
 
+```
 ## NOTES
 
 To setup configuring the react app to the backend for production, this might me what i [need](https://github.com/tylergaugler16/rails-react-typescript-docker-example/tree/master/frontend#advanced-configuration).
 
 To setup cloudFont this might be what i [need](https://medium.com/@omgwtfmarc/deploying-create-react-app-to-s3-or-cloudfront-48dae4ce0af)
+
+When deploying to heroku, use this: [git subtree push --prefix backend heroku master;](https://coderwall.com/p/ssxp5q/heroku-deployment-without-the-app-being-at-the-repo-root-in-a-subfolder)
 
 
 ## Further Details
