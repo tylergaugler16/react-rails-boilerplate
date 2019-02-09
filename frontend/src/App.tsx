@@ -8,6 +8,12 @@ interface IState {
   content: string;
 }
 
+const apiUrl = process.env.REACT_APP_ENV === "production"
+                  ?
+                  "https://widgetly-app.herokuapp.com"
+                :
+                  "http://localhost:3001";
+
 class App extends React.Component<{}, IState> {
   public constructor(props: {}) {
     super(props);
@@ -16,8 +22,10 @@ class App extends React.Component<{}, IState> {
     };
   }
 
+
+
   public async componentDidMount() {
-    const response = await axios.get('http://localhost:3001/greetings/testing_greeting',{
+    const response = await axios.get(`${apiUrl}/greetings/testing_greeting`,{
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
@@ -41,6 +49,7 @@ class App extends React.Component<{}, IState> {
         <p className="App-intro">
           {this.state.content}
         </p>
+        <p>{apiUrl}</p>
       </div>
     );
   }
