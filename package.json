@@ -4,6 +4,8 @@
   },
   "devDependencies": {},
   "scripts": {
-    "production-build-client": "cd frontend && npm run production-build-client"
+    "production-build-client": "cd frontend && npm run production-build-client",
+    "rails-start": "cd backend && rails s -p 3001",
+    "heroku-deploy": "git subtree push --prefix backend heroku master"
   }
 }

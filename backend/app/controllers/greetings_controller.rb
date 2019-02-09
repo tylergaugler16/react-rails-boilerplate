@@ -4,6 +4,8 @@ class GreetingsController < ApplicationController
   end
 
   def testing_greeting
-    render json: { content: 'Hello from DOCKER!' }
+    user = User.first
+    greeting = "Hello #{user.first_name}!"
+    render json: { content: greeting }
   end
 end

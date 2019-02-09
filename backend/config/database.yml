@@ -9,9 +9,12 @@ test:
   encoding: unicode
   database: widgetly_test
   pool: 5
-#
-# production:
-#   <<: *default
-#   database: d3h5r40ofqiues
-#   username: qnmwiabgxixcmq
-#   password: <%= ENV['WIDGETLY_DATABASE_PASSWORD'] %>
+
+
+  production:
+    adapter: postgresql
+    encoding: unicode
+    database: d3h5r40ofqiues
+    username: qnmwiabgxixcmq
+    password: <%= ENV['WIDGETLY_DATABASE_PASSWORD'] %>
+    pool: 5
