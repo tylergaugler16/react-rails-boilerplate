@@ -2,5 +2,8 @@
   "dependencies": {
     "node-sass-chokidar": "^1.3.4"
   },
-  "devDependencies": {}
+  "devDependencies": {},
+  "scripts": {
+    "production-build-client": "cd frontend && npm run production-build-client"
+  }
 }

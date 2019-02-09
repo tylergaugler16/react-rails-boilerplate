@@ -1,6 +1,6 @@
 import axios from 'axios';
 import * as React from 'react';
-import './App.css';
+import './assets/stylesheets/css/App.css';
 
 import logo from './logo.svg';
 

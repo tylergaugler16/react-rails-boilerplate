@@ -45,8 +45,8 @@
     "whatwg-fetch": "3.0.0"
   },
   "scripts": {
-    "build-css": "node-sass-chokidar src/ -o src/",
-    "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
+    "build-css": "node-sass-chokidar --include-path node_modules/ --include-path src/ src/assets/stylesheets/scss -o src/assets/stylesheets/css",
+    "watch-css": "npm run build-css && node-sass-chokidar  --include-path node_modules/ --include-path src/ src/assets/stylesheets/scss -o src/assets/stylesheets/css --watch --recursive",
     "test": "node scripts/test.js --env=jsdom",
     "start-js": "react-scripts-ts start",
     "start": "npm-run-all -p watch-css start-js",
