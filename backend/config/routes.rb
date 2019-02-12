@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
   # auth routes
-  post '/auth/:provider/callback', to: 'authentications#handle_authenticated_user'
+  post '/auth/:provider/callback', to: 'authentications#handle_oauth_authentication'
 
   resources :users
   get 'greetings/hello'
   get 'greetings/testing_greeting'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  namespace :api do
+    get 'greetings/hello'
+  end
 end

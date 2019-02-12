@@ -85,10 +85,17 @@ Layout/BlockEndNewline:
 Layout/ElseAlignment:
   Enabled: true
 
-
-
 Lint/UselessAssignment:
   Enabled: false
 
 Style/LambdaCall:
   EnforcedStyle: call
+
+Documentation:
+  Enabled: false
+
+OrderedGems:
+  Enabled: false
+
+Metrics/LineLength:
+  Enabled: false
