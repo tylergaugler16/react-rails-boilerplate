@@ -1,0 +1,2 @@
+class AuthTokenInfo < ApplicationRecord
+end
