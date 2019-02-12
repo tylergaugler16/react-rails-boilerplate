@@ -1,57 +1,26 @@
-import axios from 'axios';
 import * as React from 'react';
-import './assets/stylesheets/css/App.css';
+import Home from "./containers/landing_pages/Home";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
-import logo from './logo.svg';
 
-interface IState {
-  content: string;
+interface IProps {
+  match?: any;
 }
 
-const apiUrl = process.env.REACT_APP_ENV === "production"
-                  ?
-                  "https://widgetly-app.herokuapp.com"
-                :
-                  "http://localhost:3001";
-
-class App extends React.Component<{}, IState> {
-  public constructor(props: {}) {
+class App extends React.Component <IProps,{}> {
+  constructor(props: IProps) {
     super(props);
-    this.state = {
-      content: 'Waiting for a response from Rails...',
-    };
   }
-
-
-
-  public async componentDidMount() {
-    const response = await axios.get(`${apiUrl}/greetings/testing_greeting`,{
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-      },
-    });
-    this.setState(prevState => {
-      return {
-        ...prevState,
-        content: response.data.content,
-      }
-    })
-  }
-
-  public render() {
+  public render(){
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          {this.state.content}
-        </p>
-        <p>{apiUrl}</p>
-      </div>
-    );
+      <Router>
+        <div>
+            <Route exact={true} path="/" component={Home} />
+            <Route path="/about" component={Home} />
+            <Route path="/topics" component={Home} />
+          </div>
+      </Router>
+    )
   }
 }
 
