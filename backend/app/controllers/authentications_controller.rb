@@ -1,11 +1,12 @@
 # Handling authenticated users
 class AuthenticationsController < ApplicationController
-  skip_before_action :verify_authenticity_token,
-                     only: :handle_oauth_authentication
+  skip_before_action :verify_authenticity_token
+  include Authenticatable
+
   def handle_oathauthenticated_user
     # @user = User.find_or_create_from_auth_hash(auth_hash)
     # self.current_user = @user
-    puts "yoooo #{auth_hash.inspect}"
+    puts "yoooo #{oauth_hash.inspect}"
     redirect_to 'http://localhost:3000?auth_token=123344'
   end
 
@@ -13,10 +14,12 @@ class AuthenticationsController < ApplicationController
     # if access token
     # if passowrd/eamil,
     # return auth_token_info
+    user = User.find(1)
+    token = Token.issue(
+      user_id: user.id
+    )
 
-    ati = AuthTokenInfo.new(user_id: user.id, expires_at: DateTime.now + 2.days,
-                            source: ctx[:request].headers['HTTP_AUTHORIZATIONSOURCE'])
-    { token: ati.generate_access_token!, user: user, initialMessage: initialMessage }
+    render json: { token: token, user: user, message: 'Congrats you have signed in!' }
   end
 
   def handle_oauth_authentication
@@ -41,7 +44,7 @@ class AuthenticationsController < ApplicationController
 
   protected
 
-  def auth_hash
+  def oauth_hash
     request.env['omniauth.auth']
   end
 end

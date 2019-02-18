@@ -1,16 +1,12 @@
-import axios from 'axios';
 import * as React from 'react';
 import logo from '../../logo.svg';
+import {api} from '../../utils/apiUtil';
 
 interface IState {
   content: string;
 }
 
-const apiUrl = process.env.REACT_APP_ENV === "production"
-                  ?
-                  "https://widgetly-app.herokuapp.com"
-                :
-                  "http://localhost:3001";
+
 
 class Home extends React.Component<{}, IState> {
   public constructor(props: {}) {
@@ -21,20 +17,21 @@ class Home extends React.Component<{}, IState> {
   }
 
 
-
   public async componentDidMount() {
-    const response = await axios.get(`${apiUrl}/greetings/testing_greeting`,{
+    api.get(`api/greetings/hello`,{
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
       },
+    }).then(res => {
+      this.setState(prevState => {
+        return {
+          ...prevState,
+          content: res.data.content,
+        }
+      })
     });
-    this.setState(prevState => {
-      return {
-        ...prevState,
-        content: response.data.content,
-      }
-    })
+
   }
 
   public render() {
@@ -47,7 +44,6 @@ class Home extends React.Component<{}, IState> {
         <p className="App-intro">
           {this.state.content}
         </p>
-        <p>{apiUrl}</p>
       </div>
     );
   }

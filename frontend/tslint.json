@@ -1,5 +1,5 @@
 {
-  "extends": ["tslint:recommended", "tslint-react", "tslint-config-prettier"],
+  "extends": ["tslint:latest", "tslint-config-prettier"],
   "linterOptions": {
     "exclude": [
       "config/**/*.js",
@@ -7,7 +7,6 @@
     ]
   },
   "rules": {
-    "named-imports-order": "any",
     "no-implicit-dependencies": false,
     "no-submodule-imports": false,
     "curly": [true, "ignore-same-line"],
@@ -19,5 +18,5 @@
     "no-console": false,
     "no-var-requires": false,
     "interface-name": [false, "always-prefix"]
- }
+  }
 }

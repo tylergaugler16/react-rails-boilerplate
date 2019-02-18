@@ -91,11 +91,14 @@ Lint/UselessAssignment:
 Style/LambdaCall:
   EnforcedStyle: call
 
-Documentation:
+Style/Documentation:
   Enabled: false
 
 OrderedGems:
   Enabled: false
 
 Metrics/LineLength:
+  Enabled: false
+
+Layout/DoubleNegation:
   Enabled: false
