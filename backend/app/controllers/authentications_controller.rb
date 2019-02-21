@@ -14,12 +14,17 @@ class AuthenticationsController < ApplicationController
     # if access token
     # if passowrd/eamil,
     # return auth_token_info
-    user = User.find(1)
-    token = Token.issue(
-      user_id: user.id
-    )
-
-    render json: { token: token, user: user, message: 'Congrats you have signed in!' }
+    render json: { token: nil, user: nil, message: 'Something went wrong!' } if params[:email].blank?
+    user = User.find_by_email(params[:email])
+    render json: { token: nil, user: nil, message: 'Something went wrong!' } unless user.present?
+    if user.authenticate(params[:password])
+      token = Token.issue(
+        user_id: user.id
+      )
+      render json: { token: token, user: user, message: 'Congrats you have signed in!' }
+    else
+      render json: { token: nil, user: nil, message: 'Incorrect Password' }
+    end
   end
 
   def handle_oauth_authentication
