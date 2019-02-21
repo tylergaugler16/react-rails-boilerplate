@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {api} from 'utils/apiUtil';
+import {getApi} from 'utils/apiUtil';
 import { withRouter } from "react-router-dom";
 
 
@@ -18,17 +18,16 @@ class Login extends React.Component<IProps, {}> {
   }
 
   private handleLogin(){
+    const api = getApi();
     api.post(`auth/login`,{
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json',
         },
       }).then(res => {
-          console.log(res);
-          console.log(res.data);
           if(res.data.token){
             localStorage.setItem('token', res.data.token);
-            this.props.history.push('/home');
+            this.props.history.push('/users/home');
           }
         }).catch(() => console.log("errors"));
   }

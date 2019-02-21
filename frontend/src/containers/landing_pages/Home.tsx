@@ -1,6 +1,6 @@
 import * as React from 'react';
 import logo from 'logo.svg';
-import {api} from 'utils/apiUtil';
+import {getApi} from 'utils/apiUtil';
 
 interface IState {
   content: string;
@@ -18,6 +18,7 @@ class Home extends React.Component<{}, IState> {
 
 
   public async componentDidMount() {
+    const api = getApi();
     api.get(`api/greetings/hello`,{
       headers: {
         'Accept': 'application/json',
