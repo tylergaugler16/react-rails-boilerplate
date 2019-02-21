@@ -1,6 +1,6 @@
 import * as React from 'react';
-import logo from '../../logo.svg';
-import {api} from '../../utils/apiUtil';
+import logo from 'logo.svg';
+import {api} from 'utils/apiUtil';
 
 interface IState {
   content: string;

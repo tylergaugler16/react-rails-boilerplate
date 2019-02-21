@@ -1,38 +1,23 @@
 import * as React from 'react';
-import {api} from '../../utils/apiUtil';
-
+import {api} from 'utils/apiUtil';
+import { withRouter } from "react-router-dom";
 
 
 
 interface IProps{
-  match?: any;
+  match: any;
   history: any;
+  location: any;
 }
 
-interface IState {
-  loading: any;
-}
 
-class Login extends React.Component<IProps, IState> {
+class Login extends React.Component<IProps, {}> {
   public constructor(props: IProps) {
     super(props);
-    this.login = this.login.bind(this);
     this.handleLogin = this.handleLogin.bind(this);
-  } 
+  }
 
   private handleLogin(){
-    this.setState({
-      loading: true,
-    }, () =>{
-      this.login(() =>{
-        this.setState({
-          loading: false,
-        });
-      })
-    });
-
-  }
-  private login(callback: () => void){
     api.post(`auth/login`,{
         headers: {
           'Accept': 'application/json',
@@ -43,22 +28,18 @@ class Login extends React.Component<IProps, IState> {
           console.log(res.data);
           if(res.data.token){
             localStorage.setItem('token', res.data.token);
-            this.props.history.push('users/home')
+            this.props.history.push('/home');
           }
-          callback();
-        }).catch(() => callback())
+        }).catch(() => console.log("errors"));
   }
 
   public render() {
     return (
       <div className="login-container">
         <button onClick={this.handleLogin}>Login</button>
-        {
-          this.state.loading? "loading" : "done"
-        }
       </div>
     );
   }
 }
 
-export default Login;
+export default withRouter(Login);

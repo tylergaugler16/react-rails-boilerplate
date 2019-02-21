@@ -30,19 +30,6 @@ class App extends React.Component <IProps,IState> {
       this.getCurrentUser();
     })
 
-  // api.post(`auth/login`,{
-  //     headers: {
-  //       'Accept': 'application/json',
-  //       'Content-Type': 'application/json',
-  //     },
-  //   }).then(res => {
-  //       console.log(res);
-  //       console.log(res.data);
-  //       if(res.data.token){
-  //         localStorage.setItem('token', res.data.token);
-  //       }
-  //     })
-
   }
 
   private getCurrentUser(){
@@ -69,7 +56,16 @@ class App extends React.Component <IProps,IState> {
     const {currentUser, currentUserIsLoading} = this.state;
     const {match, history, location} = this.props;
     return (
+      <div>
+      {
+        currentUser && currentUser.id ?
+          <div>user is logged in! {currentUser.id}</div>
+        :
+          <div>NO USER</div>
+      }
         <CustomRouter currentUser={currentUser} currentUserIsLoading={currentUserIsLoading} match={match} history={history} location={location}/>
+      </div>
+
     )
   }
 }

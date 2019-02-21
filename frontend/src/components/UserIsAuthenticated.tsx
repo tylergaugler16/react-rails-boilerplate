@@ -1,16 +1,17 @@
 import * as React from "react";
-import { Redirect } from "react-router-dom";
-// typings
-// import { withRouter } from "react-router-dom";
-import { User } from '../types';
+
+import { User } from 'types';
 
 interface IProps {
   currentUser: User;
   currentUserIsLoading: boolean;
+  history: any;
 }
 
 export default function UserIsAuthenticated(
-  WrappedComponent: React.ComponentType<any>
+  WrappedComponent: React.ComponentType<any>,
+  currentUserIsLoading: boolean,
+  currentUser: User | null,
 ) {
   class ComponentUserIsAuthenticated extends React.Component<IProps, {}> {
     constructor(props: IProps) {
@@ -29,22 +30,21 @@ export default function UserIsAuthenticated(
     }
 
     private redirectIfUserIsNotAuthenticated(props?: IProps) {
-      const { currentUser, currentUserIsLoading } = props || this.props;
-      if (!currentUserIsLoading && !currentUser) {
-        return(
-          "yo"
-        )
-      }
-      else{
+      console.log(currentUserIsLoading);
+      console.log(currentUser);
+      if(currentUserIsLoading){
+          return;
+        }
+      else if(currentUser){
         return;
       }
-    }
+      else{
+          this.props.history.push("/login")
+        }
+      }
+
 
     public render() {
-      const { currentUser, currentUserIsLoading } = this.props;
-      if (currentUserIsLoading || !currentUser) {
-        return <Redirect to="unathenticatd"/>
-      }
       return <WrappedComponent {...this.props} />;
     }
   }
