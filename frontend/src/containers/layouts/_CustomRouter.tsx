@@ -2,7 +2,7 @@ import * as React from 'react';
 import Home from "containers/landing_pages/Home";
 import LoggedInHome from "containers/users/Home";
 import UserIsAuthenticated from "components/UserIsAuthenticated";
-
+import WithCurrentUser from "queries/currentUser";
 import Login from "containers/landing_pages/Login";
 import { Route } from "react-router-dom";
 import {User} from 'types'
@@ -40,4 +40,4 @@ class CustomRouter extends React.Component <IProps,{}> {
   }
 }
 
-export default CustomRouter;
+export default WithCurrentUser(CustomRouter);
