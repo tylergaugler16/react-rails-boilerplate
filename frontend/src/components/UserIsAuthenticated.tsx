@@ -6,7 +6,7 @@ interface IProps {
   currentUser: User;
   currentUserIsLoading: boolean;
   history: any;
-}
+} 
 
 export default function UserIsAuthenticated(
   WrappedComponent: React.ComponentType<any>,

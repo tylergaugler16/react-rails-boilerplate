@@ -2,6 +2,7 @@ import * as React from 'react';
 import {getApi} from 'utils/apiUtil';
 import { withRouter } from "react-router-dom";
 import { Formik as Form} from 'formik';
+import GoogleLogin from "containers/landing_pages/GoogleLogin"
 
 
 interface IProps{
@@ -36,6 +37,7 @@ class Login extends React.Component<IProps, {}> {
   public render() {
     return (
       <div className="login-container">
+      <GoogleLogin/>
       <Form
           initialValues={{ email: '', password: '' }}
           validate={values => {
@@ -87,5 +89,6 @@ class Login extends React.Component<IProps, {}> {
     );
   }
 }
+
 
 export default withRouter(Login);
