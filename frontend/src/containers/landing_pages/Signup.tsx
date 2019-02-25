@@ -2,7 +2,6 @@ import * as React from 'react';
 import {getApi} from 'utils/apiUtil';
 import { withRouter } from "react-router-dom";
 import { Formik as Form} from 'formik';
-import GoogleLogin from "containers/landing_pages/GoogleLogin"
 
 
 interface IProps{
@@ -12,15 +11,15 @@ interface IProps{
 }
 
 
-class Login extends React.Component<IProps, {}> {
+class Signup extends React.Component<IProps, {}> {
   public constructor(props: IProps) {
     super(props);
-    this.handleLogin = this.handleLogin.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  private handleLogin(values: any){
+  private handleSubmit(values: any){
     const api = getApi();
-    api.post(`login`, values, {
+    api.post(`/signup`, values, {
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json',
@@ -35,12 +34,10 @@ class Login extends React.Component<IProps, {}> {
 
 
   public render() {
-    const {history} = this.props;
     return (
-      <div className="login-container">
-      <GoogleLogin history={history}/>
+      <div className="signup-container">
       <Form
-          initialValues={{ email: '', password: '' }}
+          initialValues={{ email: '', password: '', first_name: '', last_name: '' }}
           validate={values => {
             const errors: any = {};
             if (!values.email) {
@@ -53,8 +50,7 @@ class Login extends React.Component<IProps, {}> {
             return errors;
           }}
           onSubmit={(values, { setSubmitting }) => {
-            this.handleLogin(values);
-            console.log(values);
+            this.handleSubmit(values);
             setSubmitting(true);
           }}
         >
@@ -67,29 +63,62 @@ class Login extends React.Component<IProps, {}> {
             handleChange
           }) => (
             <form onSubmit={handleSubmit}>
+            <div>
+              <label htmlFor="email">Email</label><br/>
               <input
                 type="text"
                 name="email"
                  onChange={handleChange}
               />
               {errors.email && touched.email && errors.email}
-              <input
-                type="password"
-                name="password"
-                 onChange={handleChange}
-              />
-              {errors.password && touched.password && errors.password}
-              <button type="submit" disabled={isSubmitting}>
-                Submit
-              </button>
+            </div>
+
+              <div>
+                <label htmlFor="first_name">First Name</label><br/>
+                <input
+                  type="text"
+                  name="first_name"
+                   onChange={handleChange}
+                />
+                {errors.first_name && touched.first_name && errors.first_name}
+              </div>
+
+
+              <div>
+                <label htmlFor="last_name">Last Name</label><br/>
+                <input
+                  type="text"
+                  name="last_name"
+                   onChange={handleChange}
+                />
+                {errors.last_name && touched.last_name && errors.last_name}
+              </div>
+
+
+              <div>
+                <label htmlFor="password">Password</label> <br/>
+                <input
+                  type="password"
+                  name="password"
+                   onChange={handleChange}
+                />
+                {errors.password && touched.password && errors.password}
+              </div>
+
+
+              <div>
+                <button type="submit" disabled={isSubmitting}>
+                  Submit
+                </button>
+              </div>
+
             </form>
           )}
         </Form>
-        <button onClick={this.handleLogin}>Login</button>
       </div>
     );
   }
 }
 
 
-export default withRouter(Login);
+export default withRouter(Signup);

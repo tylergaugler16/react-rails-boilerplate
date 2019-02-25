@@ -12,7 +12,7 @@ class GoogleLogin extends React.Component<IProps, {}> {
   }
   private async login(idToken: string) {
     const api = getApi();
-    api.post(`auth/login`, { googleLogin: true, googleToken: idToken }, {
+    api.post(`login`, { googleLogin: true, googleToken: idToken }, {
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json',

@@ -42,6 +42,35 @@ class AuthenticationsController < ApplicationController
     render json: { token: nil, user: nil, message: 'Something went wrong!' }
   end
 
+  def sign_up
+    sign_up_hash = {
+      email: params[:email],
+      first_name: params[:first_name],
+      last_name: params[:last_name],
+      password: params[:password]
+    }
+    user = User.find_by_email(params[:email])
+    if user.present?
+      auth_provider_info_hash = {
+        uid: user.id,
+        provider: 'Identity'
+      }
+      auth_provider = AuthProvider.find_or_create_from_auth_hash(
+        sign_up_hash.merge(auth_provider_info_hash)
+      )
+      auth_provider.user.update!(sign_up_hash)
+    else
+      user = User.create!(sign_up_hash)
+    end
+    token = Token.issue(
+      user_id: user.id
+    )
+    render json: { token: token, user: user, message: 'Successfully Signed Up!' }
+  rescue StandardError => e
+    Rails.logger.warn("error in authenitcations#sign_up, #{e.message}")
+    render json: { token: nil, user: nil, message: 'Something went wrong!' }
+  end
+
   def handle_oauth_authentication
     auth_hash['provider'] = 'developer' if auth_hash['provider'].nil?
     auth_hash['uid'] = 'abc1234' if auth_hash['uid'].nil?
