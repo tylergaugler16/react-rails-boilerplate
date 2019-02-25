@@ -1,7 +1,7 @@
 # Module that provides authentication methods
 module Authenticatable
   def authenticate
-    render json: { error: 'unauthorized' }, status: 401 unless logged_in?
+    false unless logged_in?
   end
 
   def logged_in?
@@ -22,9 +22,27 @@ module Authenticatable
     @current_user
   end
 
+  def authenticate_google_token(google_token)
+    client_id = '1078865227946-n88q5b9jgmf5nolqppi1800e18ttsrfh.apps.googleusercontent.com'
+    begin
+      validator = GoogleIDToken::Validator.new
+      jwt = validator.check(google_token, client_id, nil)
+      {
+        email: jwt['email'],
+        uid: jwt['sub'],
+        first_name: jwt['given_name'],
+        last_name: jwt['family_name'],
+        provider: 'Google Plus'
+      }
+    rescue GoogleIDToken::ValidationError => e
+      puts "Cannot validate: #{e}"
+    end
+  end
+
   private
 
   def token
+    puts "headers: #{request.env['HTTP_AUTHORIZATION']}"
     request.env['HTTP_AUTHORIZATION'].scan(/Bearer(.*)$/).flatten.last
   end
 

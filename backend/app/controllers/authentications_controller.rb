@@ -12,19 +12,38 @@ class AuthenticationsController < ApplicationController
 
   def log_in
     # if access token
+    # see if an auth providr exists
+    # create one if not
     # if passowrd/eamil,
     # return auth_token_info
-    render json: { token: nil, user: nil, message: 'Something went wrong!' } if params[:email].blank?
-    user = User.find_by_email(params[:email])
-    render json: { token: nil, user: nil, message: 'Something went wrong!' } unless user.present?
-    if user.authenticate(params[:password])
+
+    if params[:google_token]
+      puts 'over here'
+      google_auth_hash = authenticate_google_token(params[:google_token])
+      puts "google_auth_hash: #{google_auth_hash}"
+      auth_provider = AuthProvider.find_or_create_from_auth_hash(google_auth_hash)
+      puts "auth_provider #{auth_provider}"
+      user = auth_provider.user
+      render json: { token: nil, user: nil, message: 'Something went wrong!' } unless user.present?
       token = Token.issue(
         user_id: user.id
       )
       render json: { token: token, user: user, message: 'Congrats you have signed in!' }
     else
-      render json: { token: nil, user: nil, message: 'Incorrect Password' }
+      user = User.find_by_email(params[:email])
+      render json: { token: nil, user: nil, message: 'Something went wrong!' } unless user.present?
+      if user.authenticate(params[:password])
+        token = Token.issue(
+          user_id: user.id
+        )
+
+      else
+        render json: { token: nil, user: nil, message: 'Incorrect Password' }
+      end
     end
+  rescue StandardError => e
+    Rails.logger.warn("error in authenitcations#log_in, #{e.message}")
+    render json: { token: nil, user: nil, message: 'Something went wrong!' }
   end
 
   def handle_oauth_authentication

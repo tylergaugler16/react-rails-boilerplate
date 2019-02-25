@@ -35,9 +35,10 @@ class Login extends React.Component<IProps, {}> {
 
 
   public render() {
+    const {history} = this.props;
     return (
       <div className="login-container">
-      <GoogleLogin/>
+      <GoogleLogin history={history}/>
       <Form
           initialValues={{ email: '', password: '' }}
           validate={values => {
