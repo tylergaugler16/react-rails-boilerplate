@@ -10,19 +10,16 @@ class AuthenticationsController < ApplicationController
     redirect_to 'http://localhost:3000?auth_token=123344'
   end
 
-  def log_in
-    # if access token
-    # see if an auth providr exists
-    # create one if not
-    # if passowrd/eamil,
-    # return auth_token_info
+  # if access token
+  # see if an auth providr exists
+  # create one if not
+  # if passowrd/eamil,
+  # return auth_token_info
 
+  def log_in
     if params[:google_token]
-      puts 'over here'
       google_auth_hash = authenticate_google_token(params[:google_token])
-      puts "google_auth_hash: #{google_auth_hash}"
       auth_provider = AuthProvider.find_or_create_from_auth_hash(google_auth_hash)
-      puts "auth_provider #{auth_provider}"
       user = auth_provider.user
       render json: { token: nil, user: nil, message: 'Something went wrong!' } unless user.present?
       token = Token.issue(
@@ -36,7 +33,6 @@ class AuthenticationsController < ApplicationController
         token = Token.issue(
           user_id: user.id
         )
-
       else
         render json: { token: nil, user: nil, message: 'Incorrect Password' }
       end

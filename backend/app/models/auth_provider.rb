@@ -3,14 +3,11 @@ class AuthProvider < ApplicationRecord
   require 'securerandom'
 
   def self.find_or_create_from_auth_hash(auth_hash)
-    puts "auth_hash:: #{auth_hash.inspect}"
     auth_provider = AuthProvider.find_by_name_and_uid(auth_hash[:provider], auth_hash[:uid])
-    puts 'got passed auth_provider'
     return auth_provider unless auth_provider.nil?
     user_email = auth_hash[:email]
     user = User.find_by_email(user_email)
     if user.nil?
-      puts "eamil is: #{user_email}"
       generated_password = SecureRandom.base64(15)
       user = User.create!(
         email: user_email,
