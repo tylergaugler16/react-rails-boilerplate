@@ -1,5 +1,5 @@
 import * as React from 'react';
-
+import { ToastContainer } from 'react-toastify';
 import { withRouter } from "react-router";
 import CustomRouter from './containers/layouts/_CustomRouter';
 
@@ -9,7 +9,9 @@ interface IProps {
   location: any;
 
 }
-
+const CloseButton = ({ closeToast }: any) => (
+   <i className="fas fa-times" onClick={closeToast}></i>
+ );
 
 class App extends React.Component <IProps,{}> {
   constructor(props: IProps) {
@@ -21,7 +23,11 @@ class App extends React.Component <IProps,{}> {
     const {match, history, location} = this.props;
     return (
       <div>
-
+        <ToastContainer
+          closeButton={<CloseButton/>}
+          hideProgressBar={true}
+          autoClose={false}
+          />
         <CustomRouter match={match} history={history} location={location}/>
       </div>
 

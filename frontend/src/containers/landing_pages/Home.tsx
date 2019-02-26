@@ -1,19 +1,24 @@
 import * as React from 'react';
 import logo from 'logo.svg';
 import {getApi} from 'utils/apiUtil';
+import { toast } from 'react-toastify';
 
 interface IState {
   content: string;
 }
+interface IProps{
+  history: any;
+}
 
 
 
-class Home extends React.Component<{}, IState> {
-  public constructor(props: {}) {
+class Home extends React.Component<IProps, IState> {
+  public constructor(props: IProps) {
     super(props);
     this.state = {
       content: 'Waiting for a response from Rails...',
     };
+    this.closeAfter15 = this.closeAfter15.bind(this);
   }
 
 
@@ -35,6 +40,15 @@ class Home extends React.Component<{}, IState> {
 
   }
 
+  private closeAfter15 = () => {
+    toast.success("before YOLO", { autoClose: 1 });
+    this.props.history.push("/")
+
+  }
+  private close(){
+      toast.dismiss()
+  }
+
   public render() {
     return (
       <div className="App">
@@ -45,6 +59,8 @@ class Home extends React.Component<{}, IState> {
         <p className="App-intro">
           {this.state.content}
         </p>
+        <button onClick={this.closeAfter15}>Hey</button>
+        <button onClick={this.close}>clOSE</button>
       </div>
     );
   }
