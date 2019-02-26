@@ -33,7 +33,7 @@ class CustomRouter extends React.Component <IProps,{}> {
     }
     return (
           <div>
-            <Route exact={true} path="/" component={Home} {...defaultProps} />
+            <Route exact={true} path="/" component={Home} {...defaultProps} test={"ey"}/>
             <Route exact={true} path="/login" component={Login} {...defaultProps} />
             <Route exact={true} path="/signup" component={SignUp} {...defaultProps} />
             <Route exact={true} path="/users/home" component={UserIsAuthenticated(LoggedInHome, currentUserIsLoading, currentUser)} {...defaultProps} />

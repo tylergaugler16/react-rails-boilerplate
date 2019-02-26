@@ -1,7 +1,8 @@
 import * as React from 'react';
 import logo from 'logo.svg';
 import {getApi} from 'utils/apiUtil';
-import { toast } from 'react-toastify';
+
+import About from 'containers/landing_pages/About';
 
 interface IState {
   content: string;
@@ -18,7 +19,6 @@ class Home extends React.Component<IProps, IState> {
     this.state = {
       content: 'Waiting for a response from Rails...',
     };
-    this.closeAfter15 = this.closeAfter15.bind(this);
   }
 
 
@@ -40,16 +40,7 @@ class Home extends React.Component<IProps, IState> {
 
   }
 
-  private closeAfter15 = () => {
-    toast.error("before YOLO", {});
-    toast.success("before YOLO", {});
-    toast.info("before YOLO", {});
-    toast.warn("before YOLO", {});
-    this.props.history.push("/")
-  }
-  private close(){
-      toast.dismiss()
-  }
+
 
   public render() {
     return (
@@ -61,8 +52,7 @@ class Home extends React.Component<IProps, IState> {
         <p className="App-intro">
           {this.state.content}
         </p>
-        <button onClick={this.closeAfter15}>Hey</button>
-        <button onClick={this.close}>clOSE</button>
+        <About test="hello"/>
       </div>
     );
   }
