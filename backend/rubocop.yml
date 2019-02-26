@@ -1,0 +1,113 @@
+AllCops:
+  DisabledByDefault: true
+  TargetRubyVersion: 2.5.0
+  Exclude:
+    - 'gemfiles/**/*'
+    - 'tmp/**/*'
+    - 'vendor/**/*'
+    - '**/node_modules/**/*'
+    - 'db/**/*'
+    - 'app/views/**/*'
+    - 'app/helpers/**/*'
+    - 'app/assets/**/*'
+    - 'test/**/*'
+    - 'temp/**/*'
+    - 'doc/**/*'
+    - 'log/**/*'
+    - 'vendor/**/*'
+    - 'force_sf_update.rb'
+    - 'spec/**/*'
+    - 'config/puma.rb'
+    - 'chargeback_handler.rb'
+
+Layout/DefEndAlignment:
+  EnforcedStyleAlignWith: def
+  AutoCorrect: true
+
+Layout/IndentationConsistency:
+  EnforcedStyle: rails
+
+Layout/InitialIndentation:
+  Enabled: true
+
+Layout/BlockAlignment:
+  Enabled: true
+
+Layout/AlignParameters:
+  EnforcedStyle: with_first_parameter
+
+Layout/IndentAssignment:
+  Enabled: true
+
+Layout/SpaceAfterComma:
+  Enabled: true
+
+Layout/AlignArray:
+  Enabled: true
+
+Layout/ClassStructure:
+  Enabled: true
+
+Layout/SpaceInLambdaLiteral:
+  Enabled: true
+
+Layout/DotPosition:
+  Enabled: true
+
+Layout/EmptyLines:
+  Enabled: true
+
+Layout/EmptyLineBetweenDefs:
+  AllowAdjacentOneLineDefs: true
+
+Layout/IndentationWidth:
+  Width: 2
+
+Layout/LeadingCommentSpace:
+  Enabled: true
+
+Layout/ConditionPosition:
+  Enabled: true
+
+Layout/RescueEnsureAlignment:
+  Enabled: true
+
+Layout/Tab:
+  Enabled: true
+
+Layout/EndAlignment:
+  Enabled: true
+  AutoCorrect: true
+
+Layout/BlockEndNewline:
+  Enabled: true
+
+Layout/ElseAlignment:
+  Enabled: true
+
+Lint/UselessAssignment:
+  Enabled: false
+
+Style/LambdaCall:
+  EnforcedStyle: call
+
+Style/Documentation:
+  Enabled: false
+
+OrderedGems:
+  Enabled: false
+
+Metrics/LineLength:
+  Enabled: false
+
+Layout/DoubleNegation:
+  Enabled: false
+
+Metrics/AbcSize:
+  Enabled: false
+
+Metrics/MethodLength:
+  Enabled: false
+
+Metrics/LineLength:
+  Enabled: false

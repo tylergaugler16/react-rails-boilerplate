@@ -43,3 +43,12 @@ The combination, Rails + PostgreSQL + Docker Compose, is just a result I followe
 ### Frontend
 
 Bootstrapped with [create-react-app-typescript](https://github.com/wmonk/create-react-app-typescript).
+
+
+## TO DO
+### Authentication
+* What is [multi provider authentication](https://stackoverflow.com/questions/46261290/multi-provider-authentication-layman-terms)?
+* Which is used in [omniauth](https://github.com/omniauth/omniauth)
+* https://developer.okta.com/blog/2018/09/18/simple-authentication-with-rails-and-omniauth
+* https://medium.com/@ajayramesh/social-login-with-omniauth-and-rails-5-0-ad2bbd2a998e
+* https://www.codementor.io/kristophmatthews/how-to-configure-your-first-rails-rest-api-du1084ym0

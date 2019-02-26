@@ -1,9 +1,22 @@
 {
-  "extends": ["tslint:recommended", "tslint-react", "tslint-config-prettier"],
+  "extends": ["tslint:latest", "tslint-config-prettier"],
   "linterOptions": {
     "exclude": [
       "config/**/*.js",
       "node_modules/**/*.ts"
     ]
+  },
+  "rules": {
+    "no-implicit-dependencies": false,
+    "no-submodule-imports": false,
+    "curly": [true, "ignore-same-line"],
+    "interface-over-type-literal": false,
+    "object-literal-sort-keys": false,
+    "ordered-imports": false,
+    "member-ordering": false,
+    "array-type": [true, "generic"],
+    "no-console": false,
+    "no-var-requires": false,
+    "interface-name": [false, "always-prefix"]
   }
 }
