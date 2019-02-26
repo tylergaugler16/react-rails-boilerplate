@@ -41,9 +41,11 @@ class Home extends React.Component<IProps, IState> {
   }
 
   private closeAfter15 = () => {
-    toast.success("before YOLO", { autoClose: 1 });
+    toast.error("before YOLO", {});
+    toast.success("before YOLO", {});
+    toast.info("before YOLO", {});
+    toast.warn("before YOLO", {});
     this.props.history.push("/")
-
   }
   private close(){
       toast.dismiss()

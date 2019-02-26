@@ -10,7 +10,7 @@ interface IProps {
 
 }
 const CloseButton = ({ closeToast }: any) => (
-   <i className="fas fa-times" onClick={closeToast}></i>
+   <i className="fas fa-times close-button has-pointer" onClick={closeToast}></i>
  );
 
 class App extends React.Component <IProps,{}> {
@@ -26,7 +26,12 @@ class App extends React.Component <IProps,{}> {
         <ToastContainer
           closeButton={<CloseButton/>}
           hideProgressBar={true}
+          closeOnClick={true}
           autoClose={false}
+          className="custom-toast-container"
+          bodyClassName="custom-toast-body"
+          position="top-center"
+          draggable={false}
           />
         <CustomRouter match={match} history={history} location={location}/>
       </div>

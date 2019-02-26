@@ -1,0 +1,61 @@
+@import 'bulma/bulma.sass';
+@import 'react-toastify/scss/main.scss';
+// https://www.color-hex.com/color-palette/20141
+$success-green: #22bb33;
+$info-blue: #5bc0de;
+$danger-red: #bb2124;
+$warning-orange: #f0ad4e;
+$inactive-gray: #aaaaaa;
+
+
+.custom-toast-container{
+  min-width: 500px;
+  margin-left: unset;
+  transform: translateX(-50%);
+  .Toastify__toast--success{
+    background-color: $success-green;
+  }
+  .Toastify__toast--info{
+    background-color: $info-blue;
+  }
+  .Toastify__toast--error{
+    background-color: $danger-red;
+  }
+  .Toastify__toast--warning{
+    background-color: $warning-orange;
+  }
+  .Toastify__toast{
+    border-radius: 3px;
+  }
+
+}
+
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.App-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: purple;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
