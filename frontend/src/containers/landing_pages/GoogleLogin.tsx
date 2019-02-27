@@ -1,9 +1,8 @@
 import * as React from 'react';
 import {getApi} from 'utils/apiUtil';
 
-
 interface IProps{
-  history: any;
+  infoAlert: (message: string, redirectUrl?: string) => void;
 }
 
 class GoogleLogin extends React.Component<IProps, {}> {
@@ -20,7 +19,9 @@ class GoogleLogin extends React.Component<IProps, {}> {
       }).then(res => {
           if(res.data.token){
             localStorage.setItem('token', res.data.token);
-            this.props.history.push('/users/home');
+            this.props.infoAlert('Logged in!','/');
+            const auth2 =  (window as any).gapi.auth2.getAuthInstance();
+            auth2.signOut();
           }
         }).catch(() => console.log("errors"));
   }
@@ -43,7 +44,9 @@ class GoogleLogin extends React.Component<IProps, {}> {
 
  }
  public render(){
-   return (<div id="my-signIn" />);
+   return (
+     <div id="my-signIn" />
+   );
  }
 
   }

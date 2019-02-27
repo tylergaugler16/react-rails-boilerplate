@@ -6,6 +6,7 @@ interface IProps {
   history?: any;
   location?: any;
   match?: any;
+  [prop: string]: any;
 }
 interface IState {
   currentUser: User| null;

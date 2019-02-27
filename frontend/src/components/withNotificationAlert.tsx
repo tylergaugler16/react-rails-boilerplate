@@ -22,29 +22,36 @@ export default function withNotificationAlert(WrappedComponent: React.ComponentT
     private errorAlert(message: string, redirectUrl?: string){
       toast.error(message);
       if(redirectUrl){
-          this.props.history(redirectUrl);
+          this.redirect(redirectUrl);
       }
     }
     private successAlert(message: string, redirectUrl?: string){
-      const { history } = this.props;
       toast.success(message);
       if(redirectUrl){
-        history.push(redirectUrl)
+          this.redirect(redirectUrl);
       }
     }
     private infoAlert(message: string, redirectUrl?: string){
-      const { history } = this.props;
       toast.info(message);
       if(redirectUrl){
-        history.push(redirectUrl)
+        this.redirect(redirectUrl);
       }
     }
     private warnAlert(message: string, redirectUrl?: string){
-      const { history } = this.props;
       toast.warn(message);
       if(redirectUrl){
-        history.push(redirectUrl)
+        this.redirect(redirectUrl);
       }
+    }
+
+    private redirect(url: string){
+      const {location, history} = this.props;
+      if(location.pathname === url){
+        window.location.reload();
+      } else{
+        history.push(url)
+      }
+
     }
 
     public render() {

@@ -6,7 +6,7 @@ interface IProps {
   currentUser: User;
   currentUserIsLoading: boolean;
   history: any;
-} 
+}
 
 export default function UserIsAuthenticated(
   WrappedComponent: React.ComponentType<any>,
@@ -23,7 +23,7 @@ export default function UserIsAuthenticated(
 
     public componentWillMount() {
       this.redirectIfUserIsNotAuthenticated();
-    }
+    } 
 
     public componentWillReceiveProps(nextProps: IProps) {
       this.redirectIfUserIsNotAuthenticated(nextProps);

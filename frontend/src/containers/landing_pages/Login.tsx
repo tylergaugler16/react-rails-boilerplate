@@ -1,14 +1,13 @@
 import * as React from 'react';
 import {getApi} from 'utils/apiUtil';
-import { withRouter } from "react-router-dom";
+import withNotificationAlert from "components/withNotificationAlert"
 import { Formik as Form} from 'formik';
 import GoogleLogin from "containers/landing_pages/GoogleLogin"
 
 
 interface IProps{
-  match: any;
-  history: any;
-  location: any;
+  infoAlert: (message: string, redirectUrl?: string) => void;
+  errorAlert: (message: string, redirectUrl?: string) => void;
 }
 
 
@@ -25,20 +24,25 @@ class Login extends React.Component<IProps, {}> {
           'Accept': 'application/json',
           'Content-Type': 'application/json',
         },
+        validateStatus: (status: number) => {
+         return true; // I'm always returning true, you may want to do it depending on the status received
+       },
       }).then(res => {
           if(res.data.token){
             localStorage.setItem('token', res.data.token);
-            this.props.history.push('/users/home');
+            this.props.infoAlert("Logged in", "/");
+          } else if(res.data.errors){
+            this.props.errorAlert(res.data.errors.join("/n"))
           }
-        }).catch(() => console.log("errors"));
+        }).catch((error) => console.log(error.message));
   }
 
 
   public render() {
-    const {history} = this.props;
+    const {infoAlert} = this.props;
     return (
       <div className="login-container">
-      <GoogleLogin history={history}/>
+      <GoogleLogin infoAlert={infoAlert}/>
       <Form
           initialValues={{ email: '', password: '' }}
           validate={values => {
@@ -62,7 +66,6 @@ class Login extends React.Component<IProps, {}> {
             values,
             errors,
             touched,
-            isSubmitting,
             handleSubmit,
             handleChange
           }) => (
@@ -79,17 +82,16 @@ class Login extends React.Component<IProps, {}> {
                  onChange={handleChange}
               />
               {errors.password && touched.password && errors.password}
-              <button type="submit" disabled={isSubmitting}>
+              <button type="submit">
                 Submit
               </button>
             </form>
           )}
         </Form>
-        <button onClick={this.handleLogin}>Login</button>
       </div>
     );
   }
 }
 
 
-export default withRouter(Login);
+export default withNotificationAlert(Login);

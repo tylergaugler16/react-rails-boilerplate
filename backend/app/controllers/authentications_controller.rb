@@ -21,20 +21,22 @@ class AuthenticationsController < ApplicationController
       google_auth_hash = authenticate_google_token(params[:google_token])
       auth_provider = AuthProvider.find_or_create_from_auth_hash(google_auth_hash)
       user = auth_provider.user
-      render json: { token: nil, user: nil, message: 'Something went wrong!' } unless user.present?
+      render_422('Could not authenticate Google account') && return unless user.present?
       token = Token.issue(
         user_id: user.id
       )
       render json: { token: token, user: user, message: 'Congrats you have signed in!' }
     else
       user = User.find_by_email(params[:email])
-      render json: { token: nil, user: nil, message: 'Something went wrong!' } unless user.present?
+      render_422('Could not find user with that email') && return unless user.present?
       if user.authenticate(params[:password])
         token = Token.issue(
           user_id: user.id
         )
+        puts 'got here'
+        render json: { token: token, user: user, message: 'Congrats you have signed in!' }
       else
-        render json: { token: nil, user: nil, message: 'Incorrect Password' }
+        render json: { token: nil, user: nil, message: 'Incorrect Password' } && return
       end
     end
   rescue StandardError => e
@@ -95,5 +97,13 @@ class AuthenticationsController < ApplicationController
 
   def oauth_hash
     request.env['omniauth.auth']
+  end
+
+  def render_errors(errors, status)
+    render json: { errors: Array(errors) }, status: status
+  end
+
+  def render_422(errors)
+    render_errors(errors, 422)
   end
 end
