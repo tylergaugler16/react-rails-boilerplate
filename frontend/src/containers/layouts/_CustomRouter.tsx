@@ -2,6 +2,7 @@ import * as React from "react";
 import Home from "containers/landing_pages/Home";
 import LoggedInHome from "containers/users/Home";
 import UserIsAuthenticated from "components/UserIsAuthenticated";
+import Header from "containers/layouts/Header";
 import WithCurrentUser from "queries/currentUser";
 import Login from "containers/landing_pages/Login";
 import SignUp from "containers/landing_pages/Signup";
@@ -36,34 +37,37 @@ class CustomRouter extends React.Component<IProps, {}> {
       currentUserIsLoading
     };
     return (
-      <div>
-        <Route
-          exact={true}
-          path="/"
-          render={(props: any) => <Home {...defaultProps} />}
-        />
-        <Route
-          exact={true}
-          path="/login"
-          render={(props: any) => <Login {...defaultProps} />}
-        />
-        <Route
-          exact={true}
-          path="/signup"
-          render={(props: any) => <SignUp {...defaultProps} />}
-        />
+      <React.Fragment>
+        <Header {...defaultProps} />
+        <div className="main-content">
+          <Route
+            exact={true}
+            path="/"
+            render={(props: any) => <Home {...defaultProps} />}
+          />
+          <Route
+            exact={true}
+            path="/login"
+            render={(props: any) => <Login {...defaultProps} />}
+          />
+          <Route
+            exact={true}
+            path="/signup"
+            render={(props: any) => <SignUp {...defaultProps} />}
+          />
 
-        <Route
-          exact={true}
-          path="/users/home"
-          component={UserIsAuthenticated(
-            LoggedInHome,
-            currentUserIsLoading,
-            currentUser
-          )}
-          {...defaultProps}
-        />
-      </div>
+          <Route
+            exact={true}
+            path="/users/home"
+            component={UserIsAuthenticated(
+              LoggedInHome,
+              currentUserIsLoading,
+              currentUser
+            )}
+            {...defaultProps}
+          />
+        </div>
+      </React.Fragment>
     );
   }
 }
