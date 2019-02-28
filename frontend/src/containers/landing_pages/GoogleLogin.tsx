@@ -26,6 +26,9 @@ class GoogleLogin extends React.Component<IProps, {}> {
         }).catch(() => console.log("errors"));
   }
   public componentDidMount() {
+    if( !(window as any).gapi  ){
+      return;
+    }
       (window as any).gapi.load('auth2', () => {
           (window as any).gapi.auth2.init({
           client_id: "1078865227946-n88q5b9jgmf5nolqppi1800e18ttsrfh.apps.googleusercontent.com"
