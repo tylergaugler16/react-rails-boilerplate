@@ -9,14 +9,8 @@ module Authenticatable
     !!current_user
   end
 
-  # def auth_hash
-  #   request.env['omniauth.auth']
-  # end
-
   def current_user
-    puts "yo, #{token} #{token.nil?} #{token.blank?}"
     return false if token.blank?
-    puts "i'm getting here"
     user = User.find(auth_hash['user_id'])
     @current_user ||= user if user
     @current_user
@@ -42,7 +36,6 @@ module Authenticatable
   private
 
   def token
-    puts "headers: #{request.env['HTTP_AUTHORIZATION']}"
     request.env['HTTP_AUTHORIZATION'].scan(/Bearer(.*)$/).flatten.last
   end
 
