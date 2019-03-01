@@ -15,7 +15,7 @@ class Header extends React.Component<IProps, {}> {
       <div className="columns">
         <div className="column">Widgetly</div>
         <div className="column"><Link to="/login">Login</Link></div>
-        <div className="column"><Link to="/signpu">Signup</Link></div>
+        <div className="column"><Link to="/signpup">Signup</Link></div>
         <div className="column"><Link to="/">Home</Link></div>
       </div>
     );

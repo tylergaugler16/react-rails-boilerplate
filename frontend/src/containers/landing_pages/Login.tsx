@@ -1,8 +1,10 @@
 import * as React from 'react';
 import {getApi} from 'utils/apiUtil';
 import withNotificationAlert from "components/withNotificationAlert"
-import { Formik as Form} from 'formik';
-import GoogleLogin from "containers/landing_pages/GoogleLogin"
+import { Formik as Form, Field} from 'formik';
+import GoogleLogin from "containers/landing_pages/GoogleLogin";
+import TextInput from "components/form/TextInput";
+import { isEmail} from "components/form/validations";
 
 
 interface IProps{
@@ -45,17 +47,6 @@ class Login extends React.Component<IProps, {}> {
       <GoogleLogin infoAlert={infoAlert}/>
       <Form
           initialValues={{ email: '', password: '' }}
-          validate={values => {
-            const errors: any = {};
-            if (!values.email) {
-              errors.email = 'Required';
-            } else if (
-              !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
-            ) {
-              errors.email = 'Invalid email address';
-            }
-            return errors;
-          }}
           onSubmit={(values, { setSubmitting }) => {
             this.handleLogin(values);
             console.log(values);
@@ -70,18 +61,12 @@ class Login extends React.Component<IProps, {}> {
             handleChange
           }) => (
             <form onSubmit={handleSubmit}>
-              <input
-                type="text"
-                name="email"
-                 onChange={handleChange}
-              />
-              {errors.email && touched.email && errors.email}
+            <Field name="email" label="Email" component={TextInput} validate={isEmail} />
               <input
                 type="password"
                 name="password"
                  onChange={handleChange}
               />
-              {errors.password && touched.password && errors.password}
               <button type="submit">
                 Submit
               </button>

@@ -20,6 +20,14 @@ interface IProps {
 class CustomRouter extends React.Component<IProps, {}> {
   constructor(props: IProps) {
     super(props);
+    this.userIsAuthenticated = this.userIsAuthenticated.bind(this);
+  }
+  private userIsAuthenticated(component: any){
+    const {
+      currentUser,
+      currentUserIsLoading
+    } = this.props;
+    return UserIsAuthenticated(component, currentUserIsLoading, currentUser );
   }
   public render() {
     const {
@@ -59,11 +67,7 @@ class CustomRouter extends React.Component<IProps, {}> {
           <Route
             exact={true}
             path="/users/home"
-            component={UserIsAuthenticated(
-              LoggedInHome,
-              currentUserIsLoading,
-              currentUser
-            )}
+            component={this.userIsAuthenticated(LoggedInHome)}
             {...defaultProps}
           />
         </div>
