@@ -22,14 +22,17 @@ class TextInput extends React.Component<IProps, {}> {
   public render() {
     const{field: {name, onChange }, label} = this.props;
     return (
-      <div className="field">
-        <label>{label}</label>
-        <input
-          type="text"
-          name={name}
-          onChange={onChange}
-        />
+      <div className="field-input">
+      <label className="field a-field a-field_a2 page__field">
+       <input className="field__input a-field__input"  type="text"
+         name={name}
+         onChange={onChange} placeholder="hello" />
+         <span className="a-field__label-wrap">
+          <span className="a-field__label">{label}</span>
+        </span>
+     </label>
         <ErrorMessage name={name} component={FormError} />
+
       </div>
     );
   }

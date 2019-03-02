@@ -56,3 +56,7 @@ Bootstrapped with [create-react-app-typescript](https://github.com/wmonk/create-
 ## Resources
 * really cool [input text animations](https://tympanus.net/Development/TextInputEffects/). The github is [here](https://github.com/codrops/TextInputEffects)
 * This is how i'm going to create [custom inputs](https://jaredpalmer.com/formik/docs/api/field)
+
+
+### CSS INPUT animations
+* [a lot of just css animations](https://freefrontend.com/css-input-text/)
