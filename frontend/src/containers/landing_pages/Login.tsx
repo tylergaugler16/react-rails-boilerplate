@@ -4,7 +4,8 @@ import withNotificationAlert from "components/withNotificationAlert"
 import { Formik as Form, Field} from 'formik';
 import GoogleLogin from "containers/landing_pages/GoogleLogin";
 import TextInput from "components/form/TextInput";
-import { isEmail} from "components/form/validations";
+import { isEmail, required } from "components/form/validations";
+import PasswordInput from "components/form/PasswordInput";
 
 
 interface IProps{
@@ -49,7 +50,6 @@ class Login extends React.Component<IProps, {}> {
           initialValues={{ email: '', password: '' }}
           onSubmit={(values, { setSubmitting }) => {
             this.handleLogin(values);
-            console.log(values);
             setSubmitting(true);
           }}
         >
@@ -62,11 +62,7 @@ class Login extends React.Component<IProps, {}> {
           }) => (
             <form onSubmit={handleSubmit}>
             <Field name="email" label="Email" component={TextInput} validate={isEmail} />
-              <input
-                type="password"
-                name="password"
-                 onChange={handleChange}
-              />
+            <Field name="password" label="Password" component={PasswordInput} validate={required} />
               <button type="submit">
                 Submit
               </button>

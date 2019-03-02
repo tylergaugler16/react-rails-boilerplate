@@ -1,7 +1,10 @@
 import * as React from "react";
 import { getApi } from "utils/apiUtil";
-import { Formik as Form } from "formik";
+import { Formik as Form, Field } from "formik";
 import withNotificationAlert from "components/withNotificationAlert";
+import TextInput from "components/form/TextInput";
+import PasswordInput from "components/form/PasswordInput";
+import { isEmail, required} from "components/form/validations";
 
 interface IProps {
   infoAlert: (message: string, redirectUrl?: string) => void;
@@ -41,17 +44,6 @@ class Signup extends React.Component<IProps, {}> {
             first_name: "",
             last_name: ""
           }}
-          validate={values => {
-            const errors: any = {};
-            if (!values.email) {
-              errors.email = "Required";
-            } else if (
-              !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
-            ) {
-              errors.email = "Invalid email address";
-            }
-            return errors;
-          }}
           onSubmit={(values, { setSubmitting }) => {
             this.handleSubmit(values);
             setSubmitting(true);
@@ -66,36 +58,14 @@ class Signup extends React.Component<IProps, {}> {
             handleChange
           }) => (
             <form onSubmit={handleSubmit}>
-              <div>
-                <label htmlFor="email">Email</label>
-                <br />
-                <input type="text" name="email" onChange={handleChange} />
-                {errors.email && touched.email && errors.email}
-              </div>
 
-              <div>
-                <label htmlFor="first_name">First Name</label>
-                <br />
-                <input type="text" name="first_name" onChange={handleChange} />
-                {errors.first_name && touched.first_name && errors.first_name}
-              </div>
+              <Field name="email" label="Email" component={TextInput} validate={isEmail} />
 
-              <div>
-                <label htmlFor="last_name">Last Name</label>
-                <br />
-                <input type="text" name="last_name" onChange={handleChange} />
-                {errors.last_name && touched.last_name && errors.last_name}
-              </div>
+              <Field name="first_name" label="First Name" component={TextInput} validate={required} />
 
-              <div>
-                <label htmlFor="password">Password</label> <br />
-                <input
-                  type="password"
-                  name="password"
-                  onChange={handleChange}
-                />
-                {errors.password && touched.password && errors.password}
-              </div>
+              <Field name="last_name" label="Last Name" component={TextInput} validate={required} />
+
+              <Field name="password" label="Password" component={PasswordInput} validate={required} />
 
               <div>
                 <button type="submit" disabled={isSubmitting}>
