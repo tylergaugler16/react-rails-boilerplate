@@ -2,6 +2,7 @@ import * as React from 'react';
 import { ErrorMessage } from 'formik';
 import FormError from "components/form/FormError";
 import { BlockPicker } from 'react-color';
+import ClickOutHandler from "react-onclickout";
 
 interface IProps{
   name: string;
@@ -38,14 +39,16 @@ class TextInput extends React.Component<IProps, IState> {
       <label >
         {label}
       </label>
-      <div className="color-picker-display" onClick={() => this.setState({isOpen: !this.state.isOpen})}>
-        <div className="display-selected-color">
-        <div className="display-color-container" style={{backgroundColor: currentValue? `${currentValue}`: "#ffffff"}}></div>
+      <ClickOutHandler onClickOut={() => this.setState({isOpen: !this.state.isOpen})}>
+        <div className="color-picker-display" onClick={() => this.setState({isOpen: !this.state.isOpen})}>
+          <div className="display-selected-color">
+          <div className="display-color-container" style={{backgroundColor: currentValue? `${currentValue}`: "#ffffff"}}></div>
+          </div>
+          <div className="selected-color-value">
+            <span> {currentValue? currentValue : "Choose a color..." } </span>
+          </div>
         </div>
-        <div className="selected-color-value">
-          <span> {currentValue? currentValue : "Choose a color..." } </span>
-        </div>
-      </div>
+      </ClickOutHandler>
       {
         this.state.isOpen?
         <BlockPicker

@@ -18,6 +18,7 @@
     "array-type": [true, "generic"],
     "no-console": false,
     "no-var-requires": false,
-    "interface-name": [false, "always-prefix"]
+    "interface-name": [false, "always-prefix"],
+    "max-classes-per-file": false
   }
 }
