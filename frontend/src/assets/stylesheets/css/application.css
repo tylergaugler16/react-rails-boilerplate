@@ -7581,7 +7581,7 @@ input:focus, select:focus {
   display: table;
   border-spacing: 0;
   border-collapse: separate;
-  height: 36px;
+  height: 40px;
   outline: none;
   overflow: hidden;
   position: relative;
@@ -7599,7 +7599,7 @@ input:focus, select:focus {
   bottom: 0;
   color: #aaa;
   left: 0;
-  line-height: 34px;
+  line-height: 40px;
   padding-left: 10px;
   padding-right: 10px;
   position: absolute;
@@ -7611,7 +7611,7 @@ input:focus, select:focus {
   white-space: nowrap; }
 
 .Select-input {
-  height: 34px;
+  height: 40px;
   padding-left: 10px;
   padding-right: 10px;
   vertical-align: middle; }
@@ -7629,7 +7629,7 @@ input:focus, select:focus {
   outline: none;
   line-height: 17px;
   /* For IE 8 compatibility */
-  padding: 8px 0 12px;
+  padding: 11px 0 12px;
   /* For IE 8 compatibility */
   -webkit-appearance: none; }
 
@@ -7741,7 +7741,8 @@ input:focus, select:focus {
   border-bottom-right-radius: 4px;
   border-bottom-left-radius: 4px;
   background-color: #fff;
-  border: 1px solid #ccc;
+  border: 2px solid #ccc;
+  border-top: 0px;
   border-top-color: #e6e6e6;
   box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);
   box-sizing: border-box;
@@ -7750,7 +7751,7 @@ input:focus, select:focus {
   position: absolute;
   left: 0;
   top: calc(100% + 1px);
-  width: 100%;
+  width: calc(100% - 1px);
   z-index: 1;
   -webkit-overflow-scrolling: touch; }
 
