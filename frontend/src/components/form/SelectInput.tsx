@@ -28,7 +28,7 @@ class TextInput extends React.Component<IProps, {}> {
       const newValue = selectedOption && selectedOption.value ? selectedOption.value : null;
       form.setFieldValue(name, newValue);
     }
-
+ 
 
       const handleBlur = () =>
         form.setFieldTouched(name, true);

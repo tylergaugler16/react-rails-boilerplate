@@ -1,6 +1,8 @@
+// general styles
 input:focus, select:focus {
   outline:none;
 }
+// select input styles
 .select-input{
   select{
     width: 100%;
@@ -20,6 +22,14 @@ input:focus, select:focus {
     text-align: left;
   }
 }
+// color input styles
+
+.color-picker-display{
+  width: 100%;
+  height: 40px;
+  border: 2px solid $dark-purple-inactive;
+}
+// form error styles
 .form-error{
   font-size: 12px;
   color: $danger-red;

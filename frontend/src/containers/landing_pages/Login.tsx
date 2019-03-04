@@ -7,6 +7,7 @@ import { isEmail, required } from "components/form/validations";
 import TextInput from "components/form/TextInput";
 import PasswordInput from "components/form/PasswordInput";
 import SelectInput from "components/form/SelectInput";
+import ColorInput from "components/form/ColorInput";
 
 interface IProps {
   infoAlert: (message: string, redirectUrl?: string) => void;
@@ -48,7 +49,7 @@ class Login extends React.Component<IProps, {}> {
       <div className="login-container">
         <GoogleLogin infoAlert={infoAlert} />
         <Form
-          initialValues={{ email: "", password: "", test: "" }}
+          initialValues={{ email: "", password: "", test: "" , color: ""}}
           onSubmit={(values, { setSubmitting }) => {
             this.handleLogin(values);
             setSubmitting(true);
@@ -76,7 +77,7 @@ class Login extends React.Component<IProps, {}> {
                   />
                 </div>
               </div>
-              <div className="columns is-gapless is-centered">
+              <div className="columns is-gapless is-centered is-multiline">
                 <div className="column is-10">
                   <Field
                     name="test"
@@ -88,6 +89,16 @@ class Login extends React.Component<IProps, {}> {
                     }
                   />
                 </div>
+                <div className="column is-10">
+                  <Field
+                    name="color"
+                    label="Select Color"
+                    component={ColorInput}
+                    validate={required}
+                    classNames="color-picker"
+                  />
+                </div>
+
               </div>
               <div className="columns is-gapless">
                 <div className="column is-10 is-centered">
