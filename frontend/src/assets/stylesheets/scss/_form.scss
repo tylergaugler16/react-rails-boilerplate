@@ -28,6 +28,20 @@ input:focus, select:focus {
   width: 100%;
   height: 40px;
   border: 2px solid $dark-purple-inactive;
+  display: flex;
+  align-items: center;
+  .display-selected-color{
+    min-width: 100px;
+    .display-color-container{
+      border: 1px solid $gray;
+      width: 80%;
+      margin: 0 auto;
+      height: 20px;
+    }
+  }
+  .selected-color-value{
+    flex: 1;
+  }
 }
 // form error styles
 .form-error{

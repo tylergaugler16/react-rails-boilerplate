@@ -35,12 +35,16 @@ class TextInput extends React.Component<IProps, IState> {
 
     return (
       <div className="field-input select-input">
-      <label onClick={() => this.setState({isOpen: !this.state.isOpen})}>
+      <label >
         {label}
       </label>
-      <div className="color-picker-display">
-        <div className="display-selected-color"></div>
-        <div className="selected-color-value"></div>
+      <div className="color-picker-display" onClick={() => this.setState({isOpen: !this.state.isOpen})}>
+        <div className="display-selected-color">
+        <div className="display-color-container" style={{backgroundColor: currentValue? `${currentValue}`: "#ffffff"}}></div>
+        </div>
+        <div className="selected-color-value">
+          <span> {currentValue? currentValue : "Choose a color..." } </span>
+        </div>
       </div>
       {
         this.state.isOpen?
