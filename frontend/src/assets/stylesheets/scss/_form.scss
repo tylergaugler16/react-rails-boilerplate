@@ -1,0 +1,27 @@
+input:focus, select:focus {
+  outline:none;
+}
+.select-input{
+  select{
+    width: 100%;
+    display: block;
+    border: 1px solid $dark-purple;
+    padding: 10px 8px;
+    background-color: $white;
+    -webkit-appearance: none;
+     -moz-appearance: none;
+     appearance: none;
+
+     &:focus{
+       outline: $light-purple;
+     }
+  }
+  label{
+    text-align: left;
+  }
+}
+.form-error{
+  font-size: 12px;
+  color: $danger-red;
+  text-align: left;
+}

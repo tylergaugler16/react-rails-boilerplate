@@ -1,6 +1,4 @@
-.field{
-  --uiFieldPlaceholderColor: var(--fieldPlaceholderColor, #767676);
-}
+
 
 .field__input{
   background-color: transparent;
@@ -15,11 +13,11 @@
 }
 
 .field__input:focus::-webkit-input-placeholder{
-  color: var(--uiFieldPlaceholderColor);
+  color: #CAC4CE;
 }
 
 .field__input:focus::-moz-placeholder{
-  color: var(--uiFieldPlaceholderColor);
+  color: #CAC4CE;
   opacity: 1;
 }
 
@@ -55,11 +53,12 @@
   box-sizing: border-box;
   font-size: var(--uiFieldFontSize);
   padding-top: 1em;
+  width: 100%;
 }
 
 .a-field .a-field__input{
   height: var(--uiFieldHeight);
-  padding: 0 var(--uiFieldPaddingRight) 0 var(--uiFieldPaddingLeft);
+  padding: 0 var(--uiFieldPaddingRight) 0 5px;
   border-bottom: var(--uiFieldBorderWidth) solid var(--uiFieldBorderColor);
 }
 
@@ -103,7 +102,7 @@
 
 .a-field .a-field__label{
   position: absolute;
-  left: var(--uiFieldPaddingLeft);
+  left: 5px;
   bottom: calc(50% - .5em);
 
   line-height: 1;
@@ -127,7 +126,7 @@
   box-sizing: border-box;
   width: 0;
   height: var(--uiFieldBorderWidth);
-  background-color: var(--fieldBorderColorActive);
+  background-color: $dark-purple;
 
   position: absolute;
   bottom: 0;
@@ -143,6 +142,8 @@
 
 
 .field{
-  --fieldBorderColor: #D1C4E9;
-  --fieldBorderColorActive: #673AB7;
+  --fieldBorderColor: #725ac196;
+}
+.field:not(:last-child){
+  margin-bottom: 5px;
 }

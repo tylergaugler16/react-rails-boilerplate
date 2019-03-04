@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {getApi} from 'utils/apiUtil';
 
+
 interface IProps{
   infoAlert: (message: string, redirectUrl?: string) => void;
 }
@@ -10,6 +11,7 @@ class GoogleLogin extends React.Component<IProps, {}> {
     super(props);
   }
   private async login(idToken: string) {
+
     const api = getApi();
     api.post(`login`, { googleLogin: true, googleToken: idToken }, {
         headers: {
@@ -26,6 +28,7 @@ class GoogleLogin extends React.Component<IProps, {}> {
         }).catch(() => console.log("errors"));
   }
   public componentDidMount() {
+
     if( !(window as any).gapi  ){
       return;
     }
@@ -33,6 +36,13 @@ class GoogleLogin extends React.Component<IProps, {}> {
           (window as any).gapi.auth2.init({
           client_id: "1078865227946-n88q5b9jgmf5nolqppi1800e18ttsrfh.apps.googleusercontent.com"
       }).then(() => {
+
+
+        const auth2 =  (window as any).gapi.auth2.getAuthInstance();
+        const isSignedIn =  auth2.isSignedIn.get()
+        if(isSignedIn){
+          auth2.signOut();
+        }
           (window as any).gapi.signin2.render('my-signIn', {
             'scope': 'profile email',
             'width': 250,

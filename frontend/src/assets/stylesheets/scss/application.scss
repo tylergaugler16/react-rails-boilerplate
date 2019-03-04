@@ -1,12 +1,25 @@
 @import 'bulma/bulma.sass';
 @import 'react-toastify/scss/main.scss';
-@import '_field_input_styles';
+
 // https://www.color-hex.com/color-palette/20141
 $success-green: #22bb33;
 $info-blue: #5bc0de;
 $danger-red: #bb2124;
 $warning-orange: #f0ad4e;
 $inactive-gray: #aaaaaa;
+
+$white: #ffffff;
+$black: #242038;
+$dark-purple: #725AC1;
+$light-purple: #8D86C9;
+$gray: #CAC4CE;
+$blue: #2589BD;
+
+$dark-purple-inactive: #725ac196;
+
+@import '_field_input_styles';
+@import '_authentication';
+@import '_form';
 
 
 .custom-toast-container{
@@ -59,4 +72,29 @@ $inactive-gray: #aaaaaa;
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+
+.columns.is-centered{
+  justify-content: center;
+}
+
+.button{
+  border-style: none;
+}
+.button.small-button{
+  padding: 5px 15px;
+}
+.button.medium-button{
+  padding: 5px 25px;
+}
+.button.large-button{
+  padding: 5px 35px;
+}
+.button.purple-button{
+  background-color: $dark-purple;
+  color: $white;
+  &:hover, &:active, &:focus{
+    background-color: $light-purple;
+  }
 }

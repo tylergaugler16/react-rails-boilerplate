@@ -7325,9 +7325,6 @@ label.panel-block {
 .Toastify__slide-exit--bottom-center {
   animation-name: Toastify__slideOutDown; }
 
-.field {
-  --uiFieldPlaceholderColor: var(--fieldPlaceholderColor, #767676); }
-
 .field__input {
   background-color: transparent;
   border-radius: 0;
@@ -7338,10 +7335,10 @@ label.panel-block {
   font-size: 1em; }
 
 .field__input:focus::-webkit-input-placeholder {
-  color: var(--uiFieldPlaceholderColor); }
+  color: #CAC4CE; }
 
 .field__input:focus::-moz-placeholder {
-  color: var(--uiFieldPlaceholderColor);
+  color: #CAC4CE;
   opacity: 1; }
 
 .a-field {
@@ -7367,11 +7364,12 @@ label.panel-block {
   position: relative;
   box-sizing: border-box;
   font-size: var(--uiFieldFontSize);
-  padding-top: 1em; }
+  padding-top: 1em;
+  width: 100%; }
 
 .a-field .a-field__input {
   height: var(--uiFieldHeight);
-  padding: 0 var(--uiFieldPaddingRight) 0 var(--uiFieldPaddingLeft);
+  padding: 0 var(--uiFieldPaddingRight) 0 5px;
   border-bottom: var(--uiFieldBorderWidth) solid var(--uiFieldBorderColor); }
 
 .a-field .a-field__input::-webkit-input-placeholder {
@@ -7406,7 +7404,7 @@ label.panel-block {
 
 .a-field .a-field__label {
   position: absolute;
-  left: var(--uiFieldPaddingLeft);
+  left: 5px;
   bottom: calc(50% - .5em);
   line-height: 1;
   font-size: var(--uiFieldHintFontSize);
@@ -7424,7 +7422,7 @@ label.panel-block {
   box-sizing: border-box;
   width: 0;
   height: var(--uiFieldBorderWidth);
-  background-color: var(--fieldBorderColorActive);
+  background-color: #725AC1;
   position: absolute;
   bottom: 0;
   left: 0;
@@ -7435,8 +7433,39 @@ label.panel-block {
   width: 100%; }
 
 .field {
-  --fieldBorderColor: #D1C4E9;
-  --fieldBorderColorActive: #673AB7; }
+  --fieldBorderColor: #725ac196; }
+
+.field:not(:last-child) {
+  margin-bottom: 5px; }
+
+.login-container {
+  width: 60vw;
+  max-width: 800px;
+  background-color: #ffffff;
+  margin: 0 auto; }
+
+input:focus, select:focus {
+  outline: none; }
+
+.select-input select {
+  width: 100%;
+  display: block;
+  border: 1px solid #725AC1;
+  padding: 10px 8px;
+  background-color: #ffffff;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none; }
+  .select-input select:focus {
+    outline: #8D86C9; }
+
+.select-input label {
+  text-align: left; }
+
+.form-error {
+  font-size: 12px;
+  color: #bb2124;
+  text-align: left; }
 
 .custom-toast-container {
   min-width: 500px;
@@ -7477,3 +7506,24 @@ label.panel-block {
     transform: rotate(0deg); }
   to {
     transform: rotate(360deg); } }
+
+.columns.is-centered {
+  justify-content: center; }
+
+.button {
+  border-style: none; }
+
+.button.small-button {
+  padding: 5px 15px; }
+
+.button.medium-button {
+  padding: 5px 25px; }
+
+.button.large-button {
+  padding: 5px 35px; }
+
+.button.purple-button {
+  background-color: #725AC1;
+  color: #ffffff; }
+  .button.purple-button:hover, .button.purple-button:active, .button.purple-button:focus {
+    background-color: #8D86C9; }
