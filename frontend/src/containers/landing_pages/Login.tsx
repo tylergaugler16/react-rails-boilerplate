@@ -48,7 +48,7 @@ class Login extends React.Component<IProps, {}> {
       <div className="login-container">
         <GoogleLogin infoAlert={infoAlert} />
         <Form
-          initialValues={{ email: "", password: "" }}
+          initialValues={{ email: "", password: "", test: "" }}
           onSubmit={(values, { setSubmitting }) => {
             this.handleLogin(values);
             setSubmitting(true);

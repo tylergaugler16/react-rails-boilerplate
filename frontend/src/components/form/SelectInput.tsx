@@ -14,7 +14,8 @@ interface IProps{
   }
   form: any;
   label: string;
-  options: [{label: string, value: any}]
+  options: [{label: string, value: any}];
+  clearable: boolean;
 }
 class TextInput extends React.Component<IProps, {}> {
   public constructor(props: IProps) {
@@ -22,14 +23,27 @@ class TextInput extends React.Component<IProps, {}> {
   }
 
   public render() {
-    const{field: {name, onChange }, label, options} = this.props;
+    const{field: {name, value: currentValue }, form, label, options, clearable} = this.props;
+    const handleChange = (selectedOption: any) => {
+      const newValue = selectedOption && selectedOption.value ? selectedOption.value : null;
+      form.setFieldValue(name, newValue);
+    }
+
+
+      const handleBlur = () =>
+        form.setFieldTouched(name, true);
     return (
       <div className="field-input select-input">
       <label>
         {label}
       </label>
-      <Select name={name} onChange={onChange} options={options} />
-
+        <Select
+          name={name}
+          onChange={handleChange}
+          onBlur={handleBlur}
+          options={options}
+          clearable={clearable}
+          value={options ? options.find(option => option.value === currentValue) : ''}/>
         <ErrorMessage name={name} component={FormError} />
 
       </div>
