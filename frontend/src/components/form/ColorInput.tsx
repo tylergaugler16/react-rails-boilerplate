@@ -25,6 +25,15 @@ class TextInput extends React.Component<IProps, IState> {
   public constructor(props: IProps) {
     super(props);
     this.state ={isOpen: false}
+    this.closeColorPicker = this.closeColorPicker.bind(this);
+    this.openColorPicker = this.openColorPicker.bind(this);
+  }
+  private closeColorPicker(event: any){
+    console.log(event);
+    this.setState({isOpen: false});
+  }
+  private openColorPicker(){
+    this.setState({isOpen: true});
   }
 
   public render() {
@@ -39,8 +48,8 @@ class TextInput extends React.Component<IProps, IState> {
       <label >
         {label}
       </label>
-      <ClickOutHandler onClickOut={() => this.setState({isOpen: !this.state.isOpen})}>
-        <div className="color-picker-display" onClick={() => this.setState({isOpen: !this.state.isOpen})}>
+      <ClickOutHandler onClickOut={this.closeColorPicker}>
+        <div className="color-picker-display" onClick={this.openColorPicker}>
           <div className="display-selected-color">
           <div className="display-color-container" style={{backgroundColor: currentValue? `${currentValue}`: "#ffffff"}}></div>
           </div>
@@ -48,19 +57,17 @@ class TextInput extends React.Component<IProps, IState> {
             <span> {currentValue? currentValue : "Choose a color..." } </span>
           </div>
         </div>
+        {
+          this.state.isOpen?
+          <BlockPicker
+            color={currentValue}
+            onChange={handleChangeComplete}
+            />
+          :
+            null
+        }
       </ClickOutHandler>
-      {
-        this.state.isOpen?
-        <BlockPicker
-          color={currentValue}
-          onChange={handleChangeComplete}
-          />
-        :
-          null
-      }
-
         <ErrorMessage name={name} component={FormError} />
-
       </div>
     );
   }

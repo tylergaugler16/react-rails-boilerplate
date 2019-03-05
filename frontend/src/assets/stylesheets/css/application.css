@@ -7469,7 +7469,8 @@ input:focus, select:focus {
   display: flex;
   align-items: center; }
   .color-picker-display .display-selected-color {
-    min-width: 100px; }
+    width: 50px;
+    border-radius: 3px; }
     .color-picker-display .display-selected-color .display-color-container {
       border: 1px solid #CAC4CE;
       width: 80%;

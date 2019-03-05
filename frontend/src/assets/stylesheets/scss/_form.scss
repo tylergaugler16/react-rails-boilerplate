@@ -31,7 +31,8 @@ input:focus, select:focus {
   display: flex;
   align-items: center;
   .display-selected-color{
-    min-width: 100px;
+    width: 50px;
+    border-radius: 3px;
     .display-color-container{
       border: 1px solid $gray;
       width: 80%;
