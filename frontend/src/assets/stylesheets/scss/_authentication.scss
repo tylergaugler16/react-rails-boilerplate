@@ -41,7 +41,6 @@
         min-height: 200px;
         @include absolutely-center;
 
-
         .signup-view-content, .login-view-content{
           width: 70%;
           @include absolutely-center;
@@ -53,19 +52,38 @@
             text-align: center;
             margin-bottom: 20px;
           }
-          button{
-            display: block;
-            margin: 0 auto;
-          }
-          &.should-hide{
-            p, h1, button{
-              opacity: 0;
-              transition: opacity 0.6s ease-in;
-              pointer-events: none;
+          // button{
+          //   display: block;
+          //   margin: 0 auto;
+          // }
+          .button-container{
+            position: relative;
+            button{
+              position: absolute;
+              top: 0;
+              left: 50%;
+              transform: translateX(-50%);
             }
           }
+          &.should-hide{
+            p, h1{
+              opacity: 0;
+
+              transition: opacity 0.6s ease-in;
+            }
+            button{
+              opacity: 0;
+              top: 200px;
+              transition: opacity 0.6s ease-in, top 0.1s 0.6s;
+            }
+
+          }
           &.should-show{
-            p, h1, button{
+            p, h1{
+              opacity: 1;
+              transition: opacity 0.6s 0.4s ease-in;
+            }
+            button{
               opacity: 1;
               transition: opacity 0.6s 0.4s ease-in;
             }

@@ -7356,8 +7356,8 @@ label.panel-block {
   --uiFieldHeight: var(--fieldHeight, 40px);
   --uiFieldBorderWidth: var(--fieldBorderWidth, 2px);
   --uiFieldBorderColor: var(--fieldBorderColor);
-  --uiFieldFontSize: var(--fieldFontSize, 1em);
-  --uiFieldHintFontSize: var(--fieldHintFontSize, 1em);
+  --uiFieldFontSize: var(--fieldFontSize, 14px);
+  --uiFieldHintFontSize: var(--fieldHintFontSize, 14px);
   --uiFieldPaddingRight: var(--fieldPaddingRight, 15px);
   --uiFieldPaddingBottom: var(--fieldPaddingBottom, 15px);
   --uiFieldPaddingLeft: var(--fieldPaddingLeft, 15px);
@@ -7403,6 +7403,7 @@ label.panel-block {
   left: 0; }
 
 .a-field .a-field__label {
+  font-size: 14px;
   position: absolute;
   left: 5px;
   bottom: calc(50% - .5em);
@@ -7489,14 +7490,24 @@ label.panel-block {
         .signup-and-login-wrapper .purple-container .signup-and-login-inactive-container .signup-view-content p, .signup-and-login-wrapper .purple-container .signup-and-login-inactive-container .login-view-content p {
           text-align: center;
           margin-bottom: 20px; }
-        .signup-and-login-wrapper .purple-container .signup-and-login-inactive-container .signup-view-content button, .signup-and-login-wrapper .purple-container .signup-and-login-inactive-container .login-view-content button {
-          display: block;
-          margin: 0 auto; }
-        .signup-and-login-wrapper .purple-container .signup-and-login-inactive-container .signup-view-content.should-hide p, .signup-and-login-wrapper .purple-container .signup-and-login-inactive-container .signup-view-content.should-hide h1, .signup-and-login-wrapper .purple-container .signup-and-login-inactive-container .signup-view-content.should-hide button, .signup-and-login-wrapper .purple-container .signup-and-login-inactive-container .login-view-content.should-hide p, .signup-and-login-wrapper .purple-container .signup-and-login-inactive-container .login-view-content.should-hide h1, .signup-and-login-wrapper .purple-container .signup-and-login-inactive-container .login-view-content.should-hide button {
+        .signup-and-login-wrapper .purple-container .signup-and-login-inactive-container .signup-view-content .button-container, .signup-and-login-wrapper .purple-container .signup-and-login-inactive-container .login-view-content .button-container {
+          position: relative; }
+          .signup-and-login-wrapper .purple-container .signup-and-login-inactive-container .signup-view-content .button-container button, .signup-and-login-wrapper .purple-container .signup-and-login-inactive-container .login-view-content .button-container button {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%); }
+        .signup-and-login-wrapper .purple-container .signup-and-login-inactive-container .signup-view-content.should-hide p, .signup-and-login-wrapper .purple-container .signup-and-login-inactive-container .signup-view-content.should-hide h1, .signup-and-login-wrapper .purple-container .signup-and-login-inactive-container .login-view-content.should-hide p, .signup-and-login-wrapper .purple-container .signup-and-login-inactive-container .login-view-content.should-hide h1 {
           opacity: 0;
-          transition: opacity 0.6s ease-in;
-          pointer-events: none; }
-        .signup-and-login-wrapper .purple-container .signup-and-login-inactive-container .signup-view-content.should-show p, .signup-and-login-wrapper .purple-container .signup-and-login-inactive-container .signup-view-content.should-show h1, .signup-and-login-wrapper .purple-container .signup-and-login-inactive-container .signup-view-content.should-show button, .signup-and-login-wrapper .purple-container .signup-and-login-inactive-container .login-view-content.should-show p, .signup-and-login-wrapper .purple-container .signup-and-login-inactive-container .login-view-content.should-show h1, .signup-and-login-wrapper .purple-container .signup-and-login-inactive-container .login-view-content.should-show button {
+          transition: opacity 0.6s ease-in; }
+        .signup-and-login-wrapper .purple-container .signup-and-login-inactive-container .signup-view-content.should-hide button, .signup-and-login-wrapper .purple-container .signup-and-login-inactive-container .login-view-content.should-hide button {
+          opacity: 0;
+          top: 200px;
+          transition: opacity 0.6s ease-in, top 0.1s 0.6s; }
+        .signup-and-login-wrapper .purple-container .signup-and-login-inactive-container .signup-view-content.should-show p, .signup-and-login-wrapper .purple-container .signup-and-login-inactive-container .signup-view-content.should-show h1, .signup-and-login-wrapper .purple-container .signup-and-login-inactive-container .login-view-content.should-show p, .signup-and-login-wrapper .purple-container .signup-and-login-inactive-container .login-view-content.should-show h1 {
+          opacity: 1;
+          transition: opacity 0.6s 0.4s ease-in; }
+        .signup-and-login-wrapper .purple-container .signup-and-login-inactive-container .signup-view-content.should-show button, .signup-and-login-wrapper .purple-container .signup-and-login-inactive-container .login-view-content.should-show button {
           opacity: 1;
           transition: opacity 0.6s 0.4s ease-in; }
   .signup-and-login-wrapper .login-container {

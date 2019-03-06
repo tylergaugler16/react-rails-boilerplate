@@ -42,8 +42,8 @@
   --uiFieldBorderWidth: var(--fieldBorderWidth, 2px);
   --uiFieldBorderColor: var(--fieldBorderColor);
 
-  --uiFieldFontSize: var(--fieldFontSize, 1em);
-  --uiFieldHintFontSize: var(--fieldHintFontSize, 1em);
+  --uiFieldFontSize: var(--fieldFontSize, 14px);
+  --uiFieldHintFontSize: var(--fieldHintFontSize, 14px);
 
   --uiFieldPaddingRight: var(--fieldPaddingRight, 15px);
   --uiFieldPaddingBottom: var(--fieldPaddingBottom, 15px);
@@ -101,6 +101,7 @@
 }
 
 .a-field .a-field__label{
+  font-size: 14px;
   position: absolute;
   left: 5px;
   bottom: calc(50% - .5em);
