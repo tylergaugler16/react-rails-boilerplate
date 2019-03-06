@@ -1,6 +1,7 @@
 import * as React from "react";
 import Login from "containers/landing_pages/Login";
 import SignUp from "containers/landing_pages/Signup";
+import SignupAndLoginInactiveContainer from "containers/landing_pages/_SignupAndLoginInactiveContainer";
 
 interface IProps {
   history: any;
@@ -38,7 +39,7 @@ class SignupAndLoginWrapper extends React.Component<IProps,IState> {
         <Login {...defaultProps} />
         <SignUp {...defaultProps} />
         <div className={`purple-container ${currentView === "login"? "login-is-active" : "signup-is-active"}`}>
-
+          <SignupAndLoginInactiveContainer {...defaultProps} />
         </div>
       </div>
 

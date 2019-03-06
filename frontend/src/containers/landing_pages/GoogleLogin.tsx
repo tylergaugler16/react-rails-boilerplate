@@ -45,8 +45,8 @@ class GoogleLogin extends React.Component<IProps, {}> {
         }
           (window as any).gapi.signin2.render('my-signIn', {
             'scope': 'profile email',
-            'width': 250,
-            'height': 50,
+            'width': 150,
+            'height': 40,
             'longtitle': false,
             'theme': 'dark',
             'onsuccess':  (user: any) => this.login(user.Zi.id_token),

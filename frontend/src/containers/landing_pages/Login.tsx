@@ -44,14 +44,13 @@ class Login extends React.Component<IProps, {}> {
   }
 
   public render() {
-    const { infoAlert, currentView, changeView } = this.props;
+    const { infoAlert, currentView } = this.props;
     return (
       <div
         className={`login-container current-view-container ${
           currentView === "login" ? "is-active" : "is-inactive"
         }`}
       >
-        <span onClick={() => changeView("signup")}>Signup</span>
         <GoogleLogin infoAlert={infoAlert} />
         <Form
           initialValues={{ email: "", password: "", test: "", color: "" }}

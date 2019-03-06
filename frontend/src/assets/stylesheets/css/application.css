@@ -7466,6 +7466,38 @@ label.panel-block {
       left: 50%; }
     .signup-and-login-wrapper .purple-container.signup-is-active {
       left: 0; }
+    .signup-and-login-wrapper .purple-container .signup-and-login-inactive-container {
+      height: 100%;
+      width: 100%;
+      position: relative;
+      width: 90%;
+      position: absolute;
+      min-height: 200px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%); }
+      .signup-and-login-wrapper .purple-container .signup-and-login-inactive-container .signup-view-content, .signup-and-login-wrapper .purple-container .signup-and-login-inactive-container .login-view-content {
+        width: 70%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%); }
+        .signup-and-login-wrapper .purple-container .signup-and-login-inactive-container .signup-view-content h1, .signup-and-login-wrapper .purple-container .signup-and-login-inactive-container .login-view-content h1 {
+          margin-bottom: 25px;
+          text-align: center; }
+        .signup-and-login-wrapper .purple-container .signup-and-login-inactive-container .signup-view-content p, .signup-and-login-wrapper .purple-container .signup-and-login-inactive-container .login-view-content p {
+          text-align: center;
+          margin-bottom: 20px; }
+        .signup-and-login-wrapper .purple-container .signup-and-login-inactive-container .signup-view-content button, .signup-and-login-wrapper .purple-container .signup-and-login-inactive-container .login-view-content button {
+          display: block;
+          margin: 0 auto; }
+        .signup-and-login-wrapper .purple-container .signup-and-login-inactive-container .signup-view-content.should-hide p, .signup-and-login-wrapper .purple-container .signup-and-login-inactive-container .signup-view-content.should-hide h1, .signup-and-login-wrapper .purple-container .signup-and-login-inactive-container .signup-view-content.should-hide button, .signup-and-login-wrapper .purple-container .signup-and-login-inactive-container .login-view-content.should-hide p, .signup-and-login-wrapper .purple-container .signup-and-login-inactive-container .login-view-content.should-hide h1, .signup-and-login-wrapper .purple-container .signup-and-login-inactive-container .login-view-content.should-hide button {
+          opacity: 0;
+          transition: opacity 0.6s ease-in; }
+        .signup-and-login-wrapper .purple-container .signup-and-login-inactive-container .signup-view-content.should-show p, .signup-and-login-wrapper .purple-container .signup-and-login-inactive-container .signup-view-content.should-show h1, .signup-and-login-wrapper .purple-container .signup-and-login-inactive-container .signup-view-content.should-show button, .signup-and-login-wrapper .purple-container .signup-and-login-inactive-container .login-view-content.should-show p, .signup-and-login-wrapper .purple-container .signup-and-login-inactive-container .login-view-content.should-show h1, .signup-and-login-wrapper .purple-container .signup-and-login-inactive-container .login-view-content.should-show button {
+          opacity: 1;
+          transition: opacity 0.6s 0.4s ease-in; }
   .signup-and-login-wrapper .login-container {
     width: 50%;
     position: relative; }
@@ -7968,6 +8000,12 @@ input:focus, select:focus {
 html {
   background-color: #CAC4CE; }
 
+h1 {
+  font-size: 28px; }
+
+p {
+  font-size: 14px; }
+
 .is-centered-block {
   display: block;
   margin-left: auto;
@@ -7977,7 +8015,8 @@ html {
   justify-content: center; }
 
 .button {
-  border-style: none; }
+  border-style: none;
+  cursor: pointer; }
 
 .button.small-button {
   padding: 5px 15px; }
@@ -7993,6 +8032,28 @@ html {
   color: #ffffff; }
   .button.purple-button:hover, .button.purple-button:active, .button.purple-button:focus {
     background-color: #8D86C9; }
+
+.button.white-transparent-button {
+  background-color: transparent;
+  color: #ffffff;
+  border: 1px solid #ffffff; }
+  .button.white-transparent-button:hover, .button.white-transparent-button:active, .button.white-transparent-button:focus {
+    background-color: rgba(0, 0, 0, 0.1); }
+
+.title-1 {
+  font-size: 28px;
+  line-height: normal; }
+
+.title-2 {
+  font-size: 24px;
+  line-height: normal; }
+
+.title-3 {
+  font-size: 20px;
+  line-height: normal; }
+
+.white-font {
+  color: #ffffff; }
 
 .custom-toast-container {
   min-width: 500px;

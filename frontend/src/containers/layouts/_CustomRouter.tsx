@@ -17,7 +17,7 @@ interface IProps {
   history: any;
   location: any;
   match: any;
-}
+} 
 
 class CustomRouter extends React.Component<IProps, {}> {
   constructor(props: IProps) {

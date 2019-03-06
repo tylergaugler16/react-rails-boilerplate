@@ -99,7 +99,7 @@ class Signup extends React.Component<IProps, {}> {
   }
 
   public render() {
-    const { currentView, changeView} = this.props;
+    const { currentView} = this.props;
 
     return (
       <div
@@ -108,7 +108,6 @@ class Signup extends React.Component<IProps, {}> {
         }`}
       >
         {this.getSignupForm()}
-        <span onClick={() => changeView("login")}>Login</span>
       </div>
     );
   }
