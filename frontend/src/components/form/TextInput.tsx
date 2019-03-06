@@ -4,7 +4,7 @@ import FormError from "components/form/FormError";
 
 interface IProps{
   name: string;
-  handleChange: (value: any) => void;
+  handleChange?: (value: any) => void;
   field: {
     onChange: (e: React.ChangeEvent<any>) => void;
     handleBlur: (e: React.FocusEvent<any>) => void;
@@ -17,16 +17,24 @@ interface IProps{
 class TextInput extends React.Component<IProps, {}> {
   public constructor(props: IProps) {
     super(props);
+    this.handleChange = this.handleChange.bind(this);
+  }
+  private handleChange(value: any){
+    const{field: { onChange }} = this.props;
+    if(typeof this.props.handleChange === "function"){
+      this.props.handleChange(value);
+    }
+    onChange(value);
   }
 
   public render() {
-    const{field: {name, onChange }, label} = this.props;
+    const{field: {name }, label} = this.props;
     return (
       <div className="field-input">
       <label className="field a-field a-field_a2 page__field">
        <input className="field__input a-field__input"  type="text"
          name={name}
-         onChange={onChange} placeholder="hello" />
+         onChange={this.handleChange} placeholder="hello" />
          <span className="a-field__label-wrap">
           <span className="a-field__label">{label}</span>
         </span>

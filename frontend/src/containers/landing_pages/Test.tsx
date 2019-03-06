@@ -1,60 +1,34 @@
 import * as React from "react";
-import { getApi } from "utils/apiUtil";
 import withNotificationAlert from "components/withNotificationAlert";
 import { Formik as Form, Field } from "formik";
 import GoogleLogin from "containers/landing_pages/GoogleLogin";
 import { isEmail, required } from "components/form/validations";
 import TextInput from "components/form/TextInput";
 import PasswordInput from "components/form/PasswordInput";
+import SelectInput from "components/form/SelectInput";
+import ColorInput from "components/form/ColorInput";
 
 interface IProps {
   infoAlert: (message: string, redirectUrl?: string) => void;
-  errorAlert: (message: string, redirectUrl?: string) => void;
-  changeView: (newValue: "signup" | "login") => void;
-  currentView: "signup" | "login";
 }
 
-class Login extends React.Component<IProps, {}> {
+class Test extends React.Component<IProps, {}> {
   public constructor(props: IProps) {
     super(props);
     this.handleLogin = this.handleLogin.bind(this);
   }
 
   private handleLogin(values: any) {
-    const api = getApi();
-    api
-      .post(`login`, values, {
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json"
-        },
-        validateStatus: (status: number) => {
-          return true; // I'm always returning true, you may want to do it depending on the status received
-        }
-      })
-      .then(res => {
-        if (res.data.token) {
-          localStorage.setItem("token", res.data.token);
-          this.props.infoAlert("Logged in", "/");
-        } else if (res.data.errors) {
-          this.props.errorAlert(res.data.errors.join("/n"));
-        }
-      })
-      .catch(error => console.log(error.message));
+    this.props.infoAlert("This is a test");
   }
 
   public render() {
-    const { infoAlert, currentView, changeView } = this.props;
+    const { infoAlert } = this.props;
     return (
-      <div
-        className={`login-container current-view-container ${
-          currentView === "login" ? "is-active" : "is-inactive"
-        }`}
-      >
-        <span onClick={() => changeView("signup")}>Signup</span>
+      <div className="login-container">
         <GoogleLogin infoAlert={infoAlert} />
         <Form
-          initialValues={{ email: "", password: "", test: "", color: "" }}
+          initialValues={{ email: "", password: "", test: "" , color: ""}}
           onSubmit={(values, { setSubmitting }) => {
             this.handleLogin(values);
             setSubmitting(true);
@@ -82,14 +56,32 @@ class Login extends React.Component<IProps, {}> {
                   />
                 </div>
               </div>
-              <div className="columns is-gapless is-centered">
-                <div className="column is-10 ">
-                  <button
-                    className="button medium-button purple-button is-centered-block"
-                    type="submit"
-                  >
-                    Submit
-                  </button>
+              <div className="columns is-gapless is-centered is-multiline">
+                <div className="column is-10">
+                  <Field
+                    name="test"
+                    label="Select Test"
+                    component={SelectInput}
+                    validate={required}
+                    options={
+                      [{label: "Hi", value: "hey"},{label: "Yo!", value: "woxo"}]
+                    }
+                  />
+                </div>
+                <div className="column is-10">
+                  <Field
+                    name="color"
+                    label="Select Color"
+                    component={ColorInput}
+                    validate={required}
+                    classNames="color-picker"
+                  />
+                </div>
+
+              </div>
+              <div className="columns is-gapless">
+                <div className="column is-10 is-centered">
+                  <button className="button medium-button purple-button" type="submit">Submit</button>
                 </div>
               </div>
             </form>
@@ -100,4 +92,4 @@ class Login extends React.Component<IProps, {}> {
   }
 }
 
-export default withNotificationAlert(Login);
+export default withNotificationAlert(Test);

@@ -1,10 +1,10 @@
-import * as React from 'react';
-import { ErrorMessage } from 'formik';
+import * as React from "react";
+import { ErrorMessage } from "formik";
 import FormError from "components/form/FormError";
-import { BlockPicker } from 'react-color';
+import { BlockPicker } from "react-color";
 import ClickOutHandler from "react-onclickout";
 
-interface IProps{
+interface IProps {
   name: string;
   handleChange: (value: any) => void;
   field: {
@@ -12,61 +12,61 @@ interface IProps{
     handleBlur: (e: React.FocusEvent<any>) => void;
     value: any;
     name: string;
-  }
+  };
   form: any;
   label: string;
-  options: [{label: string, value: any}];
+  options: [{ label: string; value: any }];
   clearable: boolean;
 }
-interface IState{
+interface IState {
   isOpen: boolean;
 }
 class TextInput extends React.Component<IProps, IState> {
   public constructor(props: IProps) {
     super(props);
-    this.state ={isOpen: false}
+    this.state = { isOpen: false };
     this.closeColorPicker = this.closeColorPicker.bind(this);
     this.openColorPicker = this.openColorPicker.bind(this);
   }
-  private closeColorPicker(event: any){
-    console.log(event);
-    this.setState({isOpen: false});
+  private closeColorPicker(event: any) {
+    this.setState({ isOpen: false });
   }
-  private openColorPicker(){
-    this.setState({isOpen: true});
+  private openColorPicker() {
+    this.setState({ isOpen: true });
   }
 
   public render() {
-    const{field: {name, value: currentValue }, form, label} = this.props;
+    const {
+      field: { name, value: currentValue },
+      form,
+      label
+    } = this.props;
 
     const handleChangeComplete = (color: any) => {
-        form.setFieldValue(name, color.hex);
+      form.setFieldValue(name, color.hex);
     };
 
     return (
       <div className="field-input select-input">
-      <label >
-        {label}
-      </label>
-      <ClickOutHandler onClickOut={this.closeColorPicker}>
-        <div className="color-picker-display" onClick={this.openColorPicker}>
-          <div className="display-selected-color">
-          <div className="display-color-container" style={{backgroundColor: currentValue? `${currentValue}`: "#ffffff"}}></div>
+        <label>{label}</label>
+        <ClickOutHandler onClickOut={this.closeColorPicker}>
+          <div className="color-picker-display" onClick={this.openColorPicker}>
+            <div className="display-selected-color">
+              <div
+                className="display-color-container"
+                style={{
+                  backgroundColor: currentValue ? `${currentValue}` : "#ffffff"
+                }}
+              />
+            </div>
+            <div className="selected-color-value">
+              <span> {currentValue ? currentValue : "Choose a color..."} </span>
+            </div>
           </div>
-          <div className="selected-color-value">
-            <span> {currentValue? currentValue : "Choose a color..." } </span>
-          </div>
-        </div>
-        {
-          this.state.isOpen?
-          <BlockPicker
-            color={currentValue}
-            onChange={handleChangeComplete}
-            />
-          :
-            null
-        }
-      </ClickOutHandler>
+          {this.state.isOpen ? (
+            <BlockPicker color={currentValue} onChange={handleChangeComplete} />
+          ) : null}
+        </ClickOutHandler>
         <ErrorMessage name={name} component={FormError} />
       </div>
     );

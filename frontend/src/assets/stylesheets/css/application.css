@@ -7438,11 +7438,70 @@ label.panel-block {
 .field:not(:last-child) {
   margin-bottom: 5px; }
 
-.login-container {
+.signup-and-login-wrapper {
+  max-width: 1200px;
   width: 60vw;
-  max-width: 800px;
+  min-width: 900px;
+  min-height: 500px;
   background-color: #ffffff;
-  margin: 0 auto; }
+  margin: 60px auto;
+  display: flex;
+  position: relative;
+  overflow: hidden; }
+  .signup-and-login-wrapper .purple-container {
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    background-color: #725AC1;
+    top: 0;
+    left: 0;
+    -webkit-transition: left 1.2s cubic-bezier(0.58, 0, 0.33, 1);
+    /* older webkit */
+    -webkit-transition: left 1.2s cubic-bezier(0.58, -0.4, 0.33, 1.41);
+    -moz-transition: left 1.2s cubic-bezier(0.58, -0.4, 0.33, 1.41);
+    -o-transition: left 1.2s cubic-bezier(0.58, -0.4, 0.33, 1.41);
+    transition: left 1.2s cubic-bezier(0.58, -0.4, 0.33, 1.41);
+    /* custom */ }
+    .signup-and-login-wrapper .purple-container.login-is-active {
+      left: 50%; }
+    .signup-and-login-wrapper .purple-container.signup-is-active {
+      left: 0; }
+  .signup-and-login-wrapper .login-container {
+    width: 50%;
+    position: relative; }
+    .signup-and-login-wrapper .login-container form {
+      width: 100%;
+      margin: 0 auto;
+      position: absolute;
+      transition: opacity 0.6s 0.6s, right 1s;
+      right: 0;
+      opacity: 1;
+      top: 50px; }
+      .signup-and-login-wrapper .login-container form .field-input {
+        width: 80%;
+        margin: 0 auto; }
+    .signup-and-login-wrapper .login-container.is-inactive form {
+      opacity: 0;
+      right: -100%;
+      transition: opacity 0.8s 0.2s, right 1s 0.3s ease-in; }
+  .signup-and-login-wrapper .signup-container {
+    width: 50%;
+    position: relative; }
+    .signup-and-login-wrapper .signup-container form {
+      width: 100%;
+      margin: 0 auto;
+      position: absolute;
+      transition: opacity 0.6s 0.6s, left 1s;
+      left: 0;
+      opacity: 1;
+      top: 50px; }
+      .signup-and-login-wrapper .signup-container form .field-input {
+        width: 80%;
+        margin: 0 auto; }
+    .signup-and-login-wrapper .signup-container.is-inactive form {
+      opacity: 0;
+      left: -100%;
+      transition: opacity 0.8s 0.2s, left 1s 0.3s ease-in; }
 
 input:focus, select:focus {
   outline: none; }
@@ -7906,45 +7965,13 @@ input:focus, select:focus {
   to {
     -webkit-transform: rotate(1turn); } }
 
-.custom-toast-container {
-  min-width: 500px;
-  margin-left: unset;
-  transform: translateX(-50%); }
-  .custom-toast-container .Toastify__toast--success {
-    background-color: #22bb33; }
-  .custom-toast-container .Toastify__toast--info {
-    background-color: #5bc0de; }
-  .custom-toast-container .Toastify__toast--error {
-    background-color: #bb2124; }
-  .custom-toast-container .Toastify__toast--warning {
-    background-color: #f0ad4e; }
-  .custom-toast-container .Toastify__toast {
-    border-radius: 3px; }
+html {
+  background-color: #CAC4CE; }
 
-.App {
-  text-align: center; }
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px; }
-
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: purple; }
-
-.App-title {
-  font-size: 1.5em; }
-
-.App-intro {
-  font-size: large; }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg); }
-  to {
-    transform: rotate(360deg); } }
+.is-centered-block {
+  display: block;
+  margin-left: auto;
+  margin-right: auto; }
 
 .columns.is-centered {
   justify-content: center; }
@@ -7966,3 +7993,18 @@ input:focus, select:focus {
   color: #ffffff; }
   .button.purple-button:hover, .button.purple-button:active, .button.purple-button:focus {
     background-color: #8D86C9; }
+
+.custom-toast-container {
+  min-width: 500px;
+  margin-left: unset;
+  transform: translateX(-50%); }
+  .custom-toast-container .Toastify__toast--success {
+    background-color: #22bb33; }
+  .custom-toast-container .Toastify__toast--info {
+    background-color: #5bc0de; }
+  .custom-toast-container .Toastify__toast--error {
+    background-color: #bb2124; }
+  .custom-toast-container .Toastify__toast--warning {
+    background-color: #f0ad4e; }
+  .custom-toast-container .Toastify__toast {
+    border-radius: 3px; }

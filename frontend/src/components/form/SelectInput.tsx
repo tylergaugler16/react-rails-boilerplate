@@ -5,7 +5,7 @@ import Select from 'react-select';
 
 interface IProps{
   name: string;
-  handleChange: (value: any) => void;
+  handleChange?: (value: any) => void;
   field: {
     onChange: (e: React.ChangeEvent<any>) => void;
     handleBlur: (e: React.FocusEvent<any>) => void;
@@ -25,10 +25,13 @@ class TextInput extends React.Component<IProps, {}> {
   public render() {
     const{field: {name, value: currentValue }, form, label, options, clearable} = this.props;
     const handleChange = (selectedOption: any) => {
+      if(typeof this.props.handleChange === "function"){
+        this.props.handleChange(selectedOption.value);
+      }
       const newValue = selectedOption && selectedOption.value ? selectedOption.value : null;
       form.setFieldValue(name, newValue);
     }
- 
+
 
       const handleBlur = () =>
         form.setFieldTouched(name, true);

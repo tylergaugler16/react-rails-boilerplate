@@ -6,6 +6,8 @@ import Header from "containers/layouts/Header";
 import WithCurrentUser from "queries/currentUser";
 import Login from "containers/landing_pages/Login";
 import SignUp from "containers/landing_pages/Signup";
+import Test from "containers/landing_pages/Test";
+import SignupAndLoginWrapper from "containers/landing_pages/SignupAndLoginWrapper";
 import { Route } from "react-router-dom";
 import { User } from "types";
 
@@ -63,6 +65,22 @@ class CustomRouter extends React.Component<IProps, {}> {
             path="/signup"
             render={(props: any) => <SignUp {...defaultProps} />}
           />
+          <Route
+            exact={true}
+            path="/test"
+            render={(props: any) => <Test {...defaultProps} />}
+          />
+          <Route
+            exact={true}
+            path="/users/login"
+            render={(props: any) => <SignupAndLoginWrapper {...defaultProps} currentView="login" />}
+          />
+          <Route
+            exact={true}
+            path="/users/signup"
+            render={(props: any) => <SignupAndLoginWrapper {...defaultProps} currentView="signup" />}
+          />
+
 
           <Route
             exact={true}
