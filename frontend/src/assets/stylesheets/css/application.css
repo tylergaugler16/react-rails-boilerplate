@@ -7484,7 +7484,7 @@ label.panel-block {
         left: 50%;
         transform: translate(-50%, -50%); }
         .signup-and-login-wrapper .purple-container .signup-and-login-inactive-container .signup-view-content h1, .signup-and-login-wrapper .purple-container .signup-and-login-inactive-container .login-view-content h1 {
-          margin-bottom: 25px;
+          margin-bottom: 35px;
           text-align: center; }
         .signup-and-login-wrapper .purple-container .signup-and-login-inactive-container .signup-view-content p, .signup-and-login-wrapper .purple-container .signup-and-login-inactive-container .login-view-content p {
           text-align: center;
@@ -7494,7 +7494,8 @@ label.panel-block {
           margin: 0 auto; }
         .signup-and-login-wrapper .purple-container .signup-and-login-inactive-container .signup-view-content.should-hide p, .signup-and-login-wrapper .purple-container .signup-and-login-inactive-container .signup-view-content.should-hide h1, .signup-and-login-wrapper .purple-container .signup-and-login-inactive-container .signup-view-content.should-hide button, .signup-and-login-wrapper .purple-container .signup-and-login-inactive-container .login-view-content.should-hide p, .signup-and-login-wrapper .purple-container .signup-and-login-inactive-container .login-view-content.should-hide h1, .signup-and-login-wrapper .purple-container .signup-and-login-inactive-container .login-view-content.should-hide button {
           opacity: 0;
-          transition: opacity 0.6s ease-in; }
+          transition: opacity 0.6s ease-in;
+          pointer-events: none; }
         .signup-and-login-wrapper .purple-container .signup-and-login-inactive-container .signup-view-content.should-show p, .signup-and-login-wrapper .purple-container .signup-and-login-inactive-container .signup-view-content.should-show h1, .signup-and-login-wrapper .purple-container .signup-and-login-inactive-container .signup-view-content.should-show button, .signup-and-login-wrapper .purple-container .signup-and-login-inactive-container .login-view-content.should-show p, .signup-and-login-wrapper .purple-container .signup-and-login-inactive-container .login-view-content.should-show h1, .signup-and-login-wrapper .purple-container .signup-and-login-inactive-container .login-view-content.should-show button {
           opacity: 1;
           transition: opacity 0.6s 0.4s ease-in; }
@@ -7533,7 +7534,8 @@ label.panel-block {
     .signup-and-login-wrapper .signup-container.is-inactive form {
       opacity: 0;
       left: -100%;
-      transition: opacity 0.8s 0.2s, left 1s 0.3s ease-in; }
+      transition: opacity 0.8s 0.2s, left 1s 0.3s ease-in;
+      pointer-events: none; }
 
 input:focus, select:focus {
   outline: none; }
@@ -8010,6 +8012,9 @@ p {
   display: block;
   margin-left: auto;
   margin-right: auto; }
+
+.display-none {
+  display: none; }
 
 .columns.is-centered {
   justify-content: center; }

@@ -23,8 +23,6 @@ class SignupAndLoginWrapper extends React.Component<IProps,IState> {
 
 
   private changeView(newView: "signup" | "login"){
-    // const {history} = this.props;
-    // history.push(`/users/${newView}`);
     this.setState({currentView: newView})
   }
 
@@ -36,8 +34,12 @@ class SignupAndLoginWrapper extends React.Component<IProps,IState> {
     return (
 
       <div className="signup-and-login-wrapper">
-        <Login {...defaultProps} />
-        <SignUp {...defaultProps} />
+      
+          <Login {...defaultProps} />
+
+          <SignUp {...defaultProps} />
+
+
         <div className={`purple-container ${currentView === "login"? "login-is-active" : "signup-is-active"}`}>
           <SignupAndLoginInactiveContainer {...defaultProps} />
         </div>

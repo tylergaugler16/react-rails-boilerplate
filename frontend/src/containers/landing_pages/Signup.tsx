@@ -39,6 +39,7 @@ class Signup extends React.Component<IProps, {}> {
   private getSignupForm(){
     return (
       <Form
+        key="signup-form"
         initialValues={{
           email: "",
           password: "",
@@ -58,8 +59,9 @@ class Signup extends React.Component<IProps, {}> {
           handleSubmit,
           handleChange
         }) => (
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit} id="signup-form" key="signup-form-form">
             <Field
+              key="signup.email"
               name="email"
               label="Email"
               component={TextInput}
@@ -67,6 +69,7 @@ class Signup extends React.Component<IProps, {}> {
             />
 
             <Field
+              key="signup.first_name"
               name="first_name"
               label="First Name"
               component={TextInput}
@@ -74,6 +77,7 @@ class Signup extends React.Component<IProps, {}> {
             />
 
             <Field
+              key="signup.last_name"
               name="last_name"
               label="Last Name"
               component={TextInput}
@@ -81,6 +85,7 @@ class Signup extends React.Component<IProps, {}> {
             />
 
             <Field
+              key="signup.password"
               name="password"
               label="Password"
               component={PasswordInput}

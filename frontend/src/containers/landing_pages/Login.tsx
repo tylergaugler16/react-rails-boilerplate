@@ -53,17 +53,19 @@ class Login extends React.Component<IProps, {}> {
       >
         <GoogleLogin infoAlert={infoAlert} />
         <Form
-          initialValues={{ email: "", password: "", test: "", color: "" }}
+          key="login-form"
+          initialValues={{ email: "", password: "", test: "" }}
           onSubmit={(values, { setSubmitting }) => {
             this.handleLogin(values);
             setSubmitting(true);
           }}
         >
           {({ values, errors, touched, handleSubmit, handleChange }) => (
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} key="login-form-form" id="login-form">
               <div className="columns is-gapless is-centered">
                 <div className="column is-10 ">
                   <Field
+                    key="login.email"
                     name="email"
                     label="Email"
                     component={TextInput}
@@ -74,8 +76,20 @@ class Login extends React.Component<IProps, {}> {
               <div className="columns is-gapless is-centered">
                 <div className="column is-10">
                   <Field
+                    key="login.password"
                     name="password"
                     label="Password"
+                    component={PasswordInput}
+                    validate={required}
+                  />
+                </div>
+              </div>
+              <div className="columns is-gapless is-centered">
+                <div className="column is-10">
+                  <Field
+                    key="login.test"
+                    name="test"
+                    label="Test"
                     component={PasswordInput}
                     validate={required}
                   />

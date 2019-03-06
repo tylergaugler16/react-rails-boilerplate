@@ -87,6 +87,66 @@ class Test extends React.Component<IProps, {}> {
             </form>
           )}
         </Form>
+        <Form
+          initialValues={{ email: "", password: "", test: "" , color: ""}}
+          onSubmit={(values, { setSubmitting }) => {
+            this.handleLogin(values);
+            setSubmitting(true);
+          }}
+        >
+          {({ values, errors, touched, handleSubmit, handleChange }) => (
+            <form onSubmit={handleSubmit}>
+              <div className="columns is-gapless is-centered">
+                <div className="column is-10 ">
+                  <Field
+                    name="email"
+                    label="Email"
+                    component={TextInput}
+                    validate={isEmail}
+                  />
+                </div>
+              </div>
+              <div className="columns is-gapless is-centered">
+                <div className="column is-10">
+                  <Field
+                    name="password"
+                    label="Password"
+                    component={PasswordInput}
+                    validate={required}
+                  />
+                </div>
+              </div>
+              <div className="columns is-gapless is-centered is-multiline">
+                <div className="column is-10">
+                  <Field
+                    name="test"
+                    label="Select Test"
+                    component={SelectInput}
+                    validate={required}
+                    options={
+                      [{label: "Hi", value: "hey"},{label: "Yo!", value: "woxo"}]
+                    }
+                  />
+                </div>
+                <div className="column is-10">
+                  <Field
+                    name="color"
+                    label="Select Color"
+                    component={ColorInput}
+                    validate={required}
+                    classNames="color-picker"
+                  />
+                </div>
+
+              </div>
+              <div className="columns is-gapless">
+                <div className="column is-10 is-centered">
+                  <button className="button medium-button purple-button" type="submit">Submit</button>
+                </div>
+              </div>
+            </form>
+          )}
+        </Form>
       </div>
     );
   }

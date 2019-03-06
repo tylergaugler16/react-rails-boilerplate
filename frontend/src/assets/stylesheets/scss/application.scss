@@ -16,6 +16,7 @@ $gray: #CAC4CE;
 $blue: #2589BD;
 
 $dark-purple-inactive: #725ac196;
+$accent-red: #EB5160;
 
 @mixin absolutely-center() {
   position: absolute;
@@ -50,6 +51,9 @@ p{
   display: block;
   margin-left: auto;
   margin-right: auto;
+}
+.display-none{
+  display: none;
 }
 
 // flex classes

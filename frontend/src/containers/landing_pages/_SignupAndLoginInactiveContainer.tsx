@@ -21,12 +21,12 @@ class SignupAndLoginInactiveContainer extends React.Component<IProps,{}> {
           <div className={`login-view-content ${currentView === "login"? "should-show" : "should-hide"}`}>
             <h1 className="title-1 white-font">Welcome!</h1>
             <p className="white-font">If you dont have an account <span onClick={() => changeView("signup")}>create an account.</span></p>
-            <button className="button large-button white-transparent-button" onClick={() => changeView("signup")}>Sign Up</button>
+            <button className="button large-button white-transparent-button" onClick={() => changeView("signup")}><span>Sign Up</span></button>
           </div>
           <div className={`signup-view-content ${currentView === "signup"? "should-show" : "should-hide"}`}>
             <h1 className="title-1 white-font">Good to see you again!</h1>
             <p className="white-font">If you already have an account,login <span onClick={() => changeView("login")}>here.</span></p>
-            <button className="button large-button white-transparent-button" onClick={() => changeView("login")}>Log In</button>
+            <button className="button large-button white-transparent-button" onClick={() => changeView("login")}><span>Log In</span></button>
           </div>
 
       </div>
