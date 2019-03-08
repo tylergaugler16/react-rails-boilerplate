@@ -41,11 +41,13 @@
         min-height: 200px;
         @include absolutely-center;
 
+
         .signup-view-content, .login-view-content{
           width: 70%;
           @include absolutely-center;
+          top: 45%;
           h1{
-            margin-bottom: 35px;
+            margin-bottom: 25px;
             text-align: center;
           }
           p{
@@ -107,9 +109,18 @@
       right: 0;
       opacity: 1;
       top: 50px;
+      button[type="submit"]{
+        margin-top: 20px;
+      }
       .field-input{
         width: 80%;
         margin: 0 auto;
+      }
+      .columns.is-gapless:not(:last-child){
+        margin-bottom: 15px;
+      }
+      .field:not(:last-child){
+        margin-bottom: 5px;
       }
       // z-index: 100;
     }
@@ -132,7 +143,16 @@
       transition: $signup-opacity-inact-trans, left 1s;
       left: 0;
       opacity: 1;
-      top: 50px;
+      top: 25px;
+      button[type="submit"]{
+        margin-top: 20px;
+      }
+      .columns.is-gapless:not(:last-child){
+        margin-bottom: 15px;
+      }
+      .field:not(:last-child){
+        margin-bottom: 5px;
+      }
       .field-input{
         width: 80%;
         margin: 0 auto;

@@ -13,6 +13,7 @@ interface IProps{
   }
   form: any;
   label: string;
+  placeholder: string;
 }
 class PasswordInput extends React.Component<IProps, {}> {
   public constructor(props: IProps) {
@@ -20,14 +21,14 @@ class PasswordInput extends React.Component<IProps, {}> {
   }
 
   public render() {
-    const{field: {name, onChange }, label} = this.props;
+    const{field: {name, onChange }, label,placeholder} = this.props;
     return (
       <div className="field-input">
         <label className="field a-field a-field_a2 page__field">
          <input className="field__input a-field__input"  type="password"
            name={name}
-           onChange={onChange} placeholder="hello" />
-           <span className="a-field__label-wrap">
+           onChange={onChange} placeholder={placeholder || " "} />
+          <span className="a-field__label-wrap">
             <span className="a-field__label">{label}</span>
           </span>
        </label>

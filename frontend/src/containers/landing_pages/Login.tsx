@@ -54,7 +54,7 @@ class Login extends React.Component<IProps, {}> {
         <GoogleLogin infoAlert={infoAlert} />
         <Form
           key="login-form"
-          initialValues={{ email: "", password: "", test: "" }}
+          initialValues={{ email: "", password: "" }}
           onSubmit={(values, { setSubmitting }) => {
             this.handleLogin(values);
             setSubmitting(true);
@@ -62,12 +62,19 @@ class Login extends React.Component<IProps, {}> {
         >
           {({ values, errors, touched, handleSubmit, handleChange }) => (
             <form onSubmit={handleSubmit} key="login-form-form" id="login-form">
+
+            <div className="columns is-gaplessis-marginless">
+              <div className="column is-12 ">
+                <h1 className="title-1  has-text-centered">Login</h1>
+              </div>
+            </div>
               <div className="columns is-gapless is-centered">
                 <div className="column is-10 ">
                   <Field
                     key="login.email"
                     name="email"
                     label="Email"
+                    placeholder="joeshmoe@test.com"
                     component={TextInput}
                     validate={isEmail}
                   />
@@ -79,17 +86,7 @@ class Login extends React.Component<IProps, {}> {
                     key="login.password"
                     name="password"
                     label="Password"
-                    component={PasswordInput}
-                    validate={required}
-                  />
-                </div>
-              </div>
-              <div className="columns is-gapless is-centered">
-                <div className="column is-10">
-                  <Field
-                    key="login.test"
-                    name="test"
-                    label="Test"
+                    placeholder=""
                     component={PasswordInput}
                     validate={required}
                   />
@@ -98,10 +95,10 @@ class Login extends React.Component<IProps, {}> {
               <div className="columns is-gapless is-centered">
                 <div className="column is-10 ">
                   <button
-                    className="button medium-button purple-button is-centered-block"
+                    className="button large-button purple-button is-centered-block"
                     type="submit"
                   >
-                    Submit
+                    Log in
                   </button>
                 </div>
               </div>

@@ -60,30 +60,49 @@ class Signup extends React.Component<IProps, {}> {
           handleChange
         }) => (
           <form onSubmit={handleSubmit} id="signup-form" key="signup-form-form">
-            <Field
-              key="signup.email"
-              name="email"
-              label="Email"
-              component={TextInput}
-              validate={isEmail}
-            />
-
+          <div className="columns is-gapless ">
+            <div className="column is-12 ">
+            <h1 className="title-1 has-text-centered">Create an Account</h1>
+            </div>
+          </div>
+          <div className="columns is-gapless is-centered">
+            <div className="column is-10 ">
             <Field
               key="signup.first_name"
               name="first_name"
               label="First Name"
+              placeholder="Joe"
               component={TextInput}
               validate={required}
             />
-
+            </div>
+          </div>
+          <div className="columns is-gapless is-centered">
+            <div className="column is-10 ">
             <Field
               key="signup.last_name"
               name="last_name"
               label="Last Name"
+              placeholder="Shmoe"
               component={TextInput}
               validate={required}
             />
-
+            </div>
+          </div>
+          <div className="columns is-gapless is-centered">
+            <div className="column is-10 ">
+            <Field
+              key="signup.email"
+              name="email"
+              label="Email"
+              placeholder="joeshmoe@test.com"
+              component={TextInput}
+              validate={isEmail}
+            />
+            </div>
+          </div>
+          <div className="columns is-gapless is-centered">
+            <div className="column is-10 ">
             <Field
               key="signup.password"
               name="password"
@@ -91,12 +110,18 @@ class Signup extends React.Component<IProps, {}> {
               component={PasswordInput}
               validate={required}
             />
-
-            <div>
-              <button type="submit" disabled={isSubmitting}>
-                Submit
-              </button>
             </div>
+          </div>
+          <div className="columns is-gapless is-centered">
+            <div className="column is-10 ">
+            <button
+              className="button large-button purple-button is-centered-block"
+              type="submit"
+            >
+              Sign Up
+            </button>
+            </div>
+          </div>
           </form>
         )}
       </Form>
