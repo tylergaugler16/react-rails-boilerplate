@@ -44,7 +44,7 @@ class SignupAndLoginInactiveContainer extends React.Component<IProps, {}> {
           </p>
           <div className="button-container">
             <button className="button large-button white-transparent-button" onClick={() => changeView("login")}>
-              <span>Log In</span>
+              <span>Login</span>
             </button>
           </div>
         </div>

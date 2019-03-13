@@ -11,11 +11,11 @@ class Header extends React.Component<IProps, {}> {
 
   public render() {
 
-    return (
+    return ( 
       <div className="columns">
         <div className="column">Widgetly</div>
-        <div className="column"><Link to="/login">Login</Link></div>
-        <div className="column"><Link to="/signup">Signup</Link></div>
+        <div className="column"><Link to="/users/login">Login</Link></div>
+        <div className="column"><Link to="/users/signup">Signup</Link></div>
         <div className="column"><Link to="/">Home</Link></div>
       </div>
     );

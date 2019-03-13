@@ -51,7 +51,7 @@ class Login extends React.Component<IProps, {}> {
           currentView === "login" ? "is-active" : "is-inactive"
         }`}
       >
-        <GoogleLogin infoAlert={infoAlert} />
+
         <Form
           key="login-form"
           initialValues={{ email: "", password: "" }}
@@ -98,8 +98,18 @@ class Login extends React.Component<IProps, {}> {
                     className="button large-button purple-button is-centered-block"
                     type="submit"
                   >
-                    Log in
+                    Login
                   </button>
+                </div>
+              </div>
+              <div className="columns is-gapless is-centered">
+                <div className="column is-10 ">
+                  <div className="break-container columns is-vcentered is-gapless is-marginless">
+                    <div className="column"><div className="line-break"></div></div>
+                    <div className="column is-narrow">OR</div>
+                    <div className="column"><div className="line-break"></div></div>
+                  </div>
+                  <GoogleLogin infoAlert={infoAlert} />
                 </div>
               </div>
             </form>

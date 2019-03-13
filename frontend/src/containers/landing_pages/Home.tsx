@@ -1,5 +1,4 @@
 import * as React from "react";
-import logo from "logo.svg";
 import { getApi } from "utils/apiUtil";
 import LoggedInHome from "containers/users/Home";
 
@@ -22,7 +21,7 @@ class Home extends React.Component<IProps, IState> {
   public constructor(props: IProps) {
     super(props);
     this.state = {
-      content: "Waiting for a response from Rails..."
+    content: "Waiting for a response from Rails..."
     };
   }
 
@@ -58,8 +57,7 @@ class Home extends React.Component<IProps, IState> {
         ) : (
           <div className="App">
             <header className="App-header">
-              <img src={logo} className="App-logo" alt="logo" />
-              <h1 className="App-title">Welcome to React</h1>
+              <h1 className="App-title">Welcome to Widgetly</h1>
             </header>
             <p className="App-intro">{this.state.content}</p>
             <About test="hello" />

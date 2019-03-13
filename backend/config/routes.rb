@@ -7,6 +7,8 @@ Rails.application.routes.draw do
 
   scope :api do
     get 'greetings/hello'
-    get 'authentications/log_in'
+    get 'users/authenticated_header_info', to: 'users#authenticated_header_info'
+
+    get 'organizations', to: 'organizations#index'
   end
 end

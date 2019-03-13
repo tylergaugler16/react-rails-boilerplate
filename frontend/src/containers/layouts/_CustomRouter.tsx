@@ -1,6 +1,6 @@
 import * as React from "react";
 import Home from "containers/landing_pages/Home";
-import LoggedInHome from "containers/users/Home";
+import Settings from "containers/users/Settings";
 import UserIsAuthenticated from "components/UserIsAuthenticated";
 import Header from "containers/layouts/Header";
 import WithCurrentUser from "queries/currentUser";
@@ -17,7 +17,7 @@ interface IProps {
   history: any;
   location: any;
   match: any;
-} 
+}
 
 class CustomRouter extends React.Component<IProps, {}> {
   constructor(props: IProps) {
@@ -84,8 +84,8 @@ class CustomRouter extends React.Component<IProps, {}> {
 
           <Route
             exact={true}
-            path="/users/home"
-            component={this.userIsAuthenticated(LoggedInHome)}
+            path="/settings"
+            component={this.userIsAuthenticated(Settings)}
             {...defaultProps}
           />
         </div>

@@ -7448,7 +7448,10 @@ label.panel-block {
   margin: 60px auto;
   display: flex;
   position: relative;
-  overflow: hidden; }
+  overflow: hidden;
+  -webkit-box-shadow: 5px 6px 5px -3px #656466;
+  -moz-box-shadow: 5px 6px 5px -3px #656466;
+  box-shadow: 5px 6px 5px -3px #656466; }
   .signup-and-login-wrapper .purple-container {
     position: absolute;
     width: 50%;
@@ -7514,6 +7517,10 @@ label.panel-block {
   .signup-and-login-wrapper .login-container {
     width: 50%;
     position: relative; }
+    .signup-and-login-wrapper .login-container .custom-google-button {
+      margin: 20px auto 0px auto; }
+      .signup-and-login-wrapper .login-container .custom-google-button i {
+        margin-right: 10px; }
     .signup-and-login-wrapper .login-container form {
       width: 100%;
       margin: 0 auto;
@@ -7535,6 +7542,16 @@ label.panel-block {
       opacity: 0;
       right: -100%;
       transition: opacity 0.8s 0.2s, right 1s 0.3s ease-in; }
+    .signup-and-login-wrapper .login-container .break-container {
+      width: 80%;
+      color: #F7F7F7;
+      margin: 20px auto 0px auto !important; }
+      .signup-and-login-wrapper .login-container .break-container .line-break {
+        width: 100%;
+        height: 2px;
+        background-color: #F7F7F7; }
+      .signup-and-login-wrapper .login-container .break-container .column.is-narrow {
+        margin: 0px 10px; }
   .signup-and-login-wrapper .signup-container {
     width: 50%;
     position: relative; }
@@ -7589,7 +7606,7 @@ input:focus, select:focus {
     width: 50px;
     border-radius: 3px; }
     .color-picker-display .display-selected-color .display-color-container {
-      border: 1px solid #CAC4CE;
+      border: 1px solid #F7F7F7;
       width: 80%;
       margin: 0 auto;
       height: 20px; }
@@ -8024,7 +8041,7 @@ input:focus, select:focus {
     -webkit-transform: rotate(1turn); } }
 
 html {
-  background-color: #CAC4CE; }
+  background-color: #F7F7F7; }
 
 h1 {
   font-size: 28px; }
@@ -8060,7 +8077,9 @@ p {
   background-color: #725AC1;
   color: #ffffff; }
   .button.purple-button:hover, .button.purple-button:active, .button.purple-button:focus {
-    background-color: #8D86C9; }
+    background-color: #ffffff;
+    color: #725AC1;
+    border: 1px solid #725AC1; }
 
 .button.white-transparent-button {
   background-color: transparent;
@@ -8068,6 +8087,15 @@ p {
   border: 1px solid #ffffff; }
   .button.white-transparent-button:hover, .button.white-transparent-button:active, .button.white-transparent-button:focus {
     background-color: rgba(0, 0, 0, 0.1); }
+
+.button.white-button {
+  background-color: #ffffff;
+  color: #725AC1;
+  border: 1px solid #725AC1; }
+  .button.white-button:hover, .button.white-button:active, .button.white-button:focus {
+    background-color: #725AC1;
+    color: #ffffff;
+    border: 1px solid #ffffff; }
 
 .title-1 {
   font-size: 28px;

@@ -12,7 +12,7 @@ $white: #ffffff;
 $black: #242038;
 $dark-purple: #725AC1;
 $light-purple: #8D86C9;
-$gray: #CAC4CE;
+$gray: #F7F7F7;
 $blue: #2589BD;
 
 $dark-purple-inactive: #725ac196;
@@ -81,7 +81,9 @@ p{
   background-color: $dark-purple;
   color: $white;
   &:hover, &:active, &:focus{
-    background-color: $light-purple;
+    background-color: $white;
+    color: $dark-purple;
+    border: 1px solid $dark-purple;
   }
 }
 .button.white-transparent-button{
@@ -90,6 +92,16 @@ p{
   border: 1px solid $white;
   &:hover, &:active, &:focus{
     background-color: rgba(0,0,0,0.1);
+  }
+}
+.button.white-button{
+  background-color: $white;
+  color: $dark-purple;
+  border: 1px solid $dark-purple;
+  &:hover, &:active, &:focus{
+    background-color: $dark-purple;
+    color: $white;
+    border: 1px solid $white;
   }
 }
 

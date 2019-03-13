@@ -10,6 +10,9 @@
   display: flex;
   position: relative;
   overflow: hidden;
+  -webkit-box-shadow: 5px 6px 5px -3px rgba(101,100,102,1);
+  -moz-box-shadow: 5px 6px 5px -3px rgba(101,100,102,1);
+  box-shadow: 5px 6px 5px -3px rgba(101,100,102,1);
   .purple-container{
     position: absolute;
     width: 50%;
@@ -100,6 +103,17 @@
   .login-container{
     width: 50%;
     position: relative;
+    .custom-google-button{
+      // position: absolute;
+      // bottom: 100px;
+      // right: 50%;
+      // transform: translateX(50%);
+      // transition: $signup-opacity-inact-trans, right 1s;
+      margin: 20px auto 0px auto;
+      i{
+        margin-right: 10px;
+      }
+    }
     form{
       width: 100%;
       margin: 0 auto;
@@ -124,11 +138,25 @@
       }
       // z-index: 100;
     }
-    &.is-inactive form{
-      opacity: 0;
-      right: -100%;
-      transition: opacity 0.8s 0.2s, right 1s 0.3s ease-in;
-
+    &.is-inactive {
+      form{
+        opacity: 0;
+        right: -100%;
+        transition: opacity 0.8s 0.2s, right 1s 0.3s ease-in;
+      }
+    }
+    .break-container{
+      width: 80%;
+      color: $gray;
+      margin: 20px auto 0px auto!important;
+      .line-break{
+        width: 100%;
+        height: 2px;
+        background-color: $gray;
+      }
+      .column.is-narrow{
+        margin: 0px 10px;
+      }
     }
   }
 

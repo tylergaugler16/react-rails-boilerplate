@@ -23,7 +23,7 @@ export default function UserIsAuthenticated(
 
     public componentWillMount() {
       this.redirectIfUserIsNotAuthenticated();
-    } 
+    }
 
     public componentWillReceiveProps(nextProps: IProps) {
       this.redirectIfUserIsNotAuthenticated(nextProps);
@@ -43,7 +43,7 @@ export default function UserIsAuthenticated(
 
 
     public render() {
-      return <WrappedComponent {...this.props} />;
+      return <WrappedComponent {...this.props} currentUserIsLoading={currentUserIsLoading} currentUser={currentUser} />;
     }
   }
 

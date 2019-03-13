@@ -7,6 +7,11 @@ class UsersController < ApplicationController
     render json: { current_user: user || nil }
   end
 
+  def authenticated_header_info
+    user = current_user
+    render json: { user: user, organizations: user.organizations }
+  end
+
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update

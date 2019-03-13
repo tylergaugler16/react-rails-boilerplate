@@ -1,5 +1,6 @@
 import * as React from 'react';
-import withNotificationAlert from "components/withNotificationAlert"
+import withNotificationAlert from "components/withNotificationAlert";
+import OrganizationSelect from "containers/organizations/OrganizationSelect";
 import { User } from "types";
 
 interface IProps{
@@ -30,6 +31,7 @@ class Home extends React.Component<IProps, {}> {
       <div className="App">
       you are logged in as {currentUser.firstName}!
       <button onClick={this.logout}> Log out </button>
+        <OrganizationSelect currentUser={currentUser}/>
       </div>
     );
   }
