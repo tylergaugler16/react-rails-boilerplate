@@ -1,14 +1,10 @@
 import * as React from "react";
-import { getApi } from "utils/apiUtil";
 import LoggedInHome from "containers/users/Home";
 
 import About from "containers/landing_pages/About";
 
 import { User } from "types";
 
-interface IState {
-  content: string;
-}
 interface IProps {
   currentUser: User | null;
   currentUserIsLoading: boolean;
@@ -17,36 +13,11 @@ interface IProps {
   match: any;
 }
 
-class Home extends React.Component<IProps, IState> {
+class Home extends React.Component<IProps, {}> {
   public constructor(props: IProps) {
     super(props);
-    this.state = {
-    content: "Waiting for a response from Rails..."
-    };
   }
 
-  public async componentDidMount() {
-
-    const api = getApi();
-    api
-      .get(`api/greetings/hello`, {
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json"
-        }
-      })
-      .then(res => {
-        this.setState(prevState => {
-          return {
-            ...prevState,
-            content: res.data.content
-          };
-        });
-      });
-  }
-  public componentWillReceiveProps(nextProps: any){
-    console.log(nextProps.currentUser);
-  }
 
   public render() {
     const {currentUser} = this.props;
@@ -59,7 +30,6 @@ class Home extends React.Component<IProps, IState> {
             <header className="App-header">
               <h1 className="App-title">Welcome to Widgetly</h1>
             </header>
-            <p className="App-intro">{this.state.content}</p>
             <About test="hello" />
           </div>
         )}

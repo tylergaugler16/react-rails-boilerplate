@@ -10,6 +10,8 @@ import Test from "containers/landing_pages/Test";
 import SignupAndLoginWrapper from "containers/landing_pages/SignupAndLoginWrapper";
 import { Route } from "react-router-dom";
 import { User } from "types";
+import CurrentUserContext from "contexts/currentUser";
+
 
 interface IProps {
   currentUser: User | null;
@@ -48,6 +50,7 @@ class CustomRouter extends React.Component<IProps, {}> {
     };
     return (
       <React.Fragment>
+      <CurrentUserContext.Provider value={{currentUser, currentUserIsLoading}}>
         <Header {...defaultProps} />
         <div className="main-content">
           <Route
@@ -89,6 +92,7 @@ class CustomRouter extends React.Component<IProps, {}> {
             {...defaultProps}
           />
         </div>
+        </CurrentUserContext.Provider>
       </React.Fragment>
     );
   }

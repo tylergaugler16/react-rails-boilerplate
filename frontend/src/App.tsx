@@ -2,13 +2,12 @@ import * as React from 'react';
 import { ToastContainer } from 'react-toastify';
 import { withRouter } from "react-router";
 import CustomRouter from './containers/layouts/_CustomRouter';
-import OrganizationContext from "Contexts/currentOrg";
+import OrganizationContext from "contexts/currentOrg";
 
 interface IProps {
   match: any;
   history: any;
   location: any;
-
 }
 
 interface IState {
@@ -48,8 +47,6 @@ class App extends React.Component <IProps,IState> {
             position="top-center"
             draggable={false}
             />
-
-
           <CustomRouter match={match} history={history} location={location}/>
         </OrganizationContext.Provider>
       </div>
