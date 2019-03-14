@@ -3,19 +3,6 @@ class AuthenticationsController < ApplicationController
   skip_before_action :verify_authenticity_token
   include Authenticatable
 
-  def handle_oathauthenticated_user
-    # @user = User.find_or_create_from_auth_hash(auth_hash)
-    # self.current_user = @user
-    puts "yoooo #{oauth_hash.inspect}"
-    redirect_to 'http://localhost:3000?auth_token=123344'
-  end
-
-  # if access token
-  # see if an auth providr exists
-  # create one if not
-  # if passowrd/eamil,
-  # return auth_token_info
-
   def log_in
     if params[:google_token]
       google_auth_hash = authenticate_google_token(params[:google_token])
@@ -73,37 +60,17 @@ class AuthenticationsController < ApplicationController
     render json: { token: nil, user: nil, message: 'Something went wrong!' }
   end
 
-  def handle_oauth_authentication
-    auth_hash['provider'] = 'developer' if auth_hash['provider'].nil?
-    auth_hash['uid'] = 'abc1234' if auth_hash['uid'].nil?
-    auth_hash['info'] = { 'name' => 'Test Devloper', 'email' => 'tesetdev@fake.com' } if auth_hash['info'].nil?
-    # used this auth provider method
-    auth_provider = AuthProvider.find_or_create_from_auth_hash(auth_hash)
-    # hasnt use this auth provider method, but used a different one
-
-    redirect_to 'http://localhost:3000/login' unless auth_provider.user
-
-    user = auth_provider.user
-    at = user.generate_access_token
-    redirect_to "http://localhost:3000?auth_token=#{at}"
-  end
-
-  # u = User.first
-  # u.password = "1234ideclareathumbwar"
-  # u.save!
-  # u.authenticate("1234ideclareathumbwar") => <User>
-
   protected
 
-  def oauth_hash
-    request.env['omniauth.auth']
-  end
+    def oauth_hash
+      request.env['omniauth.auth']
+    end
 
-  def render_errors(errors, status)
-    render json: { errors: Array(errors) }, status: status
-  end
+    def render_errors(errors, status)
+      render json: { errors: Array(errors) }, status: status
+    end
 
-  def render_422(errors)
-    render_errors(errors, 422)
-  end
+    def render_422(errors)
+      render_errors(errors, 422)
+    end
 end
