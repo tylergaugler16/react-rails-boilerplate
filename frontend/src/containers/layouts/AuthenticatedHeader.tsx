@@ -31,15 +31,31 @@ class Header extends React.Component<IProps, {}> {
       <OrganizationContext.Consumer>
       {
         (organizationContext: any) => (
-          <div className="columns">
+          <div className="columns is-gapless is-vcentered is-full-height header-content">
 
-            <div className="column">{`${currentUser.firstName} ${currentUser.lastName}`}</div>
+            <div className="column">
+              <Link to="/" className="no-style-link"><h1 className="widgetly-logo title-1">Widgetly</h1></Link>
+
+                </div>
             {
               organizations? organizations.map( (organization: Organization) => <div>{organization.name}</div>)
                            : null
             }
-            <div className="column is-narrow is-pulled-right"><Link to="/">Home</Link></div>
-            <div className="column is-narrow is-pulled-right"><Link to="/settings">Settings</Link></div>
+            <div className="column is-narrow is-pulled-right header-links-container">
+              <div className="columns is-gapless is-vcentered">
+                <div className="column has-text-centered">
+                  <Link to="/settings" className="white-link">Workspaces</Link>
+                </div>
+                <div className="column is-narrow link-break" />
+                <div className="column has-text-centered">
+                  <Link to="/settings" className="white-link">Settings</Link>
+                </div>
+                <div className="column has-text-centered">
+                  <Link to="/settings" className="white-link">Account</Link>
+                </div>
+              </div>
+            </div>
+
           </div>
         )
       }

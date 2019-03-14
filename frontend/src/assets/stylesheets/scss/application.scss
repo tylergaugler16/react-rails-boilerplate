@@ -55,6 +55,12 @@ p{
 .display-none{
   display: none;
 }
+.is-full-height{
+  height: 100%;
+}
+.is-full-width{
+  width: 100%;
+}
 
 // flex classes
 .columns.is-centered{
@@ -105,6 +111,74 @@ p{
   }
 }
 
+// global link classes
+a{
+  font-size: 14px;
+}
+
+a.white-link{
+  color: $white;
+   &:hover{
+    color: $light-purple;
+  }
+}
+a.light-purple-link{
+  color: $light-purple;
+   &:hover{
+    color: $black;
+  }
+}
+a.no-style-link{
+  color: unset;
+  &:hover{
+    color: unset;
+  }
+}
+
+$duration: .2s;
+$distance: 8px;
+$easeOutBack: cubic-bezier(0.175, 0.885, 0.320, 1.275);
+a {
+  position: relative;
+  text-decoration: none;
+  padding-bottom: 8px;
+
+   &:before,
+    &:after {
+        content: '';
+        position: absolute;
+        bottom: 2px;
+        left: 0; right: 0;
+        height: 2px;
+        background-color: $light-purple;
+    }
+    &:before {
+        opacity: 0;
+        transform: translateY(- $distance);
+        transition: transform 0s $easeOutBack, opacity 0s;
+    }
+    &:after {
+        opacity: 0;
+        transform: translateY($distance/2);
+        transition: transform $duration $easeOutBack, opacity $duration;
+    }
+    &:hover,
+    &:focus {
+        &:before,
+        &:after {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        &:before {
+            transition: transform $duration $easeOutBack, opacity $duration;
+        }
+        &:after {
+            transition: transform 0s $duration $easeOutBack, opacity 0s $duration;
+        }
+    }
+}
+
+
 // global title styles
 
 .title-1{
@@ -145,5 +219,20 @@ p{
   .Toastify__toast{
     border-radius: 3px;
   }
+}
 
+// navbar header
+.header{
+  height: 60px;
+  background-color: $dark-purple;
+  color: $white;
+  padding: 0px 40px;
+  .header-links-container{
+    min-width: 350px;
+    .link-break{
+      width: 2px;
+      background-color: $white;
+      height: 35px;
+    }
+  }
 }
