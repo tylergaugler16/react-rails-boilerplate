@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_09_020500) do
+ActiveRecord::Schema.define(version: 2019_03_15_035207) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,22 +19,6 @@ ActiveRecord::Schema.define(version: 2019_03_09_020500) do
     t.string "name"
     t.string "uid"
     t.string "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "organization_memberships", force: :cascade do |t|
-    t.boolean "can_edit"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.bigint "user_id"
-    t.bigint "organization_id"
-    t.index ["organization_id"], name: "index_organization_memberships_on_organization_id"
-    t.index ["user_id"], name: "index_organization_memberships_on_user_id"
-  end
-
-  create_table "organizations", force: :cascade do |t|
-    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -50,6 +34,22 @@ ActiveRecord::Schema.define(version: 2019_03_09_020500) do
     t.string "email"
   end
 
-  add_foreign_key "organization_memberships", "organizations"
-  add_foreign_key "organization_memberships", "users"
+  create_table "workspace_memberships", force: :cascade do |t|
+    t.boolean "can_edit"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.bigint "workspace_id"
+    t.index ["user_id"], name: "index_workspace_memberships_on_user_id"
+    t.index ["workspace_id"], name: "index_workspace_memberships_on_workspace_id"
+  end
+
+  create_table "workspaces", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "workspace_memberships", "users"
+  add_foreign_key "workspace_memberships", "workspaces"
 end
