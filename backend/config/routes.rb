@@ -9,5 +9,7 @@ Rails.application.routes.draw do
     get 'users/authenticated_header_info', to: 'users#authenticated_header_info'
 
     get 'organizations', to: 'organizations#index'
+
+    get 'widgets', to: 'widgets#index'
   end
 end

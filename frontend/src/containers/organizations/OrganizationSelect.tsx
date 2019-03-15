@@ -1,10 +1,10 @@
-import * as React from 'react';
+import * as React from "react";
 import withOrganizations from "queries/organizationsQuery";
+import SelectOrganizationBox from "containers/organizations/SelectOrganizationBox";
 
+import { User, OrganizationsQuery, Organization } from "types";
 
-import { User, OrganizationsQuery } from "types";
-
-interface IProps{
+interface IProps {
   data: OrganizationsQuery;
   currentUser: User;
 }
@@ -14,13 +14,19 @@ class OrganizationSelect extends React.Component<IProps, {}> {
   }
 
   public render() {
-    const{currentUser} = this.props;
-    if(!currentUser){
+    const {
+      currentUser,
+      data: { organizations }
+    } = this.props;
+    if (!currentUser || !organizations) {
       return null;
     }
     return (
       <div className="App">
         Select org
+        {organizations.map((org: Organization) => (
+          <SelectOrganizationBox org={org} key={org.id} />
+        ))}
       </div>
     );
   }
