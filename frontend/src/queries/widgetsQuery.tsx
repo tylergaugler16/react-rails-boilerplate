@@ -1,6 +1,6 @@
 import * as React from "react";
 import { getApi } from "utils/apiUtil";
-import { OrganizationsQuery, User } from "types";
+import { WidgetsQuery, User } from "types";
 
 interface IProps {
   [prop: string]: any;
@@ -23,7 +23,7 @@ export default function withWidgetsQuery(
       super(props);
       this.state = {
         data: {
-          organizations: null
+          widgets: null
         },
         queryIsLoading: false
       };

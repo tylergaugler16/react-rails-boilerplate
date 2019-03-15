@@ -1,7 +1,7 @@
 import * as React from "react";
 import withWidgets from "queries/widgetsQuery";
 
-import { User, WidgetsQuery, Organization } from "types";
+import { User, WidgetsQuery } from "types";
 
 interface IProps {
   data: WidgetsQuery;
@@ -17,7 +17,7 @@ class WidgetsForWorkspace extends React.Component<IProps, {}> {
       currentUser,
       data: { widgets }
     } = this.props;
-    if (!currentUser || !organizations) {
+    if (!currentUser || !widgets) {
       return null;
     }
     return (

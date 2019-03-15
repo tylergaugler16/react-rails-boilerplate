@@ -24,7 +24,7 @@ export default function withAuthenticationHeaderQuery(
       this.state = {
         data: {
           user: null,
-          organizations: null
+          workspaces: null
         },
         queryIsLoading: false
       };

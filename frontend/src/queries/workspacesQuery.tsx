@@ -1,6 +1,6 @@
 import * as React from "react";
 import { getApi } from "utils/apiUtil";
-import { OrganizationsQuery, User } from "types";
+import { WorkspacesQuery, User } from "types";
 
 interface IProps {
   [prop: string]: any;
@@ -11,19 +11,19 @@ interface IProps {
   match?: any;
 }
 interface IState {
-  data: OrganizationsQuery;
+  data: WorkspacesQuery;
   queryIsLoading: boolean;
 }
 
-export default function withOrganizationsQuery(
+export default function withWorkspacesQuery(
   WrappedComponent: React.ComponentType<any>
 ) {
-  class WithOrganizationsQuery extends React.Component<IProps, IState> {
+  class WithWorkspacesQuery extends React.Component<IProps, IState> {
     constructor(props: IProps) {
       super(props);
       this.state = {
         data: {
-          organizations: null
+          workspaces: null
         },
         queryIsLoading: false
       };
@@ -36,7 +36,7 @@ export default function withOrganizationsQuery(
         () => {
           const api = getApi();
           api
-            .get(`api/organizations`, {
+            .get(`api/workspaces`, {
               headers: {
                 Accept: "application/json",
                 "Content-Type": "application/json"
@@ -70,5 +70,5 @@ export default function withOrganizationsQuery(
     }
   }
 
-  return WithOrganizationsQuery;
+  return WithWorkspacesQuery;
 }

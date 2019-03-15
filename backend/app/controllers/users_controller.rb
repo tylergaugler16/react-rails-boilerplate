@@ -9,7 +9,7 @@ class UsersController < ApplicationController
 
   def authenticated_header_info
     user = current_user
-    render json: { user: user, organizations: user.organizations }
+    render json: { user: user, workspaces: user.workspaces }
   end
 
   # PATCH/PUT /users/1
@@ -39,12 +39,12 @@ class UsersController < ApplicationController
   private
 
   # Use callbacks to share common setup or constraints between actions.
-  def set_user
-    @user = User.find(params[:id])
-  end
+    def set_user
+      @user = User.find(params[:id])
+    end
 
   # Never trust parameters from the scary internet, only allow the white list through.
-  def user_params
-    params.require(:user).permit(:first_name, :last_name)
-  end
+    def user_params
+      params.require(:user).permit(:first_name, :last_name)
+    end
 end

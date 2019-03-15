@@ -5,7 +5,7 @@ export type User = {
   fullName: string;
   lastName: string;
 } ;
-export type Organization = {
+export type Workspace = {
   id: string;
   name: string;
 } ;
@@ -16,8 +16,8 @@ export type Widget = {
 
 // QUERIES
 
-export type OrganizationsQuery = {
-    organizations: Array<Organization> | null;
+export type WorkspacesQuery = {
+    workspaces: Array<Workspace> | null;
 } ;
 
 export type WidgetsQuery = {
@@ -26,5 +26,5 @@ export type WidgetsQuery = {
 
 export type AuthencicatedHeaderQuery = {
   user: User | null;
-  organizations: Array<Organization> | null;
+  workspaces: Array<Workspace> | null;
 }

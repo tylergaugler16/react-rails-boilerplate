@@ -2,7 +2,7 @@ import * as React from 'react';
 import { ToastContainer } from 'react-toastify';
 import { withRouter } from "react-router";
 import CustomRouter from './containers/layouts/_CustomRouter';
-import OrganizationContext from "contexts/currentOrg";
+import WorkspaceContext from "contexts/currentWorkspace";
 
 interface IProps {
   match: any;
@@ -11,7 +11,7 @@ interface IProps {
 }
 
 interface IState {
-  currentOrgId: any
+  currentWorkspaceId: any
 }
 const CloseButton = ({ closeToast }: any) => (
    <i className="fas fa-times close-button has-pointer" onClick={closeToast}></i>
@@ -20,23 +20,23 @@ const CloseButton = ({ closeToast }: any) => (
 class App extends React.Component <IProps,IState> {
   constructor(props: IProps) {
     super(props);
-    this.state = {currentOrgId: undefined}
-    this.updateOrgId = this.updateOrgId.bind(this);
+    this.state = {currentWorkspaceId: undefined}
+    this.updateWorkspaceId = this.updateWorkspaceId.bind(this);
   }
 
-  private updateOrgId(orgId: string){
-    this.setState({currentOrgId: orgId});
+  private updateWorkspaceId(workspaceId: string){
+    this.setState({currentWorkspaceId: workspaceId});
   }
 
   public render(){
     const {match, history, location} = this.props;
-    const OrganizationContextValue = {
-      currentOrgId: this.state.currentOrgId,
-      updateOrgId: this.updateOrgId
+    const WorkspaceContextValue = {
+      currentWorkspaceId: this.state.currentWorkspaceId,
+      updateWorkspaceId: this.updateWorkspaceId
     }
     return (
       <div>
-        <OrganizationContext.Provider value={ OrganizationContextValue }>
+        <WorkspaceContext.Provider value={ WorkspaceContextValue }>
           <ToastContainer
             closeButton={<CloseButton/>}
             hideProgressBar={true}
@@ -48,7 +48,7 @@ class App extends React.Component <IProps,IState> {
             draggable={false}
             />
           <CustomRouter match={match} history={history} location={location}/>
-        </OrganizationContext.Provider>
+        </WorkspaceContext.Provider>
       </div>
 
     )
