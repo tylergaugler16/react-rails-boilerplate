@@ -1,0 +1,2 @@
+class AudioDatum < ApplicationRecord
+end
