@@ -13,13 +13,13 @@ export type Workspace = {
 export type Widget = {
   id: string;
   name: string;
-  data_type: string;
+  dataType: string;
 } ;
 
 // QUERIES
 
 export type WorkspacesQuery = {
-    workspaces: Array<Workspace> | null;  
+    workspaces: Array<Workspace> | null;
 } ;
 export type WorkspaceQuery = {
     workspace: Workspace | null;

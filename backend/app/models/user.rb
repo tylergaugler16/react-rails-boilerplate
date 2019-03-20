@@ -6,6 +6,7 @@ class User < ApplicationRecord
   validates :first_name, presence: true
   validates :email, presence: true
   validates_format_of :email, with: /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/
+  validates :email, uniqueness: true
   has_secure_password
 
   def as_json(_options = {})

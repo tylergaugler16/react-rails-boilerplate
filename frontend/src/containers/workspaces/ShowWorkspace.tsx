@@ -1,7 +1,8 @@
 import * as React from "react";
 import withWorkspace from "queries/workspaceQuery";
+import WidgetBox from "containers/widgets/WidgetBox"
 
-import { User, WorkspaceQuery } from "types";
+import { User, WorkspaceQuery, Widget } from "types";
 
 interface IProps {
   data: WorkspaceQuery;
@@ -15,15 +16,20 @@ class ShowWorkspace extends React.Component<IProps, {}> {
   public render() {
     const {
       currentUser,
-      data,
+      data: {workspace}
     } = this.props;
-    if (!currentUser || !data) {
+    if (!currentUser || !workspace) {
       return null;
     }
     return (
       <div className="show-workspace">
       {
-        JSON.stringify(data)
+        workspace.widgets ?
+          workspace.widgets.map( (widget: Widget) => (
+            <WidgetBox widget={widget} key={widget.id} />
+          ))
+        :
+        null
       }
       </div>
     );

@@ -3,11 +3,13 @@ class Widget < ApplicationRecord
   has_many :widget_data
   has_many :audio_data, through: :widget_data, source: :widget_datable, source_type: "AudioDatum"
 
+  validates :data_type, presence: true
+
   def data
     if data_type == "Audio"
       audio_data
     elsif data_type == "Video"
-      # 
+      #
     end
   end
 
