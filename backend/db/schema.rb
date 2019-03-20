@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_16_002327) do
+ActiveRecord::Schema.define(version: 2019_03_20_015912) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,9 +41,13 @@ ActiveRecord::Schema.define(version: 2019_03_16_002327) do
   end
 
   create_table "widget_data", force: :cascade do |t|
-    t.string "type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "widget_datable_type"
+    t.bigint "widget_datable_id"
+    t.bigint "widget_id"
+    t.index ["widget_datable_type", "widget_datable_id"], name: "index_widget_data_on_widget_datable_type_and_widget_datable_id"
+    t.index ["widget_id"], name: "index_widget_data_on_widget_id"
   end
 
   create_table "widgets", force: :cascade do |t|
@@ -54,6 +58,7 @@ ActiveRecord::Schema.define(version: 2019_03_16_002327) do
     t.string "subheader_text"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "data_type"
   end
 
   create_table "workspace_memberships", force: :cascade do |t|
@@ -72,6 +77,7 @@ ActiveRecord::Schema.define(version: 2019_03_16_002327) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "widget_data", "widgets"
   add_foreign_key "workspace_memberships", "users"
   add_foreign_key "workspace_memberships", "workspaces"
 end
