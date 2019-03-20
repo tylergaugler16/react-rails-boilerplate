@@ -8,7 +8,7 @@ import Login from "containers/landing_pages/Login";
 import SignUp from "containers/landing_pages/Signup";
 import Test from "containers/landing_pages/Test";
 import SignupAndLoginWrapper from "containers/landing_pages/SignupAndLoginWrapper";
-import WidgetsForWorkspace from "containers/widgets/WidgetsForWorkspace";
+import ShowWorkspace from "containers/workspaces/ShowWorkspace";
 import { Route } from "react-router-dom";
 import { User } from "types";
 import CurrentUserContext from "contexts/currentUser";
@@ -95,7 +95,7 @@ class CustomRouter extends React.Component<IProps, {}> {
           <Route
             exact={true}
             path="/workspace/:workspace_id"
-            component={this.userIsAuthenticated(WidgetsForWorkspace)}
+            component={this.userIsAuthenticated(ShowWorkspace)}
             {...defaultProps}
           />
         </div>

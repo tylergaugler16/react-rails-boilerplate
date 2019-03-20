@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_20_015912) do
+ActiveRecord::Schema.define(version: 2019_03_20_023228) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,6 +59,8 @@ ActiveRecord::Schema.define(version: 2019_03_20_015912) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "data_type"
+    t.bigint "workspace_id"
+    t.index ["workspace_id"], name: "index_widgets_on_workspace_id"
   end
 
   create_table "workspace_memberships", force: :cascade do |t|
@@ -78,6 +80,7 @@ ActiveRecord::Schema.define(version: 2019_03_20_015912) do
   end
 
   add_foreign_key "widget_data", "widgets"
+  add_foreign_key "widgets", "workspaces"
   add_foreign_key "workspace_memberships", "users"
   add_foreign_key "workspace_memberships", "workspaces"
 end

@@ -8,16 +8,22 @@ export type User = {
 export type Workspace = {
   id: string;
   name: string;
+  widgets: Array<Widget> | null;
 } ;
 export type Widget = {
   id: string;
   name: string;
+  data_type: string;
 } ;
 
 // QUERIES
 
 export type WorkspacesQuery = {
-    workspaces: Array<Workspace> | null;
+    workspaces: Array<Workspace> | null;  
+} ;
+export type WorkspaceQuery = {
+    workspace: Workspace | null;
+    availableWidgetTypes: Array<string> | null;
 } ;
 
 export type WidgetsQuery = {

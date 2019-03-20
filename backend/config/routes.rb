@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     get 'users/authenticated_header_info', to: 'users#authenticated_header_info'
 
     get 'workspaces', to: 'workspaces#index'
+    get 'workspace', to: 'workspaces#show'
 
     get 'widgets', to: 'widgets#index'
   end
