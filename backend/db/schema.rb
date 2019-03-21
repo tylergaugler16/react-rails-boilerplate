@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_20_023228) do
+ActiveRecord::Schema.define(version: 2019_03_21_005154) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,6 +19,8 @@ ActiveRecord::Schema.define(version: 2019_03_20_023228) do
     t.string "speaker"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "theme"
+    t.string "series"
   end
 
   create_table "auth_providers", force: :cascade do |t|
