@@ -15,6 +15,7 @@ class WidgetsController < ApplicationController
     render json: { widget: new_widget }
   rescue StandardError => e
     Rails.logger.warn("ERROR: in widgets_controller#create, #{e.message}")
+    render json: {error: "Could not create widget"}
   end
 
   private
