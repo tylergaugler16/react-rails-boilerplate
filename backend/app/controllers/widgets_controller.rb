@@ -7,6 +7,12 @@ class WidgetsController < ApplicationController
     render json: { widgets: "yo" }
   end
 
+  def show
+    id = params["widget_id"]
+    widget = Widget.find_by_id(id)
+    render json: {widget: widget}
+  end
+
   def create
     workspace = Workspace.find_by_id(params["workspace_id"])
     render json: {error: "Could not create widget"} if workspace.nil?

@@ -30,6 +30,10 @@ export type WidgetsQuery = {
   widgets: Array<Widget> | null;
 }
 
+export type WidgetQuery = {
+  widget: Widget | null;
+}
+
 export type AuthencicatedHeaderQuery = {
   user: User | null;
   workspaces: Array<Workspace> | null;

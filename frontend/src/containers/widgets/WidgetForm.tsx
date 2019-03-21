@@ -20,11 +20,12 @@ class WidgetForm extends React.Component<IProps, IState> {
     super(props);
     const {initialValues} = this.props;
     const defaultValues = {
-      header_text: "",
-      primary_color: "#ffffff",
-      secondary_color: "#ffffff",
-      tertiary_color: "#ffffff",
-      data_type: "Audio"
+      headerText: "",
+      primaryColor: "#ffffff",
+      secondaryColor: "#ffffff",
+      tertiaryColor: "#ffffff",
+      dataType: "Audio",
+      id: undefined,
     };
     this.state = {
       initialValues: {...defaultValues, ...initialValues},
@@ -71,13 +72,18 @@ class WidgetForm extends React.Component<IProps, IState> {
           </div>
           <div className="columns is-gapless is-centered">
             <Field
-              name="workspace_id"
+              name="workspaceId"
               initialValue={this.state.initialValues.workspace_id}
+              component={HiddenInput}
+            />
+            <Field
+              name="id"
+              initialValue={this.state.initialValues.id}
               component={HiddenInput}
             />
             <div className="column is-10 ">
               <Field
-                name="header_text"
+                name="headerText"
                 label="Header Text"
                 placeholder="Sample Header"
                 component={TextInput}
@@ -88,7 +94,7 @@ class WidgetForm extends React.Component<IProps, IState> {
           <div className="columns is-gapless is-centered">
             <div className="column is-3 ">
               <Field
-                name="data_type"
+                name="dataType"
                 label="Widget Type"
                 options={this.generateDataTypeOptions()}
                 component={SelectInput}
@@ -99,7 +105,7 @@ class WidgetForm extends React.Component<IProps, IState> {
           <div className="columns is-gapless is-centered">
             <div className="column is-3 ">
               <Field
-                name="primary_color"
+                name="primaryColor"
                 label="Primary Color"
                 placeholder="#ffffff"
                 component={ColorInput}
@@ -107,7 +113,7 @@ class WidgetForm extends React.Component<IProps, IState> {
             </div>
             <div className="column is-3 ">
               <Field
-                name="secondary_color"
+                name="secondaryColor"
                 label="Secondary Color"
                 placeholder="#ffffff"
                 component={ColorInput}
@@ -115,7 +121,7 @@ class WidgetForm extends React.Component<IProps, IState> {
             </div>
             <div className="column is-3 ">
               <Field
-                name="tertiary_color"
+                name="tertiaryColor"
                 label="Tertiary Color"
                 placeholder="#ffffff"
                 component={ColorInput}
@@ -128,7 +134,7 @@ class WidgetForm extends React.Component<IProps, IState> {
               className="button large-button purple-button is-centered-block"
               type="submit"
             >
-              Create
+              Create/update
             </button>
             </div>
           </div>

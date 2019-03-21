@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     get 'workspace', to: 'workspaces#show'
 
     get 'widgets', to: 'widgets#index'
+    get 'widget', to: 'widgets#show'
     post 'widgets/create', to: 'widgets#create'
   end
 end

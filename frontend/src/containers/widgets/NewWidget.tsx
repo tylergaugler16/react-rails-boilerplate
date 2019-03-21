@@ -51,8 +51,8 @@ class NewWidget extends React.Component<IProps, IState> {
   private getInititialValues(){
     const {match: {params}} = this.props;
     return {
-      workspace_id: params? params.workspace_id : undefined,
-      data_type: this.state.widgetType
+      workspaceId: params? params.workspace_id : undefined,
+      dataType: this.state.widgetType
     }
   }
 
