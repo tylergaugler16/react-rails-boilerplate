@@ -1,6 +1,6 @@
 import * as React from "react";
 import withWorkspace from "queries/workspaceQuery";
-import WidgetBox from "containers/widgets/WidgetBox"
+import WidgetBox from "containers/widgets/WidgetBox";
 
 import { User, WorkspaceQuery, Widget } from "types";
 
