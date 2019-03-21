@@ -11,25 +11,36 @@ interface IProps {
   infoAlert: (message: string, redirectUrl?: string) => void;
   errorAlert: (message: string, redirectUrl?: string) => void;
 }
-class NewWidget extends React.Component<IProps, {}> {
+
+interface IState {
+  widgetType: string;
+}
+class NewWidget extends React.Component<IProps, IState> {
   public constructor(props: IProps) {
     super(props);
     this.createWidget = this.createWidget.bind(this);
     this.getInititialValues = this.getInititialValues.bind(this);
+    this.state = {
+      widgetType: "Audio"
+    }
   }
 
   private createWidget(values: any) {
     const api = getApi();
     api
-      .post(`/api/widget/new`, values, {
+      .post(`/api/widgets/create`, values, {
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json"
         }
       })
       .then(res => {
-        if (res.data) {
-          this.props.infoAlert("Widget Created", "/");
+        if (res.data.widget) {
+          console.log(res.data.widget);
+          const workspaceId =  res.data.widget.workspaceId;
+          const id = res.data.widget.id;
+          const redirectUrl = `/workspace/${workspaceId}/widget/${id}`
+          this.props.infoAlert("Widget Created", redirectUrl);
         }else if (res.data.errors) {
           this.props.errorAlert(res.data.errors.join("/n"));
         }
@@ -40,7 +51,8 @@ class NewWidget extends React.Component<IProps, {}> {
   private getInititialValues(){
     const {match: {params}} = this.props;
     return {
-      workspace_id: params? params.workspace_id : undefined
+      workspace_id: params? params.workspace_id : undefined,
+      data_type: this.state.widgetType
     }
   }
 

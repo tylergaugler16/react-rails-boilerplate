@@ -2,6 +2,8 @@ import * as React from "react";
 import { Formik as Form, Field } from "formik";
 import TextInput from "components/form/TextInput";
 import HiddenInput from "components/form/HiddenInput";
+import ColorInput from "components/form/ColorInput";
+import SelectInput from "components/form/SelectInput";
 
 import { required } from "components/form/validations";
 
@@ -19,6 +21,10 @@ class WidgetForm extends React.Component<IProps, IState> {
     const {initialValues} = this.props;
     const defaultValues = {
       header_text: "",
+      primary_color: "#ffffff",
+      secondary_color: "#ffffff",
+      tertiary_color: "#ffffff",
+      data_type: "Audio"
     };
     this.state = {
       initialValues: {...defaultValues, ...initialValues},
@@ -27,6 +33,13 @@ class WidgetForm extends React.Component<IProps, IState> {
 
   private handleSubmit(values: any) {
     this.props.action(values);
+  }
+  private generateDataTypeOptions(){
+    const options = [
+      {label: "Audio", value: "Audio"},
+      {label: "Video", value: "Video"}
+    ];
+    return options;
   }
 
   public render() {
@@ -63,13 +76,50 @@ class WidgetForm extends React.Component<IProps, IState> {
               component={HiddenInput}
             />
             <div className="column is-10 ">
-            <Field
-              name="header_text"
-              label="Header Text"
-              placeholder="Sample Header"
-              component={TextInput}
-              validate={required}
-            />
+              <Field
+                name="header_text"
+                label="Header Text"
+                placeholder="Sample Header"
+                component={TextInput}
+                validate={required}
+              />
+            </div>
+          </div>
+          <div className="columns is-gapless is-centered">
+            <div className="column is-3 ">
+              <Field
+                name="data_type"
+                label="Widget Type"
+                options={this.generateDataTypeOptions()}
+                component={SelectInput}
+                validate={required}
+              />
+            </div>
+          </div>
+          <div className="columns is-gapless is-centered">
+            <div className="column is-3 ">
+              <Field
+                name="primary_color"
+                label="Primary Color"
+                placeholder="#ffffff"
+                component={ColorInput}
+              />
+            </div>
+            <div className="column is-3 ">
+              <Field
+                name="secondary_color"
+                label="Secondary Color"
+                placeholder="#ffffff"
+                component={ColorInput}
+              />
+            </div>
+            <div className="column is-3 ">
+              <Field
+                name="tertiary_color"
+                label="Tertiary Color"
+                placeholder="#ffffff"
+                component={ColorInput}
+              />
             </div>
           </div>
           <div className="columns is-gapless is-centered">

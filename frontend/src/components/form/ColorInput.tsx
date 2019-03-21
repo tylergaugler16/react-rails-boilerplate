@@ -49,7 +49,7 @@ class TextInput extends React.Component<IProps, IState> {
     return (
       <div className="field-input select-input">
         <label>{label}</label>
-        <ClickOutHandler onClickOut={this.closeColorPicker}>
+
           <div className="color-picker-display" onClick={this.openColorPicker}>
             <div className="display-selected-color">
               <div
@@ -63,10 +63,13 @@ class TextInput extends React.Component<IProps, IState> {
               <span> {currentValue ? currentValue : "Choose a color..."} </span>
             </div>
           </div>
+
           {this.state.isOpen ? (
-            <BlockPicker color={currentValue} onChange={handleChangeComplete} />
+            <ClickOutHandler onClickOut={this.closeColorPicker}>
+              <BlockPicker color={currentValue} onChange={handleChangeComplete} />
+            </ClickOutHandler>
           ) : null}
-        </ClickOutHandler>
+
         <ErrorMessage name={name} component={FormError} />
       </div>
     );
