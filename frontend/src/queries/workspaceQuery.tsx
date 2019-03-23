@@ -30,9 +30,14 @@ export default function withWorkspaceQuery(
         queryIsLoading: false
       };
     }
+    public componentWillUnmount() {
+      this.compHasMounted = false;
+    }
     public async componentDidMount() {
       this.compHasMounted = true;
-      const {match: {params}} = this.props;
+      const {
+        match: { params }
+      } = this.props;
       const id = params && params.workspace_id ? params.workspace_id : null;
       this.setState(
         {
@@ -59,21 +64,15 @@ export default function withWorkspaceQuery(
               }
             })
             .catch(() => {
-              if(this.compHasMounted){
+              if (this.compHasMounted) {
                 this.setState({
                   queryIsLoading: false
                 });
               }
-
             });
         }
       );
     }
-
-    public componentWillUnmount() {
-    this.compHasMounted = false;
-  }
-
 
     public render() {
       return (

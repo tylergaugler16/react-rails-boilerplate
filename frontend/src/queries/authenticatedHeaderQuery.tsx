@@ -19,6 +19,7 @@ export default function withAuthenticationHeaderQuery(
   WrappedComponent: React.ComponentType<any>
 ) {
   class WithAuthenticationHeaderQuery extends React.Component<IProps, IState> {
+    private compHasMounted: boolean = false;
     constructor(props: IProps) {
       super(props);
       this.state = {
@@ -29,7 +30,12 @@ export default function withAuthenticationHeaderQuery(
         queryIsLoading: false
       };
     }
-    public async componentWillMount() {
+    public componentWillUnmount() {
+      this.compHasMounted = false;
+    }
+
+    public async componentDidMount() {
+      this.compHasMounted = true;
       this.setState(
         {
           queryIsLoading: true
@@ -44,7 +50,7 @@ export default function withAuthenticationHeaderQuery(
               }
             })
             .then(res => {
-              if (res.data) {
+              if (res.data && this.compHasMounted) {
                 this.setState({
                   data: res.data,
                   queryIsLoading: false
@@ -52,9 +58,11 @@ export default function withAuthenticationHeaderQuery(
               }
             })
             .catch(() => {
-              this.setState({
-                queryIsLoading: false
-              });
+              if (this.compHasMounted) {
+                this.setState({
+                  queryIsLoading: false
+                });
+              }
             });
         }
       );

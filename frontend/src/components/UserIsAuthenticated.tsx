@@ -30,6 +30,8 @@ export default function UserIsAuthenticated(
     }
 
     private redirectIfUserIsNotAuthenticated(props?: IProps) {
+      console.log(currentUserIsLoading);
+      console.log(currentUser);
       if(currentUserIsLoading){
           return;
         }

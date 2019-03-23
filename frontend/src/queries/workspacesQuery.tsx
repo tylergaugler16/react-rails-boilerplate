@@ -19,6 +19,7 @@ export default function withWorkspacesQuery(
   WrappedComponent: React.ComponentType<any>
 ) {
   class WithWorkspacesQuery extends React.Component<IProps, IState> {
+    private compHasMounted: boolean = false;
     constructor(props: IProps) {
       super(props);
       this.state = {
@@ -28,7 +29,11 @@ export default function withWorkspacesQuery(
         queryIsLoading: false
       };
     }
-    public async componentWillMount() {
+    public componentWillUnmount() {
+      this.compHasMounted = false;
+    }
+    public async componentDidMount() {
+      this.compHasMounted = true;
       this.setState(
         {
           queryIsLoading: true
@@ -43,7 +48,7 @@ export default function withWorkspacesQuery(
               }
             })
             .then(res => {
-              if (res.data) {
+              if (res.data && this.compHasMounted) {
                 this.setState({
                   data: res.data,
                   queryIsLoading: false
@@ -51,9 +56,11 @@ export default function withWorkspacesQuery(
               }
             })
             .catch(() => {
-              this.setState({
-                queryIsLoading: false
-              });
+              if (this.compHasMounted) {
+                this.setState({
+                  queryIsLoading: false
+                });
+              }
             });
         }
       );

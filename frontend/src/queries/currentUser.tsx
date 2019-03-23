@@ -1,6 +1,6 @@
 import * as React from "react";
-import { getApi } from 'utils/apiUtil';
-import { User } from 'types';
+import { getApi } from "utils/apiUtil";
+import { User } from "types";
 
 interface IProps {
   history?: any;
@@ -9,71 +9,84 @@ interface IProps {
   [prop: string]: any;
 }
 interface IState {
-  currentUser: User| null;
+  currentUser: User | null;
   currentUserIsLoading: boolean;
 }
 
 export default function withCurrentUser(
-  WrappedComponent: React.ComponentType<any>,
+  WrappedComponent: React.ComponentType<any>
 ) {
-  class WithCurrentUser extends React.Component< IProps, IState> {
+  class WithCurrentUser extends React.Component<IProps, IState> {
+    private compHasMounted: boolean = false;
     constructor(props: IProps) {
       super(props);
-      this.state = {currentUser: null, currentUserIsLoading: false }
+      this.state = { currentUser: null, currentUserIsLoading: false };
       this.getCurrentUser = this.getCurrentUser.bind(this);
-
+    }
+    public componentWillUnmount() {
+      this.compHasMounted = false;
     }
     public async componentWillMount() {
-      this.setState({
-        currentUserIsLoading: true,
-      }, () => {
-        this.getCurrentUser();
-      })
-    }
-
-    public componentWillReceiveProps(nextProps: IProps){
-      if(nextProps.location.pathname !== this.props.location.pathname){
-        this.setState({
-          currentUserIsLoading: true,
-        }, () => {
+      this.compHasMounted = true;
+      this.setState(
+        {
+          currentUserIsLoading: true
+        },
+        () => {
           this.getCurrentUser();
-        })
-      }
-
+        }
+      );
     }
 
-    private getCurrentUser(){
-      const api = getApi();
-      api.get(`users/current_user`,{
-          headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
+    public componentWillReceiveProps(nextProps: IProps) {
+      if (nextProps.location.pathname !== this.props.location.pathname) {
+        this.setState(
+          {
+            currentUserIsLoading: true
           },
-        }).then(res => {
-            if(res.data){
-                this.setState({
-                  currentUser: res.data.currentUser,
-                  currentUserIsLoading: false
-                })
-            }
+          () => {
+            this.getCurrentUser();
+          }
+        );
+      }
+    }
 
-          }).catch( () => {
+    private getCurrentUser() {
+      const api = getApi();
+      api
+        .get(`users/current_user`, {
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json"
+          }
+        })
+        .then(res => {
+          if (res.data && this.compHasMounted) {
+            this.setState({
+              currentUser: res.data.currentUser,
+              currentUserIsLoading: false
+            });
+          }
+        })
+        .catch(() => {
+          if (this.compHasMounted) {
             this.setState({
               currentUserIsLoading: false
-            })
-          })
+            });
+          }
+        });
     }
-
 
     public render() {
       return (
         <WrappedComponent
-                  {...this.props}
-                  currentUser={this.state.currentUser}
-                  currentUserIsLoading={this.state.currentUserIsLoading} />
-                )
-              }
+          {...this.props}
+          currentUser={this.state.currentUser}
+          currentUserIsLoading={this.state.currentUserIsLoading}
+        />
+      );
+    }
   }
 
-  return WithCurrentUser
+  return WithCurrentUser;
 }

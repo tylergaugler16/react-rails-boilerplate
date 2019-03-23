@@ -19,6 +19,7 @@ export default function withWidgetQuery(
   WrappedComponent: React.ComponentType<any>
 ) {
   class WithWidgetQuery extends React.Component<IProps, IState> {
+    private compHasMounted: boolean = false;
     constructor(props: IProps) {
       super(props);
       this.state = {
@@ -28,8 +29,15 @@ export default function withWidgetQuery(
         queryIsLoading: false
       };
     }
-    public async componentWillMount() {
-      const {match: {params}} = this.props;
+    public componentWillUnmount() {
+      this.compHasMounted = false;
+    }
+
+    public async componentDidMount() {
+      this.compHasMounted = true;
+      const {
+        match: { params }
+      } = this.props;
       const id = params && params.widget_id ? params.widget_id : null;
       this.setState(
         {
@@ -48,7 +56,7 @@ export default function withWidgetQuery(
               }
             })
             .then(res => {
-              if (res.data) {
+              if (res.data && this.compHasMounted) {
                 this.setState({
                   data: res.data,
                   queryIsLoading: false
@@ -56,9 +64,11 @@ export default function withWidgetQuery(
               }
             })
             .catch(() => {
-              this.setState({
-                queryIsLoading: false
-              });
+              if (this.compHasMounted) {
+                this.setState({
+                  queryIsLoading: false
+                });
+              }
             });
         }
       );
