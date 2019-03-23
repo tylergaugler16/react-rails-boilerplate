@@ -1,6 +1,7 @@
 import * as React from "react";
 import { getApi } from "utils/apiUtil";
 import WidgetForm from "containers/widgets/WidgetForm";
+import AddWidgetContentForm from "containers/widgets/AddWidgetContentForm";
 import { Widget } from "types";
 import withNotificationAlert from "components/withNotificationAlert";
 
@@ -22,33 +23,42 @@ class EditWidget extends React.Component<IProps, {}> {
   private editWidget(values: any) {
     const api = getApi();
     api
-      .post(`/api/widgets/edit`, values, {
+      .post(`/api/widgets/update`, values, {
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json"
         }
-      }) 
+      })
       .then(res => {
         if (res.data.widget) {
           console.log(res.data.widget);
-          const workspaceId =  res.data.widget.workspaceId;
+          const workspaceId = res.data.widget.workspaceId;
           const id = res.data.widget.id;
-          const redirectUrl = `/workspace/${workspaceId}/widget/${id}/edit`
+          const redirectUrl = `/workspace/${workspaceId}/widget/${id}/edit`;
           this.props.successAlert("Updated widget", redirectUrl);
-        }else if (res.data.errors) {
+        } else if (res.data.errors) {
           this.props.errorAlert(res.data.errors.join("/n"));
         }
       })
       .catch(() => console.log("errors"));
   }
 
-
-
   public render() {
-    const {widget} = this.props;
+    const { widget, errorAlert, successAlert } = this.props;
     return (
       <div className="edit-widget-container">
-        <WidgetForm action={this.editWidget} initialValues={widget} />
+        <WidgetForm
+          action={this.editWidget}
+          initialValues={widget}
+          headerText="Update Widget"
+          buttonText={"Update"}
+        />
+        <AddWidgetContentForm
+          widgetType={widget.dataType}
+          initialValues={{ widgetId: widget.id }}
+          successAlert={successAlert}
+          errorAlert={errorAlert}
+        />
       </div>
     );
   }

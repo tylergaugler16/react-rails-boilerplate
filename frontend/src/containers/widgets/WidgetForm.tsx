@@ -11,6 +11,8 @@ import { required } from "components/form/validations";
 interface IProps {
   action: (values: any) => void;
   initialValues: any;
+  headerText: string;
+  buttonText: string;
 }
 interface IState {
   initialValues: any;
@@ -25,7 +27,8 @@ class WidgetForm extends React.Component<IProps, IState> {
       secondaryColor: "#ffffff",
       tertiaryColor: "#ffffff",
       dataType: "Audio",
-      id: undefined,
+      id: "",
+      widgetId: ""
     };
     this.state = {
       initialValues: {...defaultValues, ...initialValues},
@@ -44,7 +47,10 @@ class WidgetForm extends React.Component<IProps, IState> {
   }
 
   public render() {
-
+    const {
+      headerText,
+      buttonText
+    } = this.props;
 
     return (
       <div className="new-widget-container">
@@ -67,7 +73,7 @@ class WidgetForm extends React.Component<IProps, IState> {
           <form onSubmit={handleSubmit} id="signup-form" key="signup-form-form">
           <div className="columns is-gapless ">
             <div className="column is-12 ">
-            <h1 className="title-1 has-text-centered">Create Widget</h1>
+            <h1 className="title-1 has-text-centered">{headerText}</h1>
             </div>
           </div>
           <div className="columns is-gapless is-centered">
@@ -134,7 +140,7 @@ class WidgetForm extends React.Component<IProps, IState> {
               className="button large-button purple-button is-centered-block"
               type="submit"
             >
-              Create/update
+              {buttonText}
             </button>
             </div>
           </div>

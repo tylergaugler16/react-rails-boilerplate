@@ -60,7 +60,7 @@ class NewWidget extends React.Component<IProps, IState> {
 
     return (
       <div className="new-widget-container">
-        <WidgetForm action={this.createWidget} initialValues={this.getInititialValues()} />
+        <WidgetForm action={this.createWidget} initialValues={this.getInititialValues()} headerText="Create Widget" buttonText={"Create"} />
       </div>
     );
   }

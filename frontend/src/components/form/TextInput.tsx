@@ -19,6 +19,8 @@ class TextInput extends React.Component<IProps, {}> {
   public constructor(props: IProps) {
     super(props);
     this.handleChange = this.handleChange.bind(this);
+    const {field: {value}} = this.props;
+    this.handleChange(value);
   }
   private handleChange(value: any){
     const{field: { onChange }} = this.props;
@@ -29,12 +31,13 @@ class TextInput extends React.Component<IProps, {}> {
   }
 
   public render() {
-    const{field: {name }, label, placeholder} = this.props;
+    const{field: {name, value }, label, placeholder} = this.props;
     return (
       <div className="field-input">
       <label className="field a-field a-field_a2 page__field">
        <input className="field__input a-field__input"  type="text"
          name={name}
+         value={value}
          onChange={this.handleChange} placeholder={placeholder || " "} />
          <span className="a-field__label-wrap">
           <span className="a-field__label">{label}</span>
