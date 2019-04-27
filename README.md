@@ -11,18 +11,33 @@
 - [Docker](https://docs.docker.com/)
 - [PostgreSQL](https://www.postgresql.org/)
 
-## Usage
+## Run Application
 
 ```shell
-$ git clone https://github.com/ohbarye/rails-react-typescript-docker-example.git && cd rails-react-typescript-docker-example
 
-# Setup
-$ docker-compose run frontend yarn
-$ docker-compose run backend rake db:create
+# Rails server
+$ cd backend
+$ rails s --port 3001
 
-# Start
-$ docker-compose up -d (docker-compose up worked for me)
-$ open http://localhost:3000
+# React App
+$ yarn start
+
+open http://localhost:3000
+
+```
+
+## Deploy Application
+
+```shell
+
+# Rails server
+$ git subtree push --prefix backend heroku master # in root dir
+$ heroku run rake:db migrate # only if migrations need to be run
+
+# React App
+$ npm run production-build-client # in root dir
+
+open http://localhost:3000
 
 ```
 ## NOTES
