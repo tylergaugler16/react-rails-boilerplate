@@ -60,6 +60,28 @@ class AuthenticationsController < ApplicationController
     render json: { token: nil, user: nil, message: 'Something went wrong!' }
   end
 
+  def get_aws_presigned_url
+
+    filename = params["objectName"]
+    content = params["contentType"]
+
+    storage = Fog::Storage.new(
+      provider: 'AWS',
+      aws_access_key_id: "AKIAZZCMSHDFJMGOW4PN",
+      aws_secret_access_key: "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"
+    )
+
+    # In the controller
+    options = {path_style: true}
+    headers = {"Content-Type" => content, "x-amz-acl" => "public-read"}
+
+    filePath = "#{current_user.id}/#{filename}-#{SecureRandom.hex}"
+    url = storage.put_object_url("widgetly-dev", filePath, 15.minutes.from_now.to_time.to_i, headers, options)
+
+    render json: { signedUrl: url, filePath:  filePath}
+
+  end
+
   protected
 
     def oauth_hash

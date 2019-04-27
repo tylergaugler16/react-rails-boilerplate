@@ -1,5 +1,7 @@
 import * as React from "react";
+
 import TextInput from "components/form/TextInput";
+import UploadFileInput from "components/form/UploadFileInput";
 import { required } from "components/form/validations";
 import { Field } from "formik";
 
@@ -11,7 +13,6 @@ class AudioDataFields extends React.Component<IProps, {}> {
   public constructor(props: IProps) {
     super(props);
   }
-
 
   public render() {
     return (
@@ -41,6 +42,13 @@ class AudioDataFields extends React.Component<IProps, {}> {
               label="Series"
               placeholder=""
               component={TextInput}
+              validate={required}
+            />
+
+            <Field
+              name="upload_file_to_s3"
+              label="Upload File"
+              component={UploadFileInput}
               validate={required}
             />
           </div>

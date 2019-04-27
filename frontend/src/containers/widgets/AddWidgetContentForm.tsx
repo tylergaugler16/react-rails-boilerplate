@@ -29,6 +29,7 @@ class AddWidgetContentForm extends React.Component<IProps, IState> {
       theme: "",
       series: "",
       widget_id: undefined,
+      s3_object_url: "",
     };
     this.state = {
       initialValues: {...defaultValues, ...initialValues},
@@ -56,7 +57,7 @@ class AddWidgetContentForm extends React.Component<IProps, IState> {
         }else if (res.data.errors) {
           this.props.errorAlert(res.data.errors.join("/n"));
         }
-      }) 
+      })
       .catch(() => console.log("errors"));
   }
 

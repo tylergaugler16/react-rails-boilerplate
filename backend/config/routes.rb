@@ -16,5 +16,7 @@ Rails.application.routes.draw do
     post 'widgets/create', to: 'widgets#create'
     post 'widgets/update', to: 'widgets#update'
     post 'widgets/create_data', to: 'widgets#create_data_for_widget'
+
+    get 's3/sign', to: "authentications#get_aws_presigned_url"
   end
 end
