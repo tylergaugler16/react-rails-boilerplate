@@ -30,6 +30,7 @@ class AddWidgetContentForm extends React.Component<IProps, IState> {
       series: "",
       widget_id: undefined,
       s3_object_url: "",
+      file_name: "",
     };
     this.state = {
       initialValues: {...defaultValues, ...initialValues},

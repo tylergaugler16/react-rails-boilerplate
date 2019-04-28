@@ -42,6 +42,7 @@ class UploadFileInput extends React.Component<IProps, {}> {
         const { form: { setFieldValue } } = this.props;
         const { filePath } = res.data;
         setFieldValue("s3_object_url", filePath, true);
+        setFieldValue("file_name", file.name, true);
         callback(res.data);
       })
       .catch(() => {
@@ -57,6 +58,10 @@ class UploadFileInput extends React.Component<IProps, {}> {
       <div className="field-input">
        <input type="hidden"
          name="s3_object_url"
+         value={value}
+         />
+       <input type="hidden"
+         name="file_name"
          value={value}
          />
          <label>{label}</label>

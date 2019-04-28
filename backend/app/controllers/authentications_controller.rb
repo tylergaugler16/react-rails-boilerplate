@@ -75,10 +75,11 @@ class AuthenticationsController < ApplicationController
     options = {path_style: true}
     headers = {"Content-Type" => content, "x-amz-acl" => "public-read"}
 
-    filePath = "#{current_user.id}/#{filename}-#{SecureRandom.hex}"
+    extension = File.extname(filename)
+    filePath = "#{current_user.id}/#{SecureRandom.hex(10)}#{extension}"
     url = storage.put_object_url("widgetly-dev", filePath, 15.minutes.from_now.to_time.to_i, headers, options)
 
-    render json: { signedUrl: url, filePath:  filePath}
+    render json: { signedUrl: url, filePath:  "https://s3.amazonaws.com/widgetlydev/#{filePath}"}
 
   end
 

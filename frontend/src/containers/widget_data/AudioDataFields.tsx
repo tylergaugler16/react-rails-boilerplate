@@ -49,7 +49,6 @@ class AudioDataFields extends React.Component<IProps, {}> {
               name="upload_file_to_s3"
               label="Upload File"
               component={UploadFileInput}
-              validate={required}
             />
           </div>
         </div>
