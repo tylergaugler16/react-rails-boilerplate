@@ -7,6 +7,7 @@ import { User, WorkspaceQuery, Widget } from "types";
 interface IProps {
   data: WorkspaceQuery;
   currentUser: User;
+  location: any;
 }
 class ShowWorkspace extends React.Component<IProps, {}> {
   public constructor(props: IProps) {
@@ -26,7 +27,7 @@ class ShowWorkspace extends React.Component<IProps, {}> {
       {
         workspace.widgets ?
           workspace.widgets.map( (widget: Widget) => (
-            <WidgetBox widget={widget} key={widget.id} />
+            <WidgetBox widget={widget} workspaceId={workspace.id} key={widget.id} />
           ))
         :
         null
