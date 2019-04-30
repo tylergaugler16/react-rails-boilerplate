@@ -5,10 +5,13 @@ class Widget < ApplicationRecord
 
   validates :data_type, presence: true
 
-  def as_json(_options = {})
-    super(only:
-      [:primary_color, :secondary_color, :tertiary_color, :id, :subheader_text, :header_text, :data_type, :workspace_id],
-          methods: [:data],
+  def as_json(_options = nil)
+    return super(_options) if _options
+    super(
+      {
+        only:
+        [:primary_color, :secondary_color, :tertiary_color, :id, :subheader_text, :header_text, :data_type, :workspace_id]
+      }
     )
   end
 
@@ -20,7 +23,7 @@ class Widget < ApplicationRecord
     end
   end
 
-  def add_data_to_widget(new_data_record)
+  def add_datum_to_widget(new_data_record)
     case data_type
     when "Audio"
       audio_data << new_data_record
@@ -32,24 +35,26 @@ class Widget < ApplicationRecord
   end
 
   def create_data_for_widget!(params)
-    puts "params in model: #{params}"
-    puts "safe params: #{SafeParameters.widget_data_params(data_type, params)}"
-    new_widget_data = widget_data_class.create!(SafeParameters.widget_data_params(data_type, params))
-    add_data_to_widget(new_widget_data)
-    new_widget_data
+    new_widget_datum = widget_data_class.create!(SafeParameters.widget_data_params(data_type, params))
+    add_datum_to_widget(new_widget_datum)
+    new_widget_datum
   end
 
   def widget_data_class
-    Kernel.const_get(widget_data_class_name)
+    Kernel.const_get(widget_datum_class_name)
   end
 
-  def widget_data_class_name
+  def widget_datum_class_name
     case data_type
     when "Audio"
       "AudioDatum"
     else
     end
+  end
 
+  def is_part_of?(workspace)
+    return false unless workspace
+    workspace_id == workspace.id
   end
 
 end

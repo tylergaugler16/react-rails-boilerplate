@@ -1,6 +1,6 @@
 import * as React from "react";
 import { getApi } from "utils/apiUtil";
-import { WidgetQuery, User } from "types";
+import { WidgetDataQuery, User } from "types";
 
 interface IProps {
   [prop: string]: any;
@@ -11,20 +11,20 @@ interface IProps {
   match?: any;
 }
 interface IState {
-  data: WidgetQuery;
+  data: WidgetDataQuery;
   queryIsLoading: boolean;
 }
 
-export default function withWidgetQuery(
+export default function withWidgetDataQuery(
   WrappedComponent: React.ComponentType<any>
 ) {
-  class WithWidgetQuery extends React.Component<IProps, IState> {
+  class WithWidgetDataQuery extends React.Component<IProps, IState> {
     private compHasMounted: boolean = false;
     constructor(props: IProps) {
       super(props);
       this.state = {
         data: {
-          widget: null
+          widgetData: null
         },
         queryIsLoading: false
       };
@@ -51,7 +51,7 @@ export default function withWidgetQuery(
         () => {
           const api = getApi();
           api
-            .get(`api/widget`, {
+            .get(`api/widget/get_data`, {
               headers: {
                 Accept: "application/json",
                 "Content-Type": "application/json"
@@ -91,5 +91,5 @@ export default function withWidgetQuery(
     }
   }
 
-  return WithWidgetQuery;
+  return WithWidgetDataQuery;
 }

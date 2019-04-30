@@ -15,6 +15,14 @@ export type Widget = {
   name: string;
   dataType: string;
 } ;
+export type WidgetDatum = {
+  id: string;
+  fileName: string;
+  s3ObjectUrl: string;
+  theme?: string;
+  series?: string;
+  speaker?: string;
+}
 
 // QUERIES
 
@@ -33,7 +41,9 @@ export type WidgetsQuery = {
 export type WidgetQuery = {
   widget: Widget | null;
 }
-
+export type WidgetDataQuery = {
+  widgetData: Array<WidgetDatum> | null;
+}
 export type AuthencicatedHeaderQuery = {
   user: User | null;
   workspaces: Array<Workspace> | null;

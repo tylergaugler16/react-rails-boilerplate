@@ -27,6 +27,9 @@ export default function withCurrentUser(
       this.compHasMounted = false;
     }
     public async componentWillMount() {
+      if(this.state.currentUser){
+        return;
+      }
       this.compHasMounted = true;
       this.setState(
         {

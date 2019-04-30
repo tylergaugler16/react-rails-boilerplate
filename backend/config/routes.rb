@@ -13,6 +13,7 @@ Rails.application.routes.draw do
 
     get 'widgets', to: 'widgets#index'
     get 'widget', to: 'widgets#show'
+    get 'widget/get_data', to: 'widgets#get_widget_data'
     post 'widgets/create', to: 'widgets#create'
     post 'widgets/update', to: 'widgets#update'
     post 'widgets/create_data', to: 'widgets#create_data_for_widget'

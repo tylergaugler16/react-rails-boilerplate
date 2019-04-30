@@ -10,6 +10,7 @@ import Test from "containers/landing_pages/Test";
 import SignupAndLoginWrapper from "containers/landing_pages/SignupAndLoginWrapper";
 import ShowWorkspace from "containers/workspaces/ShowWorkspace";
 
+import ShowWidget from "containers/widgets/ShowWidget";
 import NewWidget from "containers/widgets/NewWidget";
 import EditWidgetWrapper from "containers/widgets/EditWidgetWrapper";
 
@@ -108,6 +109,12 @@ class CustomRouter extends React.Component<IProps, {}> {
             exact={true}
             path="/workspace/:workspace_id/widget/new"
             component={this.userIsAuthenticated(NewWidget)}
+            {...defaultProps}
+          />
+          <Route
+            exact={true}
+            path="/workspace/:workspace_id/widget/:widget_id"
+            component={this.userIsAuthenticated(ShowWidget)}
             {...defaultProps}
           />
           <Route

@@ -2,7 +2,8 @@ import * as React from "react";
 import { getApi } from "utils/apiUtil";
 import WidgetForm from "containers/widgets/WidgetForm";
 import AddWidgetContentForm from "containers/widgets/AddWidgetContentForm";
-import { Widget } from "types";
+import ListWidgetDataWrapper from "containers/widgets/ListWidgetDataWrapper";
+import { Widget, User} from "types";
 import withNotificationAlert from "components/withNotificationAlert";
 
 interface IProps {
@@ -12,6 +13,7 @@ interface IProps {
   successAlert: (message: string, redirectUrl?: string) => void;
   errorAlert: (message: string, redirectUrl?: string) => void;
   widget: Widget;
+  currentUser: User;
 }
 
 class EditWidget extends React.Component<IProps, {}> {
@@ -44,7 +46,8 @@ class EditWidget extends React.Component<IProps, {}> {
   }
 
   public render() {
-    const { widget, errorAlert, successAlert } = this.props;
+    const { widget, errorAlert, successAlert, currentUser, match } = this.props;
+    const workspaceId = match.params && match.params.workspace_id ? match.params.workspace_id : null;
     return (
       <div className="edit-widget-container">
         <WidgetForm
@@ -58,6 +61,12 @@ class EditWidget extends React.Component<IProps, {}> {
           initialValues={{ widgetId: widget.id }}
           successAlert={successAlert}
           errorAlert={errorAlert}
+        />
+        <ListWidgetDataWrapper
+          widgetType={widget.dataType}
+          currentUser={currentUser}
+          workspaceId={workspaceId}
+          match={match}
         />
       </div>
     );

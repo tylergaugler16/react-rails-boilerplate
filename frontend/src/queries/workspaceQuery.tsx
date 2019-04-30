@@ -34,6 +34,10 @@ export default function withWorkspaceQuery(
       this.compHasMounted = false;
     }
     public async componentDidMount() {
+      const { currentUser } = this.props;
+      if(!currentUser){
+        return;
+      }
       this.compHasMounted = true;
       const {
         match: { params }

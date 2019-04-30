@@ -2,7 +2,7 @@ import * as React from "react";
 import EditWidget from "containers/widgets/EditWidget";
 import withWidget from "queries/widgetQuery";
 
-import { WidgetQuery } from "types";
+import { WidgetQuery, User } from "types";
 
 interface IProps {
   data: WidgetQuery;
@@ -10,6 +10,7 @@ interface IProps {
   history?: any;
   location?: any;
   queryIsLoading: boolean;
+  currentUser: User;
 }
 class EditWidgetWrapper extends React.Component<IProps, {}> {
   public constructor(props: IProps) {
@@ -21,6 +22,7 @@ class EditWidgetWrapper extends React.Component<IProps, {}> {
       match,
       history,
       location,
+      currentUser,
       data: {
         widget
       },
@@ -34,7 +36,12 @@ class EditWidgetWrapper extends React.Component<IProps, {}> {
       return null;
     }
     return (
-        <EditWidget match={match} location={location} history={history} widget={widget}/>
+        <EditWidget
+          match={match}
+          location={location}
+          history={history}
+          widget={widget}
+          currentUser={currentUser}/>
     );
   }
 }

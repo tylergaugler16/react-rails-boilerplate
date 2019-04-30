@@ -9,9 +9,27 @@ class WidgetsController < ApplicationController
   end
 
   def show
-    id = params["widget_id"]
-    widget = Widget.find_by_id(id)
-    render json: {widget: widget}
+    widget_id = params["widget_id"]
+    workspace_id = params["workspace_id"]
+    render_422('Expected parameters were not given.') && return unless  widget_id && workspace_id
+    workspace = Workspace.find(workspace_id)
+    render_403('You do not have permission to view this workspace.')  && return unless current_user.has_access_to?(workspace)
+    widget = Widget.find(widget_id)
+    render_403('You do not have permission to view this workspace.') && return unless widget.is_part_of?(workspace)
+    render json: { widget: widget }
+  end
+
+  def get_widget_data
+    widget_id = params["widget_id"]
+    workspace_id = params["workspace_id"]
+    render_422('Expected parameters were not given.') && return unless  widget_id && workspace_id
+    workspace = Workspace.find(workspace_id)
+    render_403('You do not have permission to view this workspace.')  && return unless current_user.has_access_to?(workspace)
+    widget = Widget.find(widget_id)
+    data = widget.data
+    # can do additional ordering here
+    render_403('You do not have permission to view this workspace.') && return unless widget.is_part_of?(workspace)
+    render json: { widget_data: data}
   end
 
   def create
