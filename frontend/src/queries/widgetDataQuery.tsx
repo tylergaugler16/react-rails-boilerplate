@@ -1,6 +1,7 @@
 import * as React from "react";
 import { getApi } from "utils/apiUtil";
 import { WidgetDataQuery, User } from "types";
+import  { parse }  from "query-string";
 
 interface IProps {
   [prop: string]: any;
@@ -14,7 +15,6 @@ interface IState {
   data: WidgetDataQuery;
   queryIsLoading: boolean;
 }
-
 export default function withWidgetDataQuery(
   WrappedComponent: React.ComponentType<any>
 ) {
@@ -24,26 +24,43 @@ export default function withWidgetDataQuery(
       super(props);
       this.state = {
         data: {
-          widgetData: null
+          widgetData: null,
+          totalPages: 0,
+          currentPage: 0
         },
         queryIsLoading: false
       };
+      this.getWidgetData = this.getWidgetData.bind(this);
+      this.refetchWidgetData = this.refetchWidgetData.bind(this);
     }
     public componentWillUnmount() {
       this.compHasMounted = false;
     }
 
     public async componentDidMount() {
-      const { currentUser } = this.props;
+      const { currentUser, location: { search }, match: { params } } = this.props;
       if(!currentUser){
         return;
-      }
-      this.compHasMounted = true;
-      const {
-        match: { params }
-      } = this.props;
-      const id = params && params.widget_id ? params.widget_id : null;
+      } 
+      const widgetId = params && params.widget_id ? params.widget_id : null;
       const workspaceId = params && params.workspace_id ? params.workspace_id : null;
+      const parsedQueryString = parse(search);
+      const currentPage = parsedQueryString.page;
+
+      this.compHasMounted = true;
+      this.getWidgetData(widgetId, workspaceId, currentPage );
+    }
+
+    private refetchWidgetData(page: any){
+      const {  match: { params } } = this.props;
+      const widgetId = params && params.widget_id ? params.widget_id : null;
+      const workspaceId = params && params.workspace_id ? params.workspace_id : null;
+
+      this.getWidgetData(widgetId, workspaceId, page);
+    }
+
+    private getWidgetData(widgetId: any, workspaceId: any, page: any){
+
       this.setState(
         {
           queryIsLoading: true
@@ -57,8 +74,9 @@ export default function withWidgetDataQuery(
                 "Content-Type": "application/json"
               },
               params: {
-                widget_id: id,
-                workspace_id: workspaceId
+                widget_id: widgetId,
+                workspace_id: workspaceId,
+                page
               }
             })
             .then(res => {
@@ -86,6 +104,7 @@ export default function withWidgetDataQuery(
           {...this.props}
           data={this.state.data}
           queryIsLoading={this.state.queryIsLoading}
+          refetchWidgetData={this.refetchWidgetData}
         />
       );
     }

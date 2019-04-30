@@ -8,7 +8,7 @@ interface IProps {
 class AudioDatumRow extends React.Component<IProps, {}> {
   public constructor(props: IProps) {
     super(props);
-  }
+  } 
 
   public render() {
     const { audioDatum } = this.props;

@@ -46,7 +46,7 @@ class EditWidget extends React.Component<IProps, {}> {
   }
 
   public render() {
-    const { widget, errorAlert, successAlert, currentUser, match } = this.props;
+    const { widget, errorAlert, successAlert, currentUser, match, location } = this.props;
     const workspaceId = match.params && match.params.workspace_id ? match.params.workspace_id : null;
     return (
       <div className="edit-widget-container">
@@ -67,6 +67,7 @@ class EditWidget extends React.Component<IProps, {}> {
           currentUser={currentUser}
           workspaceId={workspaceId}
           match={match}
+          location={location}
         />
       </div>
     );

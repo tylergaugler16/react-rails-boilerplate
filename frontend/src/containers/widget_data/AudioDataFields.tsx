@@ -7,7 +7,7 @@ import { Field } from "formik";
 
 interface IProps {
   match?: any;
-}
+} 
 
 class AudioDataFields extends React.Component<IProps, {}> {
   public constructor(props: IProps) {

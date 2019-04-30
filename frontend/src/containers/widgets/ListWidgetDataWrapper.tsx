@@ -1,6 +1,7 @@
 import * as React from "react";
 import withWidgetData from "queries/widgetDataQuery";
 import AudioDatumRow from "containers/widget_data/audio_data/AudioDatumRow";
+import PaginatedSelector from "components/user_interface/PaginatedSelector";
 
 import { WidgetDataQuery, WidgetDatum } from "types";
 
@@ -11,6 +12,7 @@ interface IProps {
   location?: any;
   queryIsLoading: boolean;
   workspaceId: string;
+  refetchWidgetData: (page: any) => void;
 }
 class ListWidgetDataWrapper extends React.Component<IProps, {}> {
   public constructor(props: IProps) {
@@ -20,9 +22,12 @@ class ListWidgetDataWrapper extends React.Component<IProps, {}> {
   public render() {
     const {
       data: {
-        widgetData
+        widgetData,
+        currentPage,
+        totalPages
       },
-      queryIsLoading
+      queryIsLoading,
+      refetchWidgetData
     } = this.props;
 
     if(queryIsLoading){
@@ -39,7 +44,8 @@ class ListWidgetDataWrapper extends React.Component<IProps, {}> {
               <AudioDatumRow audioDatum={audioDatum} key={audioDatum.id} />
             ))
           }
-
+          <button onClick={() => refetchWidgetData(currentPage + 1)}>Next</button>
+          <PaginatedSelector currentPage={currentPage} totalPages={totalPages} refetchQuery={refetchWidgetData}/>
         </div>
     );
   }

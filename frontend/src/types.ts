@@ -43,6 +43,8 @@ export type WidgetQuery = {
 }
 export type WidgetDataQuery = {
   widgetData: Array<WidgetDatum> | null;
+  currentPage: number,
+  totalPages: number
 }
 export type AuthencicatedHeaderQuery = {
   user: User | null;
