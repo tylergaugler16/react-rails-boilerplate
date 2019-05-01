@@ -44,8 +44,12 @@ class ListWidgetDataWrapper extends React.Component<IProps, {}> {
               <AudioDatumRow audioDatum={audioDatum} key={audioDatum.id} />
             ))
           }
-          <button onClick={() => refetchWidgetData(currentPage + 1)}>Next</button>
-          <PaginatedSelector currentPage={currentPage} totalPages={totalPages} refetchQuery={refetchWidgetData}/>
+          <div>
+            <PaginatedSelector
+              currentPage={currentPage}
+              totalPages={totalPages}
+              refetchQuery={refetchWidgetData}/>
+          </div>
         </div>
     );
   }

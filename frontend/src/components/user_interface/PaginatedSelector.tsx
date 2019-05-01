@@ -17,33 +17,132 @@ class AudioDataFields extends React.Component<IProps, {}> {
     const  {currentPage, totalPages, refetchQuery } = this.props;
     return (
 
-        <nav className="pagination is-centered" role="navigation" aria-label="pagination">
-        {
-          (currentPage - 1) <= 0 ?
-          <a className="pagination-previous" data-disabled={true}>
-            Previous
-          </a>
-        :
-          <a className="pagination-previous" onClick={() => refetchQuery(currentPage - 1)} >
-            Previous
-          </a>
-        }
-        {
-          currentPage === totalPages ?
-          <a className="pagination-next" data-disabled={true}>Next page</a>
-        :
-          <a className="pagination-next" onClick={() => refetchQuery(currentPage + 1)}>Next page</a>
-        }
+        <nav className="pagination is-rounded is-small is-centered" role="navigation" aria-label="pagination">
 
+          {
+            currentPage === 1 ?
+            <span
+              className={`pagination-previous is-disabled`}
+              data-disabled={true}
+              >
+                Previous
+            </span>
+          :
+          <span
+            className={`pagination-previous`}
+            onClick={() => refetchQuery(currentPage - 1)}
+            >
+              Previous
+          </span>
+          }
+
+           {
+             currentPage === totalPages ?
+             <span
+               className={`pagination-next is-disabled`}
+               data-disabled={true}
+               >
+                 Next page
+             </span>
+             :
+             <span
+               className={`pagination-next`}
+               onClick={() => refetchQuery(currentPage + 1)}
+               >
+                 Next page
+             </span>
+           }
 
           <ul className="pagination-list">
-            <li><a className="pagination-link" aria-label="Goto page 1">1</a></li>
+            <li>
+              {
+                currentPage === 1 ?
+                <span
+                  className={`pagination-link is-disabled`}
+                  data-disabled={true}
+                  >
+                  1
+                </span>
+                :
+
+                <span
+
+                  className={`pagination-link `}
+                  aria-label="Goto page 1"
+                  onClick={() => refetchQuery(1)}>
+                  1
+                </span>
+              }
+
+            </li>
             <li><span className="pagination-ellipsis">&hellip;</span></li>
-            <li><a className="pagination-link" aria-label="Goto page 45">45</a></li>
-            <li><a className="pagination-link is-current" aria-label="Page 46" aria-current="page">46</a></li>
-            <li><a className="pagination-link" aria-label="Goto page 47">47</a></li>
+            <li>
+            {
+              currentPage === 1?
+              <span
+                className={`pagination-link is-disabled`}
+                data-disabled={true}
+                />
+              :
+              <span
+                className={`pagination-link`}
+                aria-label={`Goto page ${currentPage - 1}`}
+                onClick={() => refetchQuery(currentPage - 1) }
+                >
+                  { currentPage -1 }
+                </span>
+            }
+
+            </li>
+            <li>
+              <span
+                className="pagination-link is-current is-disabled"
+                aria-label={`Goto page ${currentPage}`}
+                aria-current="page"
+                data-disabled={true}
+                >
+                  {currentPage}
+              </span>
+            </li>
+            <li>
+            {
+              (currentPage + 1) > totalPages ?
+              <span
+                className={`pagination-link is-disabled`}
+                data-disabled={true}
+                />
+              :
+              <span
+                className={`pagination-link `}
+                aria-label={`Goto page ${(currentPage + 1)}`}
+                onClick={() => refetchQuery(currentPage + 1 )}
+                >
+                { currentPage + 1 }
+              </span>
+
+            }
+            </li>
             <li><span className="pagination-ellipsis">&hellip;</span></li>
-            <li><a className="pagination-link" aria-label="Goto page 86">86</a></li>
+            <li>
+            {
+              totalPages === currentPage ?
+                <span
+                  className={`pagination-link is-disabled`}
+                  data-disabled={true}
+                  >
+                    {totalPages}
+                  </span>
+              :
+
+              <span
+                className={`pagination-link`}
+                aria-label={`Goto page ${totalPages}`}
+                onClick={() => refetchQuery(totalPages )}
+                >
+                  {totalPages}
+              </span>
+            }
+            </li>
           </ul>
         </nav>
 

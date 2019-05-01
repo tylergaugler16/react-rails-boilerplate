@@ -61,13 +61,14 @@ p{
 .is-full-width{
   width: 100%;
 }
+.is-disabled{
+  cursor: not-allowed;
+}
 
 // flex classes
 .columns.is-centered{
   justify-content: center;
 }
-
-
 
 // global button styles
 .button{

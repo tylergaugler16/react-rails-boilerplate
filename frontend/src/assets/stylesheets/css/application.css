@@ -8063,6 +8063,9 @@ p {
 .is-full-width {
   width: 100%; }
 
+.is-disabled {
+  cursor: not-allowed; }
+
 .columns.is-centered {
   justify-content: center; }
 
