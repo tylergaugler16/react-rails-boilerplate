@@ -32,12 +32,12 @@ open http://localhost:3000
 
 # Rails server
 $ git subtree push --prefix backend heroku master # in root dir
-$ heroku run rake:db migrate # only if migrations need to be run
+$ heroku run rake db:migrate --app widgetly-app # only if migrations need to be run
 
 # React App
 $ npm run production-build-client # in root dir
 
-open http://localhost:3000
+open http://widgetly.s3-website-us-east-1.amazonaws.com
 
 ```
 ## NOTES

@@ -12,4 +12,8 @@ class AwsService
     @s3.bucket(bucket_name)
   end
 
+  def all_object_keys
+    bucket.objects.collect(&:key)
+  end
+
 end
