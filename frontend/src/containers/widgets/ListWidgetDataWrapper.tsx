@@ -32,9 +32,8 @@ class ListWidgetDataWrapper extends React.Component<IProps, {}> {
 
     if(queryIsLoading){
       return "Loading..."
-    }
-    if(!widgetData){
-      return null;
+    } else if(!widgetData){
+      return "No content"
     }
     return (
         <div>

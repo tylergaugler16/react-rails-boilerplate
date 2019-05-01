@@ -44,7 +44,7 @@ class App extends React.Component <IProps,IState> {
             autoClose={false}
             className="custom-toast-container"
             bodyClassName="custom-toast-body"
-            position="top-center"
+            position="bottom-right"
             draggable={false}
             />
           <CustomRouter match={match} history={history} location={location}/>

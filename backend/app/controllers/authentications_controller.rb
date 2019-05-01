@@ -70,7 +70,6 @@ class AuthenticationsController < ApplicationController
       aws_access_key_id: "AKIAZZCMSHDFJMGOW4PN",
       aws_secret_access_key: "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"
     )
-
     # In the controller
     options = {path_style: true}
     headers = {"Content-Type" => content, "x-amz-acl" => "public-read"}
