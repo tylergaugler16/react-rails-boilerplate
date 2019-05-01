@@ -38,12 +38,17 @@ class ListWidgetDataWrapper extends React.Component<IProps, {}> {
     }
     return (
         <div>
+        <table>
+          <tbody>
+            {
+               widgetData.map( (audioDatum: WidgetDatum) => (
+                <AudioDatumRow audioDatum={audioDatum} key={audioDatum.id} />
+              ))
+            }
+          </tbody>
+        </table>
 
-          {
-             widgetData.map( (audioDatum: WidgetDatum) => (
-              <AudioDatumRow audioDatum={audioDatum} key={audioDatum.id} />
-            ))
-          }
+
           <div>
             <PaginatedSelector
               currentPage={currentPage}

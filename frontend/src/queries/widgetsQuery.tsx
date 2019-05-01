@@ -34,10 +34,6 @@ export default function withWidgetsQuery(
     }
 
     public async componentDidMount() {
-      const { currentUser } = this.props;
-      if(!currentUser){
-        return;
-      }
       this.compHasMounted = true;
       this.setState(
         {

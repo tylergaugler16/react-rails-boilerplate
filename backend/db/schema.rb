@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_28_002103) do
+ActiveRecord::Schema.define(version: 2019_05_01_015105) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 2019_04_28_002103) do
     t.string "series"
     t.string "s3_object_url"
     t.string "file_name"
+    t.bigint "file_size"
   end
 
   create_table "auth_providers", force: :cascade do |t|

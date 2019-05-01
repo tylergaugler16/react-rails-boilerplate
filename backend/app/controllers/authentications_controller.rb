@@ -76,10 +76,11 @@ class AuthenticationsController < ApplicationController
     headers = {"Content-Type" => content, "x-amz-acl" => "public-read"}
 
     extension = File.extname(filename)
-    filePath = "#{current_user.id}/#{SecureRandom.hex(10)}#{extension}"
-    url = storage.put_object_url("widgetly-dev", filePath, 15.minutes.from_now.to_time.to_i, headers, options)
+    filePath = "#{current_user.id}/#{SecureRandom.hex(16)}#{extension}"
+    bucket = Rails.env.production? ? "widgetly-prod" : "widgetly-dev"
+    url = storage.put_object_url(bucket, filePath, 15.minutes.from_now.to_time.to_i, headers, options)
 
-    render json: { signedUrl: url, filePath:  "https://s3.amazonaws.com/widgetlydev/#{filePath}"}
+    render json: { signedUrl: url, filePath:  "https://s3.amazonaws.com/#{bucket}/#{filePath}"}
 
   end
 

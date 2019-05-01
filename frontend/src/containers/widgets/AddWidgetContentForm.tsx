@@ -31,6 +31,7 @@ class AddWidgetContentForm extends React.Component<IProps, IState> {
       widget_id: undefined,
       s3_object_url: "",
       file_name: "",
+      file_size: "",
     };
     this.state = {
       initialValues: {...defaultValues, ...initialValues},
@@ -52,8 +53,8 @@ class AddWidgetContentForm extends React.Component<IProps, IState> {
         if (res.data.widgetData) {
           console.log(res.data.widgetData);
           const workspaceId =  res.data.widget.workspaceId;
-          // const id = res.data.widget.id;
-          const redirectUrl = `/workspace/${workspaceId}`
+          const widgetId =  res.data.widget.id;
+          const redirectUrl = `/workspace/${workspaceId}/widget/${widgetId}/edit`;
           this.props.successAlert("Widget Content Created", redirectUrl);
         }else if (res.data.errors) {
           this.props.errorAlert(res.data.errors.join("/n"));

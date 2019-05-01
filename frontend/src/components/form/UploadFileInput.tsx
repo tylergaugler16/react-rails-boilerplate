@@ -20,6 +20,7 @@ interface IProps{
   form: any;
   label: string;
   placeholder: string;
+  accept: string; // can be audio/*, image/*, video/*
 }
 
 class UploadFileInput extends React.Component<IProps, {}> {
@@ -43,6 +44,7 @@ class UploadFileInput extends React.Component<IProps, {}> {
         const { filePath } = res.data;
         setFieldValue("s3_object_url", filePath, true);
         setFieldValue("file_name", file.name, true);
+        setFieldValue("file_size", file.size, true);
         callback(res.data);
       })
       .catch(() => {
@@ -53,7 +55,7 @@ class UploadFileInput extends React.Component<IProps, {}> {
 
 
   public render() {
-    const{field: { name, value }, label} = this.props;
+    const{field: { name, value }, label, accept} = this.props;
     return (
       <div className="field-input">
        <input type="hidden"
@@ -64,11 +66,15 @@ class UploadFileInput extends React.Component<IProps, {}> {
          name="file_name"
          value={value}
          />
+       <input type="hidden"
+         name="file_size"
+         value={value}
+         />
          <label>{label}</label>
        <ReactS3Uploader
          className="upload-file-input"
          getSignedUrl={this.getSignedUrl}
-         accept="image/*"
+         accept={accept || "image/*"}
          contentDisposition="auto"
          name={name}
        />
