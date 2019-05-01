@@ -7,6 +7,7 @@ import { User, WorkspaceQuery, Widget } from "types";
 interface IProps {
   data: WorkspaceQuery;
   currentUser: User;
+  currentUserIsLoading: boolean;
   location: any;
 }
 class ShowWorkspace extends React.Component<IProps, {}> {
@@ -19,7 +20,7 @@ class ShowWorkspace extends React.Component<IProps, {}> {
       currentUser,
       data: {workspace}
     } = this.props;
-    if (!currentUser || !workspace) {
+    if ( !currentUser || !workspace) {
       return null;
     }
     return (

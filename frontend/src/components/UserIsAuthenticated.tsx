@@ -43,6 +43,9 @@ export default function UserIsAuthenticated(
 
 
     public render() {
+      if(!currentUser || currentUserIsLoading){
+        return null;
+      }
       return <WrappedComponent {...this.props} currentUserIsLoading={currentUserIsLoading} currentUser={currentUser} />;
     }
   }

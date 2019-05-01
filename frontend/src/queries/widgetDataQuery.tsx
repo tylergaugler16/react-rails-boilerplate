@@ -39,9 +39,9 @@ export default function withWidgetDataQuery(
 
     public async componentDidMount() {
       const { currentUser, location: { search }, match: { params } } = this.props;
-      if(!currentUser){
+      if(!currentUser || this.state.queryIsLoading){
         return;
-      } 
+      }
       const widgetId = params && params.widget_id ? params.widget_id : null;
       const workspaceId = params && params.workspace_id ? params.workspace_id : null;
       const parsedQueryString = parse(search);

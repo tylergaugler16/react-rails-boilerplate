@@ -29,6 +29,7 @@ class EditWidgetWrapper extends React.Component<IProps, {}> {
       queryIsLoading
     } = this.props;
 
+
     if(queryIsLoading){
       return "Loading..."
     }

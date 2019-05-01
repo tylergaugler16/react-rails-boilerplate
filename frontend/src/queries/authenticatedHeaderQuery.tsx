@@ -36,7 +36,7 @@ export default function withAuthenticationHeaderQuery(
 
     public async componentDidMount() {
       const { currentUser } = this.props;
-      if(!currentUser){
+      if(!currentUser || this.state.queryIsLoading){
         return;
       }
       this.compHasMounted = true;
