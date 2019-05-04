@@ -1,6 +1,5 @@
 # Handling authenticated users
 class AuthenticationsController < ApplicationController
-  skip_before_action :verify_authenticity_token
   include Authenticatable
 
   def log_in
@@ -85,10 +84,6 @@ class AuthenticationsController < ApplicationController
   end
 
   protected
-
-    def oauth_hash
-      request.env['omniauth.auth']
-    end
 
     def render_errors(errors, status)
       render json: { errors: Array(errors) }, status: status

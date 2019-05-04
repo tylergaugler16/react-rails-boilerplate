@@ -1,5 +1,4 @@
 class WidgetsController < ApplicationController
-  skip_before_action :verify_authenticity_token # find out why i need this lol
   include Authenticatable
   include SafeParameters
 

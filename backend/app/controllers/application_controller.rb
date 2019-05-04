@@ -1,4 +1,4 @@
-class ApplicationController < ActionController::Base
+class ApplicationController < ActionController::API 
 
   protected
     def render_errors(errors, status)
