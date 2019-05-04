@@ -42,6 +42,8 @@ class UploadFileInput extends React.Component<IProps, {}> {
       .then(res => {
         const { form: { setFieldValue } } = this.props;
         const { filePath } = res.data;
+        console.log("signedUrl:", res.data.signedUrl);
+        console.log("filePath:",filePath);
         setFieldValue("s3_object_url", filePath, true);
         setFieldValue("file_name", file.name, true);
         setFieldValue("file_size", file.size, true);

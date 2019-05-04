@@ -78,6 +78,7 @@ class AuthenticationsController < ApplicationController
     filePath = "#{current_user.id}/#{SecureRandom.hex(16)}#{extension}"
     bucket = Rails.env.production? ? "widgetly-prod" : "widgetly-dev"
     url = storage.put_object_url(bucket, filePath, 15.minutes.from_now.to_time.to_i, headers, options)
+    puts "signedUrlFromAWS\n:: #{url}"
 
     render json: { signedUrl: url, filePath:  "https://s3.amazonaws.com/#{bucket}/#{filePath}"}
 

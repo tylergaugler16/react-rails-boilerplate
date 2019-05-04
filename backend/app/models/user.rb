@@ -35,6 +35,7 @@ class User < ApplicationRecord
   end
 
 # TODO: THIS SHOULD ONLY EFFECt THE WORKSPACES THAT THIS USER OWNS
+# TODO: SHOULD REFACTOR THIS TO USE JOINS
   def total_size_of_uploaded_files
     workspaces_for_user = workspaces.includes(:widgets)
     total_bytes = 0
