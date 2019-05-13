@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { getApi } from 'utils/apiUtil';
 import { Dashboard as DashboardComponent} from '@uppy/react';
 const Uppy = require('@uppy/core');
 const AwsS3Multipart = require("@uppy/aws-s3-multipart");
@@ -7,7 +6,6 @@ const AwsS3Multipart = require("@uppy/aws-s3-multipart");
 import { ErrorMessage } from 'formik';
 import FormError from "components/form/FormError";
 
-import ReactS3Uploader from 'react-s3-uploader';
 
 interface IProps{
   name: string;
@@ -31,7 +29,6 @@ class UploadFileInput extends React.Component<IProps, {}> {
   private uppy: any;
   public constructor(props: IProps) {
     super(props);
-    this.getSignedUrl = this.getSignedUrl.bind(this);
     this.uppy = Uppy({
       restrictions: { maxNumberOfFiles: 5 },
       autoProceed: true,
@@ -63,58 +60,15 @@ class UploadFileInput extends React.Component<IProps, {}> {
     this.uppy.close()
   }
 
-  public getSignedUrl(file: any, callback: any) {
-    const params = {
-      objectName: file.name,
-      contentType: file.type
-    };
-    const api = getApi();
-    api
-      .get(`api/s3/sign`, {
-        params
-      })
-      .then(res => {
-        const { form: { setFieldValue } } = this.props;
-        const { filePath } = res.data;
-        console.log("signedUrl:", res.data.signedUrl);
-        console.log("filePath:",filePath);
-        setFieldValue("s3_object_url", filePath, true);
-        setFieldValue("file_name", file.name, true);
-        setFieldValue("file_size", file.size, true);
-        callback(res.data);
-      })
-      .catch(() => {
-        alert("SOMETHING WENT WRONG");
-      });
-
-  }
-
 
   public render() {
-    const{field: { name, value }, label, accept} = this.props;
+    const{field: { name }, label} = this.props;
 
     return (
       <div className="field-input">
-       <input type="hidden"
-         name="s3_object_url"
-         value={value}
-         />
-       <input type="hidden"
-         name="file_name"
-         value={value}
-         />
-       <input type="hidden"
-         name="file_size"
-         value={value}
-         />
-         <label>{label}</label>
-       <ReactS3Uploader
-         className="upload-file-input"
-         getSignedUrl={this.getSignedUrl}
-         accept={accept || "image/*"}
-         contentDisposition="auto"
-         name={name}
-       />
+      <input type="hidden" name={name} />
+
+      <label>{label}</label>
        <DashboardComponent
           uppy={this.uppy}
           inline={true}

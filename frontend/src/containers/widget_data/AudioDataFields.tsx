@@ -51,10 +51,11 @@ class AudioDataFields extends React.Component<IProps, {}> {
         <div className="columns is-gapless is-centered">
           <div className="column is-12 ">
             <Field
-              name="upload_file_to_s3"
+              name="file_upload.data"
               label="Upload File"
               accept="audio/*"
               component={UploadFileInput}
+              validate={required}
             />
           </div>
         </div>
