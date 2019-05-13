@@ -18,7 +18,7 @@ $blue: #2589BD;
 $dark-purple-inactive: #725ac196;
 $accent-red: #EB5160;
 
-@mixin absolutely-center() {
+@mixin absolutely-center(){
   position: absolute;
   top: 50%;
   left: 50%;
@@ -32,6 +32,8 @@ $accent-red: #EB5160;
 @import '_authentication';
 @import '_form';
 @import '_react-select';
+@import '_uppy';
+
 
 
 

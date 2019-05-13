@@ -18,7 +18,7 @@ class AudioDataFields extends React.Component<IProps, {}> {
     return (
       <React.Fragment>
         <div className="columns is-gapless is-centered">
-          <div className="column is-3 ">
+          <div className="column is-4 ">
             <Field
               name="speaker"
               label="Speaker"
@@ -27,7 +27,7 @@ class AudioDataFields extends React.Component<IProps, {}> {
               validate={required}
             />
           </div>
-          <div className="column is-3 ">
+          <div className="column is-4 ">
             <Field
               name="theme"
               label="Theme"
@@ -36,7 +36,7 @@ class AudioDataFields extends React.Component<IProps, {}> {
               validate={required}
             />
           </div>
-          <div className="column is-3 ">
+          <div className="column is-4 ">
             <Field
               name="series"
               label="Series"
@@ -45,6 +45,11 @@ class AudioDataFields extends React.Component<IProps, {}> {
               validate={required}
             />
 
+
+          </div>
+        </div>
+        <div className="columns is-gapless is-centered">
+          <div className="column is-12 ">
             <Field
               name="upload_file_to_s3"
               label="Upload File"

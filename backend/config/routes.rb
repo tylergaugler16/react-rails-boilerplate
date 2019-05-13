@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount Shrine.uppy_s3_multipart(:cache) => "/s3"
   # auth routes
   post 'login', to: 'authentications#log_in'
   post 'signup', to: 'authentications#sign_up'

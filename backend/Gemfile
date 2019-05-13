@@ -57,6 +57,7 @@ gem 'rack-cors', require: 'rack/cors'
 
 gem 'google-id-token'
 gem 'jwt'
-gem 'aws-sdk'
-gem 'fog'
 gem 'will_paginate', '~> 3.1.0'
+gem "shrine", "~> 2.0"
+gem "aws-sdk-s3", "~> 1.2"
+gem "uppy-s3_multipart", "~> 0.2"

@@ -1,5 +1,5 @@
-class ApplicationController < ActionController::API 
-
+class ApplicationController < ActionController::API
+  include Authenticatable
   protected
     def render_errors(errors, status)
       render json: { errors: Array(errors) }, status: status

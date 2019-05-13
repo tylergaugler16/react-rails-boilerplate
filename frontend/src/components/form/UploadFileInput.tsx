@@ -1,6 +1,8 @@
 import * as React from 'react';
-import {getApi} from 'utils/apiUtil';
-
+import { getApi } from 'utils/apiUtil';
+import { Dashboard as DashboardComponent} from '@uppy/react';
+const Uppy = require('@uppy/core');
+const AwsS3Multipart = require("@uppy/aws-s3-multipart");
 
 import { ErrorMessage } from 'formik';
 import FormError from "components/form/FormError";
@@ -23,10 +25,42 @@ interface IProps{
   accept: string; // can be audio/*, image/*, video/*
 }
 
+
+
 class UploadFileInput extends React.Component<IProps, {}> {
+  private uppy: any;
   public constructor(props: IProps) {
     super(props);
     this.getSignedUrl = this.getSignedUrl.bind(this);
+    this.uppy = Uppy({
+      restrictions: { maxNumberOfFiles: 5 },
+      autoProceed: true,
+    });
+
+    this.uppy.use(AwsS3Multipart, {
+      companionUrl: 'http://localhost:3001', // will call `/s3/multipart/*` endpoints on your app
+    });
+
+    this.uppy.on('upload-success', (file: any, data: any) => {
+
+      const uploadedFileData = JSON.stringify({
+        id: data.uploadURL.match(/\/cache\/([^\?]+)/)[1], // extract key without prefix
+        storage: 'cache',
+        metadata: {
+          size:      file.size,
+          filename:  file.name,
+          mime_type: file.type,
+        }
+      })
+      const { form: { setFieldValue } } = this.props;
+      setFieldValue("file_upload.data", uploadedFileData, true);
+      console.log(uploadedFileData);
+    })
+
+  }
+
+  public componentWillUnmount () {
+    this.uppy.close()
   }
 
   public getSignedUrl(file: any, callback: any) {
@@ -58,6 +92,7 @@ class UploadFileInput extends React.Component<IProps, {}> {
 
   public render() {
     const{field: { name, value }, label, accept} = this.props;
+
     return (
       <div className="field-input">
        <input type="hidden"
@@ -80,6 +115,11 @@ class UploadFileInput extends React.Component<IProps, {}> {
          contentDisposition="auto"
          name={name}
        />
+       <DashboardComponent
+          uppy={this.uppy}
+          inline={true}
+          showProgressDetails={true}
+        />
         <ErrorMessage name={name} component={FormError} />
       </div>
     );

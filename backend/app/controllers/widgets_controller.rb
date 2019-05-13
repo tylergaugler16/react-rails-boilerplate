@@ -49,8 +49,10 @@ class WidgetsController < ApplicationController
   def create_data_for_widget
     puts "params: #{params}"
     widget = Widget.find_by_id(params["widget_id"])
-
+    params.delete(:widget_id)
+    params.delete(:widget)
     new_widget_data = widget.create_data_for_widget!(params)
+
     puts "new_widgetdata: #{new_widget_data}"
     render json: { widget_data: new_widget_data, widget: widget }
   rescue StandardError => e

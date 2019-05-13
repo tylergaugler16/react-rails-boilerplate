@@ -29,9 +29,9 @@ class AddWidgetContentForm extends React.Component<IProps, IState> {
       theme: "",
       series: "",
       widget_id: undefined,
-      s3_object_url: "",
-      file_name: "",
-      file_size: "",
+      file_upload: {
+        data: ""
+      },
     };
     this.state = {
       initialValues: {...defaultValues, ...initialValues},
@@ -84,7 +84,8 @@ class AddWidgetContentForm extends React.Component<IProps, IState> {
           Add {widgetType } content
           <div>
           <Form
-            key="signup-form"
+            key="add-widget-data-form"
+
             initialValues={this.state.initialValues}
             onSubmit={(values, { setSubmitting }) => {
               this.handleSubmit(values);
@@ -99,7 +100,7 @@ class AddWidgetContentForm extends React.Component<IProps, IState> {
               handleSubmit,
               handleChange
             }) => (
-              <form onSubmit={handleSubmit} id="signup-form" key="signup-form-form">
+              <form onSubmit={handleSubmit} id="add-widget-data-form" className="add-widget-data-form" key="add-widget-data-form-form" name="add-widget-data-form">
               <div className="columns is-gapless ">
                 <div className="column is-12 ">
                 <h1 className="title-1 has-text-centered"></h1>

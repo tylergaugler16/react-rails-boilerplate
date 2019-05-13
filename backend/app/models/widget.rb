@@ -35,6 +35,13 @@ class Widget < ApplicationRecord
   end
 
   def create_data_for_widget!(params)
+    file_details = params.delete(:file_upload)
+    file_upload = FileUpload.new
+    file_upload.detail = file_details[:data].to_json
+    file_upload.save!
+    puts "HEYY: #{file_upload.errors.inspect}"
+    # return error if no file_details are given
+    params[:file_upload_id] = file_upload.id
     new_widget_datum = widget_data_class.create!(SafeParameters.widget_data_params(data_type, params))
     add_datum_to_widget(new_widget_datum)
     new_widget_datum

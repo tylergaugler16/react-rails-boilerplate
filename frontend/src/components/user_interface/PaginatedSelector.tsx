@@ -8,7 +8,7 @@ interface IProps {
   totalPages: number;
 }
 
-class AudioDataFields extends React.Component<IProps, {}> {
+class PaginatedSelector extends React.Component<IProps, {}> {
   public constructor(props: IProps) {
     super(props);
   }
@@ -150,4 +150,4 @@ class AudioDataFields extends React.Component<IProps, {}> {
   }
 }
 
-export default AudioDataFields;
+export default PaginatedSelector;
