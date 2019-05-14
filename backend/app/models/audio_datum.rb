@@ -1,7 +1,7 @@
 class AudioDatum < ApplicationRecord
   has_many :widget_data, as: :widget_datable
   # before_destroy :destroy_aws_file #TODO needs to be tested
-  belongs_to :file_upload, optional: true
+  belongs_to :file_upload
   accepts_nested_attributes_for :file_upload
   # MP3, M4A, AAC, OGA validate these extens  ions
   self.per_page = 5

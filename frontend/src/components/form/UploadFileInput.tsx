@@ -21,6 +21,7 @@ interface IProps{
   label: string;
   placeholder: string;
   accept: string; // can be audio/*, image/*, video/*
+  maxFileSize: string;
 }
 
 
@@ -29,14 +30,26 @@ class UploadFileInput extends React.Component<IProps, {}> {
   private uppy: any;
   public constructor(props: IProps) {
     super(props);
+    const { accept, maxFileSize } = this.props;
     this.uppy = Uppy({
-      restrictions: { maxNumberOfFiles: 5 },
+      restrictions: {
+        maxNumberOfFiles: 1,
+        maxFileSize,
+        allowedFileTypes: [accept]
+       },
       autoProceed: true,
+      locale: {
+        strings: {
+          exceedsSize: 'You must upgrade your acocount to upload files larger than',
+          youCanOnlyUploadFileTypes: 'You can only upload: %{types}',
+        }
+      }
     });
 
     this.uppy.use(AwsS3Multipart, {
       companionUrl: 'http://localhost:3001', // will call `/s3/multipart/*` endpoints on your app
     });
+
 
     this.uppy.on('upload-success', (file: any, data: any) => {
 

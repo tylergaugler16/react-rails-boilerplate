@@ -5,8 +5,11 @@ import UploadFileInput from "components/form/UploadFileInput";
 import { required } from "components/form/validations";
 import { Field } from "formik";
 
+import { User } from "types";
+
 interface IProps {
   match?: any;
+  currentUser: User;
 }
 
 class AudioDataFields extends React.Component<IProps, {}> {
@@ -15,6 +18,7 @@ class AudioDataFields extends React.Component<IProps, {}> {
   }
 
   public render() {
+    const { currentUser } = this.props;
     return (
       <React.Fragment>
         <div className="columns is-gapless is-centered">
@@ -54,6 +58,7 @@ class AudioDataFields extends React.Component<IProps, {}> {
               name="file_upload.data"
               label="Upload File"
               accept="audio/*"
+              maxFileSize={currentUser.maxAllowedFileSize}
               component={UploadFileInput}
               validate={required}
             />

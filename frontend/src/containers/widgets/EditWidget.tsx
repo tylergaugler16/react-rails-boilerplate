@@ -61,6 +61,7 @@ class EditWidget extends React.Component<IProps, {}> {
           initialValues={{ widgetId: widget.id }}
           successAlert={successAlert}
           errorAlert={errorAlert}
+          currentUser={currentUser}
         />
         <ListWidgetDataWrapper
           widgetType={widget.dataType}

@@ -4,6 +4,7 @@ export type User = {
   firstName: string;
   fullName: string;
   lastName: string;
+  maxAllowedFileSize: string;
 } ;
 export type Workspace = {
   id: string;

@@ -7,14 +7,14 @@ import HiddenInput from "components/form/HiddenInput";
 
 import AudioDataFields from "containers/widget_data/AudioDataFields";
 
-
-// import { Widget } from "types";
+import { User } from "types";
 
 interface IProps {
   widgetType: string;
   initialValues: any;
   successAlert: (message: string, redirectUrl?: string) => void;
   errorAlert: (message: string, redirectUrl?: string) => void;
+  currentUser: User;
 }
 interface IState {
   initialValues: any;
@@ -64,10 +64,10 @@ class AddWidgetContentForm extends React.Component<IProps, IState> {
   }
 
   private getWidgetDataFields(){
-    const {widgetType} = this.props;
+    const { widgetType, currentUser } = this.props;
     switch(widgetType){
       case "Audio":
-        return <AudioDataFields />
+        return <AudioDataFields currentUser={currentUser} />
       default:
         return null;
     }

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_13_033042) do
+ActiveRecord::Schema.define(version: 2019_05_14_032136) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,8 @@ ActiveRecord::Schema.define(version: 2019_05_13_033042) do
     t.datetime "updated_at", null: false
     t.string "theme"
     t.string "series"
+    t.bigint "file_upload_id"
+    t.index ["file_upload_id"], name: "index_audio_data_on_file_upload_id"
   end
 
   create_table "auth_providers", force: :cascade do |t|
@@ -89,6 +91,7 @@ ActiveRecord::Schema.define(version: 2019_05_13_033042) do
     t.index ["owner_id"], name: "index_workspaces_on_owner_id"
   end
 
+  add_foreign_key "audio_data", "file_uploads"
   add_foreign_key "widget_data", "widgets"
   add_foreign_key "widgets", "workspaces"
   add_foreign_key "workspace_memberships", "users"

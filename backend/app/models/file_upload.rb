@@ -18,4 +18,8 @@ class FileUpload < ApplicationRecord
     detail.id
   end
 
+  def file_size
+    detail.metadata["size"]
+  end
+
 end
