@@ -1,15 +1,8 @@
-# Rails-React-TypeScript-Docker Example
+# Widgetly
 
-## TL;DR
+## *Easily add meaningful content to your website*
+____
 
-**Here is an example application with the following modern web technology stacks. With this boilerplate, you can easily start to build your own app.**
-
-- [Ruby](https://www.ruby-lang.org/en/) 2.6.0
-- [Rails](https://rubyonrails.org/) 5.2.2
-- [React.js](https://reactjs.org/) 16.7.0
-- [TypeScript](https://www.typescriptlang.org/) 3.2.2
-- [Docker](https://docs.docker.com/)
-- [PostgreSQL](https://www.postgresql.org/)
 
 ## Run Application
 
@@ -48,16 +41,6 @@ To setup cloudFont this might be what i [need](https://medium.com/@omgwtfmarc/de
 
 When deploying to heroku, use this: [git subtree push --prefix backend heroku master;](https://coderwall.com/p/ssxp5q/heroku-deployment-without-the-app-being-at-the-repo-root-in-a-subfolder)
 
-
-## Further Details
-
-### Backend
-
-The combination, Rails + PostgreSQL + Docker Compose, is just a result I followed [Docker Compose's official instruction](https://docs.docker.com/compose/rails/).
-
-### Frontend
-
-Bootstrapped with [create-react-app-typescript](https://github.com/wmonk/create-react-app-typescript).
 
 
 ## TO DO

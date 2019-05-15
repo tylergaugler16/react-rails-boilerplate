@@ -8,7 +8,7 @@
 * Date columns: suffix with `_date`.
 * Datetime columns suffix with: `_datetime`.
 * Index columns prefixed with `idx_`.
-* Don't use acronyms. Example: `amount, category` 👍 , 'amt, catg' 👎.
+* Don't use acronyms. Example: `amount, category` 👍 , `amt, catg` 👎.
 * Use Audit Columns
  * `insert_dt` - type `DATETIME` - time when the user row was inserted. (use `NOW()`).
  * `insert_user_id` - type `INT` - a user(if logged in) who inserted the row(-1 as default used for when someone is not logged in/manually updated in the console, etc).
