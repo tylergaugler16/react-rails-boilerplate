@@ -1,4 +1,6 @@
 import * as React from 'react';
+import { apiUrl } from "utils/apiUtil";
+
 import { Dashboard as DashboardComponent} from '@uppy/react';
 const Uppy = require('@uppy/core');
 const AwsS3Multipart = require("@uppy/aws-s3-multipart");
@@ -45,9 +47,8 @@ class UploadFileInput extends React.Component<IProps, {}> {
         }
       }
     });
-
     this.uppy.use(AwsS3Multipart, {
-      companionUrl: 'http://localhost:3001', // will call `/s3/multipart/*` endpoints on your app
+      companionUrl: apiUrl, // will call `/s3/multipart/*` endpoints on your app
     });
 
 
