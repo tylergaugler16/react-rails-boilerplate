@@ -2,7 +2,7 @@ import * as React from "react";
 import Home from "containers/landing_pages/Home";
 import Settings from "containers/users/Settings";
 import UserIsAuthenticated from "components/UserIsAuthenticated";
-import Header from "containers/layouts/Header";
+
 import WithCurrentUser from "queries/currentUser";
 import Login from "containers/landing_pages/Login";
 import SignUp from "containers/landing_pages/Signup";
@@ -14,9 +14,14 @@ import ShowWidget from "containers/widgets/ShowWidget";
 import NewWidget from "containers/widgets/NewWidget";
 import EditWidgetWrapper from "containers/widgets/EditWidgetWrapper";
 
+import EmbedWidgetWrapper from "containers/widgets/EmbedWidgetWrapper";
 
 
-import { Route } from "react-router-dom";
+import MainLayout from "containers/layouts/MainLayout";
+import EmbedLayout from "containers/layouts/EmbedLayout";
+
+
+import { Route, Switch } from "react-router-dom";
 import { User } from "types";
 import CurrentUserContext from "contexts/currentUser";
 
@@ -56,75 +61,73 @@ class CustomRouter extends React.Component<IProps, {}> {
       currentUser,
       currentUserIsLoading
     };
+    const AppRoute = ({ component: Component, layout: Layout, ...rest}: any) => (
+      <Route exact={true} {...defaultProps} {...rest} render={props => (
+        <Layout >
+          <Component  {...props}/>
+        </Layout>
+      )} />
+    )
     return (
       <React.Fragment>
       <CurrentUserContext.Provider value={{currentUser, currentUserIsLoading}}>
-        <Header {...defaultProps} />
-        <div className="main-content">
-          <Route
-            exact={true}
-            path="/"
-            render={(props: any) => <Home {...defaultProps} />}
-          />
-          <Route
-            exact={true}
-            path="/login"
-            render={(props: any) => <Login {...defaultProps} />}
-          />
-          <Route
-            exact={true}
-            path="/signup"
-            render={(props: any) => <SignUp {...defaultProps} />}
-          />
-          <Route
-            exact={true}
-            path="/test"
-            render={(props: any) => <Test {...defaultProps} />}
-          />
-          <Route
-            exact={true}
-            path="/users/login"
-            render={(props: any) => <SignupAndLoginWrapper {...defaultProps} currentView="login" />}
-          />
-          <Route
-            exact={true}
-            path="/users/signup"
-            render={(props: any) => <SignupAndLoginWrapper {...defaultProps} currentView="signup" />}
-          />
+      <div className="main-content">
+
+      <Switch>
+
+        <AppRoute exact path="/embed/widget" layout={EmbedLayout} component={EmbedWidgetWrapper}/>
+
+        <AppRoute exact path="/" layout={MainLayout} component={Home} />
+        <AppRoute exact path="/login" layout={MainLayout} component={Login}/>
+        <AppRoute exact path="/signup" layout={MainLayout} component={SignUp} />
+        <AppRoute exact path="/test" layout={MainLayout} component={Test} />
+        <AppRoute exact path="/users/login" layout={MainLayout} component={SignupAndLoginWrapper} currentView="login"/>
+        <AppRoute exact path="/users/signup" layout={MainLayout} component={SignupAndLoginWrapper}  currentView="signup"/>
 
 
-          <Route
-            exact={true}
-            path="/settings"
-            component={this.userIsAuthenticated(Settings)}
-            {...defaultProps}
-          />
-          <Route
-            exact={true}
-            path="/workspace/:workspace_id"
-            component={this.userIsAuthenticated(ShowWorkspace)}
-            {...defaultProps}
-          />
-          <Route
-            exact={true}
-            path="/workspace/:workspace_id/widget/new"
-            component={this.userIsAuthenticated(NewWidget)}
-            {...defaultProps}
-          />
-          <Route
-            exact={true}
+        <AppRoute
+         exact
+         path="/settings"
+         layout={MainLayout}
+         component={this.userIsAuthenticated(Settings)}  />
+
+         <AppRoute
+          exact
+          path="/workspace/:workspace_id"
+          layout={MainLayout}
+          component={this.userIsAuthenticated(ShowWorkspace)}/>
+
+          <AppRoute
+           exact
+           path="/workspace/:workspace_id/widget/new"
+           layout={MainLayout}
+           component={this.userIsAuthenticated(NewWidget)} />
+
+           <AppRoute
+            exact
             path="/workspace/:workspace_id/widget/:widget_id"
-            component={this.userIsAuthenticated(ShowWidget)}
-            {...defaultProps}
-          />
-          <Route
-            exact={true}
-            path="/workspace/:workspace_id/widget/:widget_id/edit"
-            component={this.userIsAuthenticated(EditWidgetWrapper)}
-            {...defaultProps}
-          />
+            layout={MainLayout}
+            component={this.userIsAuthenticated(ShowWidget)} />
 
-        </div>
+            <AppRoute
+             exact
+             path="/workspace/:workspace_id/widget/:widget_id/edit"
+             layout={MainLayout}
+             component={this.userIsAuthenticated(EditWidgetWrapper)}/>
+
+
+
+</Switch>
+
+
+          </div>
+
+
+
+
+
+
+
         </CurrentUserContext.Provider>
       </React.Fragment>
     );
