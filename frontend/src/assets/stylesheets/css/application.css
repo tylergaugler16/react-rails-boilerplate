@@ -7325,299 +7325,6 @@ label.panel-block {
 .Toastify__slide-exit--bottom-center {
   animation-name: Toastify__slideOutDown; }
 
-.field__input {
-  background-color: transparent;
-  border-radius: 0;
-  border: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  font-family: inherit;
-  font-size: 1em; }
-
-.field__input:focus::-webkit-input-placeholder {
-  color: #CAC4CE; }
-
-.field__input:focus::-moz-placeholder {
-  color: #CAC4CE;
-  opacity: 1; }
-
-.a-field {
-  display: inline-block; }
-
-.a-field__input {
-  display: block;
-  box-sizing: border-box;
-  width: 100%; }
-
-.a-field__input:focus {
-  outline: none; }
-
-.a-field {
-  --uiFieldHeight: var(--fieldHeight, 40px);
-  --uiFieldBorderWidth: var(--fieldBorderWidth, 2px);
-  --uiFieldBorderColor: var(--fieldBorderColor);
-  --uiFieldFontSize: var(--fieldFontSize, 14px);
-  --uiFieldHintFontSize: var(--fieldHintFontSize, 14px);
-  --uiFieldPaddingRight: var(--fieldPaddingRight, 15px);
-  --uiFieldPaddingBottom: var(--fieldPaddingBottom, 15px);
-  --uiFieldPaddingLeft: var(--fieldPaddingLeft, 15px);
-  position: relative;
-  box-sizing: border-box;
-  font-size: var(--uiFieldFontSize);
-  padding-top: 1em;
-  width: 100%; }
-
-.a-field .a-field__input {
-  height: var(--uiFieldHeight);
-  padding: 0 var(--uiFieldPaddingRight) 0 5px;
-  border-bottom: var(--uiFieldBorderWidth) solid var(--uiFieldBorderColor); }
-
-.a-field .a-field__input::-webkit-input-placeholder {
-  opacity: 0;
-  transition: opacity .2s ease-out; }
-
-.a-field .a-field__input::-moz-placeholder {
-  opacity: 0;
-  transition: opacity .2s ease-out; }
-
-.a-field .a-field__input:not(:placeholder-shown) ~ .a-field__label-wrap .a-field__label {
-  opacity: 0;
-  bottom: var(--uiFieldPaddingBottom); }
-
-.a-field .a-field__input:focus::-webkit-input-placeholder {
-  opacity: 1;
-  transition-delay: .2s; }
-
-.a-field .a-field__input:focus::-moz-placeholder {
-  opacity: 1;
-  transition-delay: .2s; }
-
-.a-field .a-field__label-wrap {
-  box-sizing: border-box;
-  width: 100%;
-  height: var(--uiFieldHeight);
-  pointer-events: none;
-  cursor: text;
-  position: absolute;
-  bottom: 0;
-  left: 0; }
-
-.a-field .a-field__label {
-  font-size: 14px;
-  position: absolute;
-  left: 5px;
-  bottom: calc(50% - .5em);
-  line-height: 1;
-  font-size: var(--uiFieldHintFontSize);
-  pointer-events: none;
-  transition: bottom 0.2s cubic-bezier(0.9, -0.15, 0.1, 1.15), opacity 0.2s ease-out;
-  will-change: bottom, opacity; }
-
-.a-field .a-field__input:focus ~ .a-field__label-wrap .a-field__label {
-  opacity: 1;
-  bottom: var(--uiFieldHeight); }
-
-/* a-field_a2 */
-.a-field_a2 .a-field__label-wrap:after {
-  content: "";
-  box-sizing: border-box;
-  width: 0;
-  height: var(--uiFieldBorderWidth);
-  background-color: #725AC1;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  will-change: width;
-  transition: width .285s ease-out; }
-
-.a-field_a2 .a-field__input:focus ~ .a-field__label-wrap:after {
-  width: 100%; }
-
-.field {
-  --fieldBorderColor: #725ac196; }
-
-.field:not(:last-child) {
-  margin-bottom: 5px; }
-
-.signup-and-login-wrapper {
-  max-width: 1200px;
-  width: 60vw;
-  min-width: 900px;
-  min-height: 500px;
-  background-color: #ffffff;
-  margin: 60px auto;
-  display: flex;
-  position: relative;
-  overflow: hidden;
-  -webkit-box-shadow: 5px 6px 5px -3px #656466;
-  -moz-box-shadow: 5px 6px 5px -3px #656466;
-  box-shadow: 5px 6px 5px -3px #656466; }
-  .signup-and-login-wrapper .purple-container {
-    position: absolute;
-    width: 50%;
-    height: 100%;
-    background-color: #725AC1;
-    top: 0;
-    left: 0;
-    -webkit-transition: left 1.2s cubic-bezier(0.58, 0, 0.33, 1);
-    /* older webkit */
-    -webkit-transition: left 1.2s cubic-bezier(0.58, -0.4, 0.33, 1.41);
-    -moz-transition: left 1.2s cubic-bezier(0.58, -0.4, 0.33, 1.41);
-    -o-transition: left 1.2s cubic-bezier(0.58, -0.4, 0.33, 1.41);
-    transition: left 1.2s cubic-bezier(0.58, -0.4, 0.33, 1.41);
-    /* custom */ }
-    .signup-and-login-wrapper .purple-container.login-is-active {
-      left: 50%; }
-    .signup-and-login-wrapper .purple-container.signup-is-active {
-      left: 0; }
-    .signup-and-login-wrapper .purple-container .signup-and-login-inactive-container {
-      height: 100%;
-      width: 100%;
-      position: relative;
-      width: 90%;
-      position: absolute;
-      min-height: 200px;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%); }
-      .signup-and-login-wrapper .purple-container .signup-and-login-inactive-container .signup-view-content, .signup-and-login-wrapper .purple-container .signup-and-login-inactive-container .login-view-content {
-        width: 70%;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        top: 45%; }
-        .signup-and-login-wrapper .purple-container .signup-and-login-inactive-container .signup-view-content h1, .signup-and-login-wrapper .purple-container .signup-and-login-inactive-container .login-view-content h1 {
-          margin-bottom: 25px;
-          text-align: center; }
-        .signup-and-login-wrapper .purple-container .signup-and-login-inactive-container .signup-view-content p, .signup-and-login-wrapper .purple-container .signup-and-login-inactive-container .login-view-content p {
-          text-align: center;
-          margin-bottom: 20px; }
-        .signup-and-login-wrapper .purple-container .signup-and-login-inactive-container .signup-view-content .button-container, .signup-and-login-wrapper .purple-container .signup-and-login-inactive-container .login-view-content .button-container {
-          position: relative; }
-          .signup-and-login-wrapper .purple-container .signup-and-login-inactive-container .signup-view-content .button-container button, .signup-and-login-wrapper .purple-container .signup-and-login-inactive-container .login-view-content .button-container button {
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%); }
-        .signup-and-login-wrapper .purple-container .signup-and-login-inactive-container .signup-view-content.should-hide p, .signup-and-login-wrapper .purple-container .signup-and-login-inactive-container .signup-view-content.should-hide h1, .signup-and-login-wrapper .purple-container .signup-and-login-inactive-container .login-view-content.should-hide p, .signup-and-login-wrapper .purple-container .signup-and-login-inactive-container .login-view-content.should-hide h1 {
-          opacity: 0;
-          transition: opacity 0.6s ease-in; }
-        .signup-and-login-wrapper .purple-container .signup-and-login-inactive-container .signup-view-content.should-hide button, .signup-and-login-wrapper .purple-container .signup-and-login-inactive-container .login-view-content.should-hide button {
-          opacity: 0;
-          top: 200px;
-          transition: opacity 0.6s ease-in, top 0.1s 0.6s; }
-        .signup-and-login-wrapper .purple-container .signup-and-login-inactive-container .signup-view-content.should-show p, .signup-and-login-wrapper .purple-container .signup-and-login-inactive-container .signup-view-content.should-show h1, .signup-and-login-wrapper .purple-container .signup-and-login-inactive-container .login-view-content.should-show p, .signup-and-login-wrapper .purple-container .signup-and-login-inactive-container .login-view-content.should-show h1 {
-          opacity: 1;
-          transition: opacity 0.6s 0.4s ease-in; }
-        .signup-and-login-wrapper .purple-container .signup-and-login-inactive-container .signup-view-content.should-show button, .signup-and-login-wrapper .purple-container .signup-and-login-inactive-container .login-view-content.should-show button {
-          opacity: 1;
-          transition: opacity 0.6s 0.4s ease-in; }
-  .signup-and-login-wrapper .login-container {
-    width: 50%;
-    position: relative; }
-    .signup-and-login-wrapper .login-container .custom-google-button {
-      margin: 20px auto 0px auto; }
-      .signup-and-login-wrapper .login-container .custom-google-button i {
-        margin-right: 10px; }
-    .signup-and-login-wrapper .login-container form {
-      width: 100%;
-      margin: 0 auto;
-      position: absolute;
-      transition: opacity 0.6s 0.6s, right 1s;
-      right: 0;
-      opacity: 1;
-      top: 50px; }
-      .signup-and-login-wrapper .login-container form button[type="submit"] {
-        margin-top: 20px; }
-      .signup-and-login-wrapper .login-container form .field-input {
-        width: 80%;
-        margin: 0 auto; }
-      .signup-and-login-wrapper .login-container form .columns.is-gapless:not(:last-child) {
-        margin-bottom: 15px; }
-      .signup-and-login-wrapper .login-container form .field:not(:last-child) {
-        margin-bottom: 5px; }
-    .signup-and-login-wrapper .login-container.is-inactive form {
-      opacity: 0;
-      right: -100%;
-      transition: opacity 0.8s 0.2s, right 1s 0.3s ease-in; }
-    .signup-and-login-wrapper .login-container .break-container {
-      width: 80%;
-      color: #F7F7F7;
-      margin: 20px auto 0px auto !important; }
-      .signup-and-login-wrapper .login-container .break-container .line-break {
-        width: 100%;
-        height: 2px;
-        background-color: #F7F7F7; }
-      .signup-and-login-wrapper .login-container .break-container .column.is-narrow {
-        margin: 0px 10px; }
-  .signup-and-login-wrapper .signup-container {
-    width: 50%;
-    position: relative; }
-    .signup-and-login-wrapper .signup-container form {
-      width: 100%;
-      margin: 0 auto;
-      position: absolute;
-      transition: opacity 0.6s 0.6s, left 1s;
-      left: 0;
-      opacity: 1;
-      top: 25px; }
-      .signup-and-login-wrapper .signup-container form button[type="submit"] {
-        margin-top: 20px; }
-      .signup-and-login-wrapper .signup-container form .columns.is-gapless:not(:last-child) {
-        margin-bottom: 15px; }
-      .signup-and-login-wrapper .signup-container form .field:not(:last-child) {
-        margin-bottom: 5px; }
-      .signup-and-login-wrapper .signup-container form .field-input {
-        width: 80%;
-        margin: 0 auto; }
-    .signup-and-login-wrapper .signup-container.is-inactive form {
-      opacity: 0;
-      left: -100%;
-      transition: opacity 0.8s 0.2s, left 1s 0.3s ease-in;
-      pointer-events: none; }
-
-input:focus, select:focus {
-  outline: none; }
-
-.select-input select {
-  width: 100%;
-  display: block;
-  border: 1px solid #725AC1;
-  padding: 10px 8px;
-  background-color: #ffffff;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none; }
-  .select-input select:focus {
-    outline: #8D86C9; }
-
-.select-input label {
-  text-align: left; }
-
-.color-picker-display {
-  width: 100%;
-  height: 40px;
-  border: 2px solid #725ac196;
-  display: flex;
-  align-items: center; }
-  .color-picker-display .display-selected-color {
-    width: 50px;
-    border-radius: 3px; }
-    .color-picker-display .display-selected-color .display-color-container {
-      border: 1px solid #F7F7F7;
-      width: 80%;
-      margin: 0 auto;
-      height: 20px; }
-  .color-picker-display .selected-color-value {
-    flex: 1; }
-
-.form-error {
-  font-size: 12px;
-  color: #bb2124;
-  text-align: left; }
-
 /**
  * React Select
  * ============
@@ -9310,7 +9017,7 @@ input:focus, select:focus {
   /* no !important */
   max-height: 100%;
   /* no !important */
-  min-height: 450px;
+  min-height: 300px;
   outline: none;
   border: 1px solid #eaeaea;
   border-radius: 5px; }
@@ -9322,7 +9029,7 @@ input:focus, select:focus {
   .uppy-Dashboard-inner {
     width: 750px;
     /* no !important */
-    height: 550px;
+    height: 300px;
     /* no !important */ } }
 
 .uppy-Dashboard--modal .uppy-Dashboard-inner {
@@ -10380,6 +10087,325 @@ button.uppy-DashboardItem-progressIndicator {
   display: inline-block;
   vertical-align: middle;
   width: 78%; }
+
+.field__input {
+  background-color: transparent;
+  border-radius: 0;
+  border: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  font-family: inherit;
+  font-size: 1em; }
+
+.field__input:focus::-webkit-input-placeholder {
+  color: #CAC4CE; }
+
+.field__input:focus::-moz-placeholder {
+  color: #CAC4CE;
+  opacity: 1; }
+
+.a-field {
+  display: inline-block; }
+
+.a-field__input {
+  display: block;
+  box-sizing: border-box;
+  width: 100%; }
+
+.a-field__input:focus {
+  outline: none; }
+
+.a-field {
+  --uiFieldHeight: var(--fieldHeight, 40px);
+  --uiFieldBorderWidth: var(--fieldBorderWidth, 2px);
+  --uiFieldBorderColor: var(--fieldBorderColor);
+  --uiFieldFontSize: var(--fieldFontSize, 14px);
+  --uiFieldHintFontSize: var(--fieldHintFontSize, 14px);
+  --uiFieldPaddingRight: var(--fieldPaddingRight, 15px);
+  --uiFieldPaddingBottom: var(--fieldPaddingBottom, 15px);
+  --uiFieldPaddingLeft: var(--fieldPaddingLeft, 15px);
+  position: relative;
+  box-sizing: border-box;
+  font-size: var(--uiFieldFontSize);
+  padding-top: 1em;
+  width: 100%; }
+
+.a-field .a-field__input {
+  height: var(--uiFieldHeight);
+  padding: 0 var(--uiFieldPaddingRight) 0 5px;
+  border-bottom: var(--uiFieldBorderWidth) solid var(--uiFieldBorderColor); }
+
+.a-field .a-field__input::-webkit-input-placeholder {
+  opacity: 0;
+  transition: opacity .2s ease-out; }
+
+.a-field .a-field__input::-moz-placeholder {
+  opacity: 0;
+  transition: opacity .2s ease-out; }
+
+.a-field .a-field__input:not(:placeholder-shown) ~ .a-field__label-wrap .a-field__label {
+  opacity: 0;
+  bottom: var(--uiFieldPaddingBottom); }
+
+.a-field .a-field__input:focus::-webkit-input-placeholder {
+  opacity: 1;
+  transition-delay: .2s; }
+
+.a-field .a-field__input:focus::-moz-placeholder {
+  opacity: 1;
+  transition-delay: .2s; }
+
+.a-field .a-field__label-wrap {
+  box-sizing: border-box;
+  width: 100%;
+  height: var(--uiFieldHeight);
+  pointer-events: none;
+  cursor: text;
+  position: absolute;
+  bottom: 0;
+  left: 0; }
+
+.a-field .a-field__label {
+  font-size: 14px;
+  position: absolute;
+  left: 5px;
+  bottom: calc(50% - .5em);
+  line-height: 1;
+  font-size: var(--uiFieldHintFontSize);
+  pointer-events: none;
+  transition: bottom 0.2s cubic-bezier(0.9, -0.15, 0.1, 1.15), opacity 0.2s ease-out;
+  will-change: bottom, opacity; }
+
+.a-field .a-field__input:focus ~ .a-field__label-wrap .a-field__label {
+  opacity: 1;
+  bottom: var(--uiFieldHeight); }
+
+/* a-field_a2 */
+.a-field_a2 .a-field__label-wrap:after {
+  content: "";
+  box-sizing: border-box;
+  width: 0;
+  height: var(--uiFieldBorderWidth);
+  background-color: #725AC1;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  will-change: width;
+  transition: width .285s ease-out; }
+
+.a-field_a2 .a-field__input:focus ~ .a-field__label-wrap:after {
+  width: 100%; }
+
+.field {
+  --fieldBorderColor: #725ac196; }
+
+.field:not(:last-child) {
+  margin-bottom: 5px; }
+
+.signup-and-login-wrapper {
+  max-width: 1200px;
+  width: 60vw;
+  min-width: 900px;
+  min-height: 500px;
+  background-color: #ffffff;
+  margin: 60px auto;
+  display: flex;
+  position: relative;
+  overflow: hidden;
+  -webkit-box-shadow: 5px 6px 5px -3px #656466;
+  -moz-box-shadow: 5px 6px 5px -3px #656466;
+  box-shadow: 5px 6px 5px -3px #656466; }
+  .signup-and-login-wrapper .purple-container {
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    background-color: #725AC1;
+    top: 0;
+    left: 0;
+    -webkit-transition: left 1.2s cubic-bezier(0.58, 0, 0.33, 1);
+    /* older webkit */
+    -webkit-transition: left 1.2s cubic-bezier(0.58, -0.4, 0.33, 1.41);
+    -moz-transition: left 1.2s cubic-bezier(0.58, -0.4, 0.33, 1.41);
+    -o-transition: left 1.2s cubic-bezier(0.58, -0.4, 0.33, 1.41);
+    transition: left 1.2s cubic-bezier(0.58, -0.4, 0.33, 1.41);
+    /* custom */ }
+    .signup-and-login-wrapper .purple-container.login-is-active {
+      left: 50%; }
+    .signup-and-login-wrapper .purple-container.signup-is-active {
+      left: 0; }
+    .signup-and-login-wrapper .purple-container .signup-and-login-inactive-container {
+      height: 100%;
+      width: 100%;
+      position: relative;
+      width: 90%;
+      position: absolute;
+      min-height: 200px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%); }
+      .signup-and-login-wrapper .purple-container .signup-and-login-inactive-container .signup-view-content, .signup-and-login-wrapper .purple-container .signup-and-login-inactive-container .login-view-content {
+        width: 70%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        top: 45%; }
+        .signup-and-login-wrapper .purple-container .signup-and-login-inactive-container .signup-view-content h1, .signup-and-login-wrapper .purple-container .signup-and-login-inactive-container .login-view-content h1 {
+          margin-bottom: 25px;
+          text-align: center; }
+        .signup-and-login-wrapper .purple-container .signup-and-login-inactive-container .signup-view-content p, .signup-and-login-wrapper .purple-container .signup-and-login-inactive-container .login-view-content p {
+          text-align: center;
+          margin-bottom: 20px; }
+        .signup-and-login-wrapper .purple-container .signup-and-login-inactive-container .signup-view-content .button-container, .signup-and-login-wrapper .purple-container .signup-and-login-inactive-container .login-view-content .button-container {
+          position: relative; }
+          .signup-and-login-wrapper .purple-container .signup-and-login-inactive-container .signup-view-content .button-container button, .signup-and-login-wrapper .purple-container .signup-and-login-inactive-container .login-view-content .button-container button {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%); }
+        .signup-and-login-wrapper .purple-container .signup-and-login-inactive-container .signup-view-content.should-hide p, .signup-and-login-wrapper .purple-container .signup-and-login-inactive-container .signup-view-content.should-hide h1, .signup-and-login-wrapper .purple-container .signup-and-login-inactive-container .login-view-content.should-hide p, .signup-and-login-wrapper .purple-container .signup-and-login-inactive-container .login-view-content.should-hide h1 {
+          opacity: 0;
+          transition: opacity 0.6s ease-in; }
+        .signup-and-login-wrapper .purple-container .signup-and-login-inactive-container .signup-view-content.should-hide button, .signup-and-login-wrapper .purple-container .signup-and-login-inactive-container .login-view-content.should-hide button {
+          opacity: 0;
+          top: 200px;
+          transition: opacity 0.6s ease-in, top 0.1s 0.6s; }
+        .signup-and-login-wrapper .purple-container .signup-and-login-inactive-container .signup-view-content.should-show p, .signup-and-login-wrapper .purple-container .signup-and-login-inactive-container .signup-view-content.should-show h1, .signup-and-login-wrapper .purple-container .signup-and-login-inactive-container .login-view-content.should-show p, .signup-and-login-wrapper .purple-container .signup-and-login-inactive-container .login-view-content.should-show h1 {
+          opacity: 1;
+          transition: opacity 0.6s 0.4s ease-in; }
+        .signup-and-login-wrapper .purple-container .signup-and-login-inactive-container .signup-view-content.should-show button, .signup-and-login-wrapper .purple-container .signup-and-login-inactive-container .login-view-content.should-show button {
+          opacity: 1;
+          transition: opacity 0.6s 0.4s ease-in; }
+  .signup-and-login-wrapper .login-container {
+    width: 50%;
+    position: relative; }
+    .signup-and-login-wrapper .login-container .custom-google-button {
+      margin: 20px auto 0px auto; }
+      .signup-and-login-wrapper .login-container .custom-google-button i {
+        margin-right: 10px; }
+    .signup-and-login-wrapper .login-container form {
+      width: 100%;
+      margin: 0 auto;
+      position: absolute;
+      transition: opacity 0.6s 0.6s, right 1s;
+      right: 0;
+      opacity: 1;
+      top: 50px; }
+      .signup-and-login-wrapper .login-container form button[type="submit"] {
+        margin-top: 20px; }
+      .signup-and-login-wrapper .login-container form .field-input {
+        width: 80%;
+        margin: 0 auto; }
+      .signup-and-login-wrapper .login-container form .columns.is-gapless:not(:last-child) {
+        margin-bottom: 15px; }
+      .signup-and-login-wrapper .login-container form .field:not(:last-child) {
+        margin-bottom: 5px; }
+    .signup-and-login-wrapper .login-container.is-inactive form {
+      opacity: 0;
+      right: -100%;
+      transition: opacity 0.8s 0.2s, right 1s 0.3s ease-in; }
+    .signup-and-login-wrapper .login-container .break-container {
+      width: 80%;
+      color: #F7F7F7;
+      margin: 20px auto 0px auto !important; }
+      .signup-and-login-wrapper .login-container .break-container .line-break {
+        width: 100%;
+        height: 2px;
+        background-color: #F7F7F7; }
+      .signup-and-login-wrapper .login-container .break-container .column.is-narrow {
+        margin: 0px 10px; }
+  .signup-and-login-wrapper .signup-container {
+    width: 50%;
+    position: relative; }
+    .signup-and-login-wrapper .signup-container form {
+      width: 100%;
+      margin: 0 auto;
+      position: absolute;
+      transition: opacity 0.6s 0.6s, left 1s;
+      left: 0;
+      opacity: 1;
+      top: 25px; }
+      .signup-and-login-wrapper .signup-container form button[type="submit"] {
+        margin-top: 20px; }
+      .signup-and-login-wrapper .signup-container form .columns.is-gapless:not(:last-child) {
+        margin-bottom: 15px; }
+      .signup-and-login-wrapper .signup-container form .field:not(:last-child) {
+        margin-bottom: 5px; }
+      .signup-and-login-wrapper .signup-container form .field-input {
+        width: 80%;
+        margin: 0 auto; }
+    .signup-and-login-wrapper .signup-container.is-inactive form {
+      opacity: 0;
+      left: -100%;
+      transition: opacity 0.8s 0.2s, left 1s 0.3s ease-in;
+      pointer-events: none; }
+
+input:focus, select:focus {
+  outline: none; }
+
+.select-input select {
+  width: 100%;
+  display: block;
+  border: 1px solid #725AC1;
+  padding: 10px 8px;
+  background-color: #ffffff;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none; }
+  .select-input select:focus {
+    outline: #8D86C9; }
+
+.select-input label {
+  text-align: left; }
+
+.color-picker-display {
+  width: 100%;
+  height: 40px;
+  border: 2px solid #725ac196;
+  display: flex;
+  align-items: center; }
+  .color-picker-display .display-selected-color {
+    width: 50px;
+    border-radius: 3px; }
+    .color-picker-display .display-selected-color .display-color-container {
+      border: 1px solid #F7F7F7;
+      width: 80%;
+      margin: 0 auto;
+      height: 20px; }
+  .color-picker-display .selected-color-value {
+    flex: 1; }
+
+.block-picker {
+  position: absolute !important;
+  z-index: 20; }
+
+.form-error {
+  font-size: 12px;
+  color: #bb2124;
+  text-align: left; }
+
+.audio-data-table td, .audio-data-table th {
+  height: 50px;
+  vertical-align: middle; }
+
+.audio-data-table tr:nth-child(even) {
+  background-color: #ffffff; }
+
+.audio-data-table tr td:first-child {
+  padding-left: 10px; }
+
+.audio-data-table tr td:last-child {
+  padding-right: 10px; }
+
+.edit-widget-container .data-display-container {
+  padding: 30px 15px;
+  background-color: gray; }
+  .edit-widget-container .data-display-container .list-widget-data-wrapper {
+    padding: 10px;
+    background-color: #F7F7F7;
+    width: 80%;
+    margin: 0 auto; }
 
 html {
   background-color: #F7F7F7; }

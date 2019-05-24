@@ -76,17 +76,17 @@ class UploadFileInput extends React.Component<IProps, {}> {
 
 
   public render() {
-    const{field: { name }, label} = this.props;
+    const{field: { name }} = this.props;
 
     return (
       <div className="field-input">
       <input type="hidden" name={name} />
 
-      <label>{label}</label>
        <DashboardComponent
           uppy={this.uppy}
           inline={true}
           showProgressDetails={true}
+          height={300}
         />
         <ErrorMessage name={name} component={FormError} />
       </div>

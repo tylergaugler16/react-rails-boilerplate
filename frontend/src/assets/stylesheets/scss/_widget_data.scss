@@ -1,0 +1,15 @@
+.audio-data-table{
+  td, th{
+    height: 50px;
+    vertical-align: middle;
+  }
+  tr:nth-child(even){
+    background-color: $white;
+  }
+  tr td:first-child{
+    padding-left: 10px;
+  }
+  tr td:last-child{
+    padding-right: 10px;
+  }
+}

@@ -44,6 +44,10 @@ input:focus, select:focus {
     flex: 1;
   }
 }
+.block-picker{
+  position: absolute!important;
+  z-index: 20;
+}
 // form error styles
 .form-error{
   font-size: 12px;

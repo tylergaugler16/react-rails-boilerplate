@@ -50,6 +50,7 @@ When deploying to heroku, use this: [git subtree push --prefix backend heroku ma
 * https://developer.okta.com/blog/2018/09/18/simple-authentication-with-rails-and-omniauth
 * https://medium.com/@ajayramesh/social-login-with-omniauth-and-rails-5-0-ad2bbd2a998e
 * https://www.codementor.io/kristophmatthews/how-to-configure-your-first-rails-rest-api-du1084ym0
+* Add unique classNames to widgets, so if we want we can do real custom css
 
 ## Resources
 * really cool [input text animations](https://tympanus.net/Development/TextInputEffects/). The github is [here](https://github.com/codrops/TextInputEffects)

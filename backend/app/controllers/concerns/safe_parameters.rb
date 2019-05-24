@@ -11,7 +11,7 @@ module SafeParameters
 private
   class AudioDatumSafeParams
     def self.safe_params(params)
-      params.permit(:speaker, :theme, :series, :file_upload_id)
+      params.permit(:speaker, :theme, :series, :file_upload_id, :title)
     end
 
   end

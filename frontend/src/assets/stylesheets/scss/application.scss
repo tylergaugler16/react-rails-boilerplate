@@ -28,11 +28,14 @@ $accent-red: #EB5160;
   line-height: normal;
 }
 
+
+@import '_react-select';
+@import '_uppy';
 @import '_field_input_styles';
 @import '_authentication';
 @import '_form';
-@import '_react-select';
-@import '_uppy';
+@import '_widget_data';
+@import '_widget';
 
 
 

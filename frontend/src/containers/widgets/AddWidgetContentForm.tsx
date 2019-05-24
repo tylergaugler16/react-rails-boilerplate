@@ -29,6 +29,7 @@ class AddWidgetContentForm extends React.Component<IProps, IState> {
       theme: "",
       series: "",
       widget_id: undefined,
+      title: "",
       file_upload: {
         data: ""
       },

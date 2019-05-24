@@ -3,8 +3,11 @@ class AudioDatum < ApplicationRecord
   # before_destroy :destroy_aws_file #TODO needs to be tested
   belongs_to :file_upload
   accepts_nested_attributes_for :file_upload
+
+  # validates :title, presence: true
+
   # MP3, M4A, AAC, OGA validate these extens  ions
-  self.per_page = 5
+  self.per_page = 10
   # has_many :themes
   # before_save do
   #   if file_attachment_data? && file_attachment_data.cached?
@@ -17,7 +20,21 @@ class AudioDatum < ApplicationRecord
   # end
 
   def as_json(_options = {})
-    super(only: [:theme, :series, :id, :file_name, :s3_object_url, :file_size, :speaker])
+    super(only: [:theme, :series, :id, :speaker, :title],
+          methods: [:download_url, :display_name, :file_size],
+    )
+  end
+
+  def download_url
+    file_upload&.download_url
+  end
+  def display_name
+    file_upload&.display_name
+  end
+  def file_size
+    total_bytes = file_upload&.file_size
+    return unless total_bytes
+    FormatterService.bytes_to_pretty_string(total_bytes)
   end
 
   # def destroy_aws_file

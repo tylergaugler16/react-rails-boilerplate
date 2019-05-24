@@ -63,13 +63,16 @@ class EditWidget extends React.Component<IProps, {}> {
           errorAlert={errorAlert}
           currentUser={currentUser}
         />
-        <ListWidgetDataWrapper
-          widgetType={widget.dataType}
-          currentUser={currentUser}
-          workspaceId={workspaceId}
-          match={match}
-          location={location}
-        />
+        <div className="data-display-container">
+          <ListWidgetDataWrapper
+            widgetType={widget.dataType}
+            widget={widget}
+            currentUser={currentUser}
+            workspaceId={workspaceId}
+            match={match}
+            location={location}
+          />
+        </div>
       </div>
     );
   }

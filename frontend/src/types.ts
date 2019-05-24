@@ -15,15 +15,21 @@ export type Widget = {
   id: string;
   name: string;
   dataType: string;
+  primaryColor: string;
+  secondaryColor: string;
+  tertiaryColor: string;
 } ;
 export type WidgetDatum = {
   id: string;
-  fileName: string;
-  s3ObjectUrl: string;
   theme?: string;
   series?: string;
   speaker?: string;
+  downloadUrl?: string;
+  displayName?: string;
+  fileSize?: string;
+  title?: string;
 }
+
 
 // QUERIES
 

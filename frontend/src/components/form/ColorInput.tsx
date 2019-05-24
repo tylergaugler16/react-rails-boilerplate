@@ -46,6 +46,24 @@ class TextInput extends React.Component<IProps, IState> {
       form.setFieldValue(name, color.hex);
     };
 
+    const colorOptions = [
+      "#A63446",
+      "#ffffff",
+      "#393D3F",
+      "#242038",
+      "#F7F7F7",
+      "#2589BD",
+      "#F7CB15",
+      "#EDAE49",
+      "#D1495B",
+      "#F7F7F7",
+      "#003D5B",
+      "#EA8C55",
+      "#A167A5",
+      "#D3BCCC",
+      "#84BC9C"
+    ]
+
     return (
       <div className="field-input select-input">
         <label>{label}</label>
@@ -66,7 +84,7 @@ class TextInput extends React.Component<IProps, IState> {
 
           {this.state.isOpen ? (
             <ClickOutHandler onClickOut={this.closeColorPicker}>
-              <BlockPicker color={currentValue} onChange={handleChangeComplete} />
+              <BlockPicker color={currentValue} onChange={handleChangeComplete} colors={colorOptions}/>
             </ClickOutHandler>
           ) : null}
 

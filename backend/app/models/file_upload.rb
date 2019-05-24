@@ -1,6 +1,6 @@
 class FileUpload < ApplicationRecord
   include StorageUploader::Attachment.new(:detail)
-  has_one :audio_datum
+  has_one :audio_datum, required: false
 
   def display_name
     detail.original_filename

@@ -14,11 +14,20 @@ class AudioDatumRow extends React.Component<IProps, {}> {
     const { audioDatum } = this.props;
     return (
       <tr>
-        <td>{audioDatum.id}</td>
+        <td><span>{audioDatum.title}</span></td>
         <td>{audioDatum.series}</td>
         <td>{audioDatum.speaker}</td>
         <td>{audioDatum.theme}</td>
-        <td><a href={audioDatum.s3ObjectUrl} download>{audioDatum.s3ObjectUrl}</a></td>
+        <td>{audioDatum.fileSize}</td>
+        <td>
+          {
+            audioDatum.downloadUrl ?
+              <a href={audioDatum.downloadUrl}>Download</a>
+            :
+              null
+          }
+        </td>
+
       </tr>
     );
   }

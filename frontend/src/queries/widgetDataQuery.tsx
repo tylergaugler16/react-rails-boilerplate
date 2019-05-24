@@ -10,7 +10,7 @@ interface IProps {
   history?: any;
   location?: any;
   match?: any;
-}
+} 
 interface IState {
   data: WidgetDataQuery;
   queryIsLoading: boolean;

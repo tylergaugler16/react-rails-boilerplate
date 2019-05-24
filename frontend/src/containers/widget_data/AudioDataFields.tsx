@@ -24,6 +24,15 @@ class AudioDataFields extends React.Component<IProps, {}> {
         <div className="columns is-gapless is-centered">
           <div className="column is-4 ">
             <Field
+              name="title"
+              label="Title"
+              placeholder="How to.."
+              component={TextInput}
+              validate={required}
+            />
+          </div>
+          <div className="column is-4 ">
+            <Field
               name="speaker"
               label="Speaker"
               placeholder="Deb Dab"
@@ -31,6 +40,10 @@ class AudioDataFields extends React.Component<IProps, {}> {
               validate={required}
             />
           </div>
+
+
+        </div>
+        <div className="columns is-gapless is-centered">
           <div className="column is-4 ">
             <Field
               name="theme"
@@ -49,11 +62,10 @@ class AudioDataFields extends React.Component<IProps, {}> {
               validate={required}
             />
 
-
           </div>
         </div>
         <div className="columns is-gapless is-centered">
-          <div className="column is-12 ">
+          <div className="column is-4 has-text-centered">
             <Field
               name="file_upload.data"
               label="Upload File"

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_14_032136) do
+ActiveRecord::Schema.define(version: 2019_05_22_015324) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 2019_05_14_032136) do
     t.string "theme"
     t.string "series"
     t.bigint "file_upload_id"
+    t.string "title", null: false
     t.index ["file_upload_id"], name: "index_audio_data_on_file_upload_id"
   end
 
