@@ -1,8 +1,9 @@
 import * as React from "react";
 import withWidget from "queries/widgetQuery";
 import { Link } from "react-router-dom";
+import ListWidgetDataWrapper from "containers/widgets/ListWidgetDataWrapper";
 
-import { WidgetQuery } from "types";
+import { WidgetQuery, User } from "types";
 
 interface IProps {
   data: WidgetQuery;
@@ -10,6 +11,7 @@ interface IProps {
   history?: any;
   location?: any;
   queryIsLoading: boolean;
+  currentUser: User;
 }
 class ShowWidget extends React.Component<IProps, {}> {
   public constructor(props: IProps) {
@@ -18,10 +20,14 @@ class ShowWidget extends React.Component<IProps, {}> {
 
   public render() {
     const {
-      match: { params },
+      match,
+      location,
       data: { widget },
-      queryIsLoading
+      queryIsLoading,
+      currentUser
     } = this.props;
+
+    const { params } = match;
 
     if (queryIsLoading) {
       return "Loading...";
@@ -39,6 +45,16 @@ class ShowWidget extends React.Component<IProps, {}> {
         <h3>
           <Link to={editUrl}>Edit</Link>
         </h3>
+        <div className="data-display-container">
+          <ListWidgetDataWrapper
+            widgetType={widget.dataType}
+            widget={widget}
+            currentUser={currentUser}
+            workspaceId={workspaceId}
+            match={match}
+            location={location}
+          />
+        </div>
       </div>
     );
   }
