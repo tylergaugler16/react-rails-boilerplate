@@ -1,5 +1,4 @@
 import * as React from "react";
-import LoggedInHome from "containers/users/Home";
 
 import About from "containers/landing_pages/About";
 
@@ -19,20 +18,13 @@ class Home extends React.Component<IProps, {}> {
   }
 
   public render() {
-    const { currentUser } = this.props;
     return (
-      <React.Fragment>
-        {currentUser ? (
-          <LoggedInHome currentUser={currentUser} history={history} />
-        ) : (
-          <div className="App">
-            <header className="App-header">
-              <h1 className="App-title">Welcome to Widgetly</h1>
-            </header>
-            <About test="hello" />
-          </div>
-        )}
-      </React.Fragment>
+      <div className="App">
+        <header className="App-header">
+          <h1 className="App-title">Welcome to Widgetly</h1>
+        </header>
+        <About test="hello" />
+      </div>
     );
   }
 }

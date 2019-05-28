@@ -1,5 +1,6 @@
 import * as React from "react";
-import Home from "containers/landing_pages/Home";
+import LandingHome from "containers/landing_pages/Home";
+import LoggedInHome from "containers/users/Home";
 import Settings from "containers/users/Settings";
 import UserIsAuthenticated from "components/UserIsAuthenticated";
 
@@ -18,6 +19,7 @@ import EmbedWidgetWrapper from "containers/widgets/EmbedWidgetWrapper";
 
 import MainLayout from "containers/layouts/MainLayout";
 import EmbedLayout from "containers/layouts/EmbedLayout";
+import LandingLayout from "containers/layouts/LandingLayout";
 
 import { Route, Switch } from "react-router-dom";
 import { User } from "types";
@@ -55,7 +57,7 @@ class CustomRouter extends React.Component<IProps, {}> {
       <Route
         {...rest}
         render={props => (
-          <Layout>
+          <Layout {...props} {...defaultProps} {...extraProps}>
             <Component {...props} {...defaultProps} {...extraProps} />
           </Layout>
         )}
@@ -75,36 +77,43 @@ class CustomRouter extends React.Component<IProps, {}> {
                 component={EmbedWidgetWrapper}
               />
 
-              <AppRoute exact path="/" layout={MainLayout} component={Home} />
+              {
+                currentUser ?
+                  <AppRoute exact path="/" layout={MainLayout} component={LoggedInHome} />
+                :
+                  <AppRoute exact path="/" layout={LandingLayout} component={LandingHome} />
+              }
+
+
               <AppRoute
                 exact
                 path="/login"
-                layout={MainLayout}
+                layout={LandingLayout}
                 component={Login}
               />
               <AppRoute
                 exact
                 path="/signup"
-                layout={MainLayout}
+                layout={LandingLayout}
                 component={SignUp}
               />
               <AppRoute
                 exact
                 path="/test"
-                layout={MainLayout}
+                layout={LandingLayout}
                 component={Test}
               />
               <AppRoute
                 exact
                 path="/users/login"
-                layout={MainLayout}
+                layout={LandingLayout}
                 component={SignupAndLoginWrapper}
                 extraProps={{ currentView: "login" }}
               />
               <AppRoute
                 exact
                 path="/users/signup"
-                layout={MainLayout}
+                layout={LandingLayout}
                 component={SignupAndLoginWrapper}
                 extraProps={{ currentView: "signup" }}
               />

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 interface IProps {
   match?: any;
 }
-class Header extends React.Component<IProps, {}> {
+class UnauthenticatedHeader extends React.Component<IProps, {}> {
   public constructor(props: IProps) {
     super(props);
   }
@@ -27,4 +27,4 @@ class Header extends React.Component<IProps, {}> {
   }
 }
 
-export default Header;
+export default UnauthenticatedHeader;

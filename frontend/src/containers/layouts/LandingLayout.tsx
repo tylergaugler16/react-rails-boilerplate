@@ -1,5 +1,5 @@
 import * as React from "react";
-import AuthenticatedHeader from "containers/layouts/AuthenticatedHeader";
+import UnauthenticatedHeader from "containers/layouts/UnauthenticatedHeader";
 import { User } from "types";
 
 interface IProps {
@@ -10,7 +10,7 @@ interface IProps {
   match: any;
   children: any;
 }
-class MainLayout extends React.Component<IProps, {}> {
+class LandingLayout extends React.Component<IProps, {}> {
   public constructor(props: IProps) {
     super(props);
   }
@@ -19,13 +19,13 @@ class MainLayout extends React.Component<IProps, {}> {
     const { children } = this.props;
     return (
       <div>
-      <div className="header">
-        <AuthenticatedHeader {...this.props} />
-      </div>
+        <div className="header">
+            <UnauthenticatedHeader {...this.props}/>
+        </div>
         {children}
       </div>
     );
   }
 }
 
-export default MainLayout;
+export default LandingLayout;
