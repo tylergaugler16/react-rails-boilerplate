@@ -48,23 +48,17 @@ class CustomRouter extends React.Component<IProps, {}> {
   }
   public render() {
     const {
-      history,
-      match,
-      location,
       currentUser,
       currentUserIsLoading
     } = this.props;
     const defaultProps = {
-      history,
-      match,
-      location,
       currentUser,
       currentUserIsLoading
     };
-    const AppRoute = ({ component: Component, layout: Layout, ...rest}: any) => (
-      <Route exact={true} {...defaultProps} {...rest} render={props => (
+    const AppRoute = ({ component: Component, layout: Layout, extraProps: extraProps, ...rest}: any) => (
+      <Route {...rest}  render={props => (
         <Layout >
-          <Component  {...props}/>
+          <Component  {...props} {...defaultProps} {...extraProps}/>
         </Layout>
       )} />
     )
@@ -77,12 +71,12 @@ class CustomRouter extends React.Component<IProps, {}> {
 
         <AppRoute exact path="/embed/widget" layout={EmbedLayout} component={EmbedWidgetWrapper}/>
 
-        <AppRoute exact path="/" layout={MainLayout} component={Home} />
+        <AppRoute exact path="/" layout={MainLayout} component={Home}/>
         <AppRoute exact path="/login" layout={MainLayout} component={Login}/>
         <AppRoute exact path="/signup" layout={MainLayout} component={SignUp} />
         <AppRoute exact path="/test" layout={MainLayout} component={Test} />
-        <AppRoute exact path="/users/login" layout={MainLayout} component={SignupAndLoginWrapper} currentView="login"/>
-        <AppRoute exact path="/users/signup" layout={MainLayout} component={SignupAndLoginWrapper}  currentView="signup"/>
+        <AppRoute exact path="/users/login" layout={MainLayout} component={SignupAndLoginWrapper} extraProps={ {currentView: "login" }}/>
+        <AppRoute exact path="/users/signup" layout={MainLayout} component={SignupAndLoginWrapper}  extraProps={ {currentView: "signup" }}/>
 
 
         <AppRoute
