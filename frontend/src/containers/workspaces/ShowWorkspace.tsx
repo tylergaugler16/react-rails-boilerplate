@@ -18,21 +18,22 @@ class ShowWorkspace extends React.Component<IProps, {}> {
   public render() {
     const {
       currentUser,
-      data: {workspace}
+      data: { workspace }
     } = this.props;
-    if ( !currentUser || !workspace) {
+    if (!currentUser || !workspace) {
       return null;
     }
     return (
       <div className="show-workspace">
-      {
-        workspace.widgets ?
-          workspace.widgets.map( (widget: Widget) => (
-            <WidgetBox widget={widget} workspaceId={workspace.id} key={widget.id} />
-          ))
-        :
-        null
-      }
+        {workspace.widgets
+          ? workspace.widgets.map((widget: Widget) => (
+              <WidgetBox
+                widget={widget}
+                workspaceId={workspace.id}
+                key={widget.id}
+              />
+            ))
+          : null}
       </div>
     );
   }

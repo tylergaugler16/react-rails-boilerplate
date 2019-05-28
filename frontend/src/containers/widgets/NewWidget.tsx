@@ -22,7 +22,7 @@ class NewWidget extends React.Component<IProps, IState> {
     this.getInititialValues = this.getInititialValues.bind(this);
     this.state = {
       widgetType: "Audio"
-    }
+    };
   }
 
   private createWidget(values: any) {
@@ -37,30 +37,36 @@ class NewWidget extends React.Component<IProps, IState> {
       .then(res => {
         if (res.data.widget) {
           console.log(res.data.widget);
-          const workspaceId =  res.data.widget.workspaceId;
+          const workspaceId = res.data.widget.workspaceId;
           const id = res.data.widget.id;
-          const redirectUrl = `/workspace/${workspaceId}/widget/${id}`
+          const redirectUrl = `/workspace/${workspaceId}/widget/${id}`;
           this.props.infoAlert("Widget Created", redirectUrl);
-        }else if (res.data.errors) {
+        } else if (res.data.errors) {
           this.props.errorAlert(res.data.errors.join("/n"));
         }
       })
       .catch(() => console.log("errors"));
   }
 
-  private getInititialValues(){
-    const {match: {params}} = this.props;
+  private getInititialValues() {
+    const {
+      match: { params }
+    } = this.props;
     return {
-      workspaceId: params? params.workspace_id : undefined,
+      workspaceId: params ? params.workspace_id : undefined,
       dataType: this.state.widgetType
-    }
+    };
   }
 
   public render() {
-
     return (
       <div className="new-widget-container">
-        <WidgetForm action={this.createWidget} initialValues={this.getInititialValues()} headerText="Create Widget" buttonText={"Create"} />
+        <WidgetForm
+          action={this.createWidget}
+          initialValues={this.getInititialValues()}
+          headerText="Create Widget"
+          buttonText={"Create"}
+        />
       </div>
     );
   }

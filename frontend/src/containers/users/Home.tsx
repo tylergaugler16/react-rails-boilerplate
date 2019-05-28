@@ -1,9 +1,9 @@
-import * as React from 'react';
+import * as React from "react";
 import withNotificationAlert from "components/withNotificationAlert";
 import WorkspaceSelect from "containers/workspaces/WorkspaceSelect";
 import { User } from "types";
 
-interface IProps{
+interface IProps {
   match?: any;
   history?: any;
   location?: any;
@@ -16,22 +16,21 @@ class Home extends React.Component<IProps, {}> {
     this.logout = this.logout.bind(this);
   }
 
-  private logout(){
-    localStorage.removeItem('token');
-    this.props.infoAlert("Signed out!","/signup");
+  private logout() {
+    localStorage.removeItem("token");
+    this.props.infoAlert("Signed out!", "/signup");
   }
 
-
   public render() {
-    const{currentUser} = this.props;
-    if(!currentUser){
+    const { currentUser } = this.props;
+    if (!currentUser) {
       return null;
     }
     return (
       <div className="App">
-      you are logged in as {currentUser.firstName}!
-      <button onClick={this.logout}> Log out </button>
-        <WorkspaceSelect currentUser={currentUser}/>
+        you are logged in as {currentUser.firstName}!
+        <button onClick={this.logout}> Log out </button>
+        <WorkspaceSelect currentUser={currentUser} />
       </div>
     );
   }

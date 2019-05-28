@@ -16,16 +16,12 @@ class WidgetsForWorkspace extends React.Component<IProps, {}> {
     const {
       currentUser,
       data: { widgets }
-    } = this.props; 
+    } = this.props;
     if (!currentUser || !widgets) {
       return null;
     }
     return (
-      <div className="widgets-for-workspace">
-      {
-        JSON.stringify(widgets)
-      }
-      </div>
+      <div className="widgets-for-workspace">{JSON.stringify(widgets)}</div>
     );
   }
 }

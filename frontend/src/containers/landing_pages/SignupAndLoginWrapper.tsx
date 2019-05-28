@@ -34,7 +34,7 @@ class SignupAndLoginWrapper extends React.Component<IProps,IState> {
     return (
 
       <div className="signup-and-login-wrapper">
-      
+
           <Login {...defaultProps} />
 
           <SignUp {...defaultProps} />

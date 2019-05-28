@@ -23,49 +23,50 @@ class ListWidgetDataWrapper extends React.Component<IProps, {}> {
 
   public render() {
     const {
-      data: {
-        widgetData,
-        currentPage,
-        totalPages
-      },
+      data: { widgetData, currentPage, totalPages },
       queryIsLoading,
       refetchWidgetData,
       widgetType,
       widget
     } = this.props;
 
-    if(queryIsLoading){
-      return "Loading..."
-    } else if(!widgetData){
-      return "No content"
+    if (queryIsLoading) {
+      return "Loading...";
+    } else if (!widgetData) {
+      return "No content";
     }
     return (
-        <div className="list-widget-data-wrapper">
+      <div className="list-widget-data-wrapper">
         // TODO this should only be set if user has permission to customize
-        <style dangerouslySetInnerHTML={{__html: `
-          .audio-data-table, .audio-data-table th, .audio-data-table a { color: ${widget.primaryColor}!important }
+        <style
+          dangerouslySetInnerHTML={{
+            __html: `
+          .audio-data-table, .audio-data-table th, .audio-data-table a { color: ${
+            widget.primaryColor
+          }!important }
           .audio-data-table tr:nth-child(even){
             background-color: ${widget.secondaryColor}!important;
           }
           .audio-data-table tr:nth-child(odd), .audio-data-table {
             background-color: ${widget.tertiaryColor}!important;
           }
-        `}} />
-
-        {
-          widgetType === "Audio" ?
-            <AudioDataTable widgetData={widgetData} queryIsLoading={queryIsLoading}  />
-          :
-            null
-        }
-
-          <div>
-            <PaginatedSelector
-              currentPage={currentPage}
-              totalPages={totalPages}
-              refetchQuery={refetchWidgetData}/>
-          </div>
+        `
+          }}
+        />
+        {widgetType === "Audio" ? (
+          <AudioDataTable
+            widgetData={widgetData}
+            queryIsLoading={queryIsLoading}
+          />
+        ) : null}
+        <div>
+          <PaginatedSelector
+            currentPage={currentPage}
+            totalPages={totalPages}
+            refetchQuery={refetchWidgetData}
+          />
         </div>
+      </div>
     );
   }
 }

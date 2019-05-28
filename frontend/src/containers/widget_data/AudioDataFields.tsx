@@ -40,8 +40,6 @@ class AudioDataFields extends React.Component<IProps, {}> {
               validate={required}
             />
           </div>
-
-
         </div>
         <div className="columns is-gapless is-centered">
           <div className="column is-4 ">
@@ -61,7 +59,6 @@ class AudioDataFields extends React.Component<IProps, {}> {
               component={TextInput}
               validate={required}
             />
-
           </div>
         </div>
         <div className="columns is-gapless is-centered">

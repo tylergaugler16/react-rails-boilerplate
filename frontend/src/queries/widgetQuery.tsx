@@ -35,7 +35,7 @@ export default function withWidgetQuery(
 
     public async componentDidMount() {
       const { currentUser } = this.props;
-      if(!currentUser || this.state.queryIsLoading){
+      if (!currentUser || this.state.queryIsLoading) {
         return;
       }
       this.compHasMounted = true;
@@ -43,7 +43,8 @@ export default function withWidgetQuery(
         match: { params }
       } = this.props;
       const id = params && params.widget_id ? params.widget_id : null;
-      const workspaceId = params && params.workspace_id ? params.workspace_id : null;
+      const workspaceId =
+        params && params.workspace_id ? params.workspace_id : null;
       this.setState(
         {
           queryIsLoading: true

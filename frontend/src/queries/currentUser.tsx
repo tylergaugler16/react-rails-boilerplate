@@ -30,7 +30,7 @@ export default function withCurrentUser(
       // if(this.state.currentUser){
       //   return;
       // }
-      if(this.state.currentUserIsLoading){
+      if (this.state.currentUserIsLoading) {
         return;
       }
       this.compHasMounted = true;

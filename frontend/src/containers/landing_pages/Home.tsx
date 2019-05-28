@@ -18,13 +18,12 @@ class Home extends React.Component<IProps, {}> {
     super(props);
   }
 
-
   public render() {
-    const {currentUser} = this.props;
+    const { currentUser } = this.props;
     return (
       <React.Fragment>
         {currentUser ? (
-          <LoggedInHome currentUser={currentUser} history={history}/>
+          <LoggedInHome currentUser={currentUser} history={history} />
         ) : (
           <div className="App">
             <header className="App-header">

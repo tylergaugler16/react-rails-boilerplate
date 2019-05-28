@@ -1,9 +1,8 @@
-
-import * as React from 'react';
+import * as React from "react";
 import Header from "containers/layouts/Header";
 import { User } from "types";
 
-interface IProps{
+interface IProps {
   currentUser: User | null;
   currentUserIsLoading: boolean;
   history: any;
@@ -17,11 +16,11 @@ class MainLayout extends React.Component<IProps, {}> {
   }
 
   public render() {
-    const {children} = this.props;
+    const { children } = this.props;
     return (
       <div>
         <Header {...this.props} />
-          {children}
+        {children}
       </div>
     );
   }

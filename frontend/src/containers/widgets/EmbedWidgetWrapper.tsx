@@ -1,10 +1,10 @@
-import React from 'react'
+import React from "react";
 
 const EmpbedWidgetWrapper = (props: any) => (
-    <div>
+  <div>
     <h1>Embed widget!</h1>
-        {props.children}
-    </div>
-)
+    {props.children}
+  </div>
+);
 
-export default EmpbedWidgetWrapper
+export default EmpbedWidgetWrapper;

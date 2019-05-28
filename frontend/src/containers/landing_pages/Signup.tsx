@@ -36,7 +36,7 @@ class Signup extends React.Component<IProps, {}> {
       .catch(() => console.log("errors"));
   }
 
-  private getSignupForm(){
+  private getSignupForm() {
     return (
       <Form
         key="signup-form"
@@ -60,76 +60,76 @@ class Signup extends React.Component<IProps, {}> {
           handleChange
         }) => (
           <form onSubmit={handleSubmit} id="signup-form" key="signup-form-form">
-          <div className="columns is-gapless ">
-            <div className="column is-12 ">
-            <h1 className="title-1 has-text-centered">Create an Account</h1>
+            <div className="columns is-gapless ">
+              <div className="column is-12 ">
+                <h1 className="title-1 has-text-centered">Create an Account</h1>
+              </div>
             </div>
-          </div>
-          <div className="columns is-gapless is-centered">
-            <div className="column is-10 ">
-            <Field
-              key="signup.first_name"
-              name="first_name"
-              label="First Name"
-              placeholder="Joe"
-              component={TextInput}
-              validate={required}
-            />
+            <div className="columns is-gapless is-centered">
+              <div className="column is-10 ">
+                <Field
+                  key="signup.first_name"
+                  name="first_name"
+                  label="First Name"
+                  placeholder="Joe"
+                  component={TextInput}
+                  validate={required}
+                />
+              </div>
             </div>
-          </div>
-          <div className="columns is-gapless is-centered">
-            <div className="column is-10 ">
-            <Field
-              key="signup.last_name"
-              name="last_name"
-              label="Last Name"
-              placeholder="Shmoe"
-              component={TextInput}
-              validate={required}
-            />
+            <div className="columns is-gapless is-centered">
+              <div className="column is-10 ">
+                <Field
+                  key="signup.last_name"
+                  name="last_name"
+                  label="Last Name"
+                  placeholder="Shmoe"
+                  component={TextInput}
+                  validate={required}
+                />
+              </div>
             </div>
-          </div>
-          <div className="columns is-gapless is-centered">
-            <div className="column is-10 ">
-            <Field
-              key="signup.email"
-              name="email"
-              label="Email"
-              placeholder="joeshmoe@test.com"
-              component={TextInput}
-              validate={isEmail}
-            />
+            <div className="columns is-gapless is-centered">
+              <div className="column is-10 ">
+                <Field
+                  key="signup.email"
+                  name="email"
+                  label="Email"
+                  placeholder="joeshmoe@test.com"
+                  component={TextInput}
+                  validate={isEmail}
+                />
+              </div>
             </div>
-          </div>
-          <div className="columns is-gapless is-centered">
-            <div className="column is-10 ">
-            <Field
-              key="signup.password"
-              name="password"
-              label="Password"
-              component={PasswordInput}
-              validate={required}
-            />
+            <div className="columns is-gapless is-centered">
+              <div className="column is-10 ">
+                <Field
+                  key="signup.password"
+                  name="password"
+                  label="Password"
+                  component={PasswordInput}
+                  validate={required}
+                />
+              </div>
             </div>
-          </div>
-          <div className="columns is-gapless is-centered">
-            <div className="column is-10 ">
-            <button
-              className="button large-button purple-button is-centered-block"
-              type="submit"
-            >
-              Sign Up
-            </button>
+            <div className="columns is-gapless is-centered">
+              <div className="column is-10 ">
+                <button
+                  className="button large-button purple-button is-centered-block"
+                  type="submit"
+                >
+                  Sign Up
+                </button>
+              </div>
             </div>
-          </div>
           </form>
         )}
       </Form>
-    )
+    );
   }
 
   public render() {
-    const { currentView} = this.props;
+    const { currentView } = this.props;
 
     return (
       <div

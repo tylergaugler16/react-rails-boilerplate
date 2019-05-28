@@ -1,9 +1,9 @@
-import * as React from 'react';
-import withNotificationAlert from "components/withNotificationAlert"
+import * as React from "react";
+import withNotificationAlert from "components/withNotificationAlert";
 
 import { User } from "types";
 
-interface IProps{
+interface IProps {
   match?: any;
   history?: any;
   location?: any;
@@ -15,18 +15,12 @@ class Settings extends React.Component<IProps, {}> {
     super(props);
   }
 
-
-
   public render() {
-    const{currentUser} = this.props;
-    if(!currentUser){
+    const { currentUser } = this.props;
+    if (!currentUser) {
       return null;
     }
-    return (
-      <div className="App">
-        Settings for: {currentUser.firstName}!
-      </div>
-    );
+    return <div className="App">Settings for: {currentUser.firstName}!</div>;
   }
 }
 

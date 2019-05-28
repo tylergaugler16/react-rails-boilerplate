@@ -1,9 +1,9 @@
-import * as React from 'react';
+import * as React from "react";
 import AuthenticatedHeader from "containers/layouts/AuthenticatedHeader";
 import UnauthenticatedHeader from "containers/layouts/UnauthenticatedHeader";
 import { User } from "types";
 
-interface IProps{
+interface IProps {
   currentUser: User | null;
   currentUserIsLoading: boolean;
   history: any;
@@ -16,15 +16,14 @@ class Header extends React.Component<IProps, {}> {
   }
 
   public render() {
-    const{ currentUser } = this.props;
+    const { currentUser } = this.props;
     return (
       <div className="header">
-        {
-          currentUser?
-            <AuthenticatedHeader {...this.props} />
-          :
-            <UnauthenticatedHeader />
-        }
+        {currentUser ? (
+          <AuthenticatedHeader {...this.props} />
+        ) : (
+          <UnauthenticatedHeader />
+        )}
       </div>
     );
   }

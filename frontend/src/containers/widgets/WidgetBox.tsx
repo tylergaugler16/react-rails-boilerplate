@@ -1,6 +1,5 @@
 import * as React from "react";
-import { Link } from 'react-router-dom';
-
+import { Link } from "react-router-dom";
 
 import { Widget } from "types";
 
@@ -14,20 +13,16 @@ class WidgetBox extends React.Component<IProps, {}> {
   }
 
   public render() {
-    const {
-      widget,
-      workspaceId
-    } = this.props;
+    const { widget, workspaceId } = this.props;
     if (!widget) {
       return null;
     }
     return (
-        <div className="widget-box">
+      <div className="widget-box">
         <Link to={`/workspace/${workspaceId}/widget/${widget.id}`}>
-          { widget.dataType }
+          {widget.dataType}
         </Link>
-
-        </div>
+      </div>
     );
   }
 }

@@ -22,15 +22,17 @@ class SignupAndLoginInactiveContainer extends React.Component<IProps, {}> {
         >
           <h1 className="title-1 white-font">Welcome!</h1>
           <p className="white-font">
-            If you dont have an account{" "}
+            If you dont have an account
             <span onClick={() => changeView("signup")}>create an account.</span>
           </p>
-            <div className="button-container">
-              <button className="button large-button white-transparent-button" onClick={() => changeView("signup")}>
-                <span>Sign Up</span>
-              </button>
-            </div>
-
+          <div className="button-container">
+            <button
+              className="button large-button white-transparent-button"
+              onClick={() => changeView("signup")}
+            >
+              <span>Sign Up</span>
+            </button>
+          </div>
         </div>
         <div
           className={`signup-view-content ${
@@ -39,11 +41,14 @@ class SignupAndLoginInactiveContainer extends React.Component<IProps, {}> {
         >
           <h1 className="title-1 white-font">Good to see you again!</h1>
           <p className="white-font">
-            If you already have an account,login{" "}
+            If you already have an account,login
             <span onClick={() => changeView("login")}>here.</span>
           </p>
           <div className="button-container">
-            <button className="button large-button white-transparent-button" onClick={() => changeView("login")}>
+            <button
+              className="button large-button white-transparent-button"
+              onClick={() => changeView("login")}
+            >
               <span>Login</span>
             </button>
           </div>

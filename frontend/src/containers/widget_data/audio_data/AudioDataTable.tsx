@@ -16,28 +16,26 @@ class AudioDataTable extends React.Component<IProps, {}> {
 
   public render() {
     const { widgetData, queryIsLoading } = this.props;
-    if(queryIsLoading){
-      return "Loading..."
+    if (queryIsLoading) {
+      return "Loading...";
     }
-    if(!widgetData){
+    if (!widgetData) {
       return null;
     }
     return (
       <table className="audio-data-table is-full-width">
         <thead>
-        <th>Title</th>
-        <th>Speaker</th>
-        <th>Theme</th>
-        <th>Series</th>
-        <th>File Size</th>
-        <th></th>
+          <th>Title</th>
+          <th>Speaker</th>
+          <th>Theme</th>
+          <th>Series</th>
+          <th>File Size</th>
+          <th />
         </thead>
         <tbody>
-          {
-             widgetData.map( (audioDatum: WidgetDatum) => (
-              <AudioDatumRow audioDatum={audioDatum} key={audioDatum.id} />
-            ))
-          }
+          {widgetData.map((audioDatum: WidgetDatum) => (
+            <AudioDatumRow audioDatum={audioDatum} key={audioDatum.id} />
+          ))}
         </tbody>
       </table>
     );

@@ -18,28 +18,27 @@ class ShowWidget extends React.Component<IProps, {}> {
 
   public render() {
     const {
-      match:{
-        params
-      },
-      data: {
-        widget
-      },
+      match: { params },
+      data: { widget },
       queryIsLoading
     } = this.props;
 
-    if(queryIsLoading){
-      return "Loading..."
+    if (queryIsLoading) {
+      return "Loading...";
     }
-    if(!widget){
+    if (!widget) {
       return null;
     }
     const widgetId = params && params.widget_id ? params.widget_id : null;
-    const workspaceId = params && params.workspace_id ? params.workspace_id : null;
+    const workspaceId =
+      params && params.workspace_id ? params.workspace_id : null;
     const editUrl = `/workspace/${workspaceId}/widget/${widgetId}/edit`;
     return (
       <div className="show-widget-container">
         <h1> {widget.dataType} Widget </h1>
-        <h3><Link to={editUrl}>Edit</Link></h3>
+        <h3>
+          <Link to={editUrl}>Edit</Link>
+        </h3>
       </div>
     );
   }

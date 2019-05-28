@@ -23,26 +23,24 @@ class EditWidgetWrapper extends React.Component<IProps, {}> {
       history,
       location,
       currentUser,
-      data: {
-        widget
-      },
+      data: { widget },
       queryIsLoading
     } = this.props;
 
-
-    if(queryIsLoading){
-      return "Loading..."
+    if (queryIsLoading) {
+      return "Loading...";
     }
-    if(!widget){
+    if (!widget) {
       return null;
     }
     return (
-        <EditWidget
-          match={match}
-          location={location}
-          history={history}
-          widget={widget}
-          currentUser={currentUser}/>
+      <EditWidget
+        match={match}
+        location={location}
+        history={history}
+        widget={widget}
+        currentUser={currentUser}
+      />
     );
   }
 }

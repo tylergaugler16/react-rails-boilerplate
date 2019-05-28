@@ -16,15 +16,12 @@ import EditWidgetWrapper from "containers/widgets/EditWidgetWrapper";
 
 import EmbedWidgetWrapper from "containers/widgets/EmbedWidgetWrapper";
 
-
 import MainLayout from "containers/layouts/MainLayout";
 import EmbedLayout from "containers/layouts/EmbedLayout";
-
 
 import { Route, Switch } from "react-router-dom";
 import { User } from "types";
 import CurrentUserContext from "contexts/currentUser";
-
 
 interface IProps {
   currentUser: User | null;
@@ -39,89 +36,115 @@ class CustomRouter extends React.Component<IProps, {}> {
     super(props);
     this.userIsAuthenticated = this.userIsAuthenticated.bind(this);
   }
-  private userIsAuthenticated(component: any){
-    const {
-      currentUser,
-      currentUserIsLoading
-    } = this.props;
-    return UserIsAuthenticated(component, currentUserIsLoading, currentUser );
+  private userIsAuthenticated(component: any) {
+    const { currentUser, currentUserIsLoading } = this.props;
+    return UserIsAuthenticated(component, currentUserIsLoading, currentUser);
   }
   public render() {
-    const {
-      currentUser,
-      currentUserIsLoading
-    } = this.props;
+    const { currentUser, currentUserIsLoading } = this.props;
     const defaultProps = {
       currentUser,
       currentUserIsLoading
     };
-    const AppRoute = ({ component: Component, layout: Layout, extraProps: extraProps, ...rest}: any) => (
-      <Route {...rest}  render={props => (
-        <Layout >
-          <Component  {...props} {...defaultProps} {...extraProps}/>
-        </Layout>
-      )} />
-    )
+    const AppRoute = ({
+      component: Component,
+      layout: Layout,
+      extraProps: extraProps,
+      ...rest
+    }: any) => (
+      <Route
+        {...rest}
+        render={props => (
+          <Layout>
+            <Component {...props} {...defaultProps} {...extraProps} />
+          </Layout>
+        )}
+      />
+    );
     return (
       <React.Fragment>
-      <CurrentUserContext.Provider value={{currentUser, currentUserIsLoading}}>
-      <div className="main-content">
+        <CurrentUserContext.Provider
+          value={{ currentUser, currentUserIsLoading }}
+        >
+          <div className="main-content">
+            <Switch>
+              <AppRoute
+                exact
+                path="/embed/widget"
+                layout={EmbedLayout}
+                component={EmbedWidgetWrapper}
+              />
 
-      <Switch>
+              <AppRoute exact path="/" layout={MainLayout} component={Home} />
+              <AppRoute
+                exact
+                path="/login"
+                layout={MainLayout}
+                component={Login}
+              />
+              <AppRoute
+                exact
+                path="/signup"
+                layout={MainLayout}
+                component={SignUp}
+              />
+              <AppRoute
+                exact
+                path="/test"
+                layout={MainLayout}
+                component={Test}
+              />
+              <AppRoute
+                exact
+                path="/users/login"
+                layout={MainLayout}
+                component={SignupAndLoginWrapper}
+                extraProps={{ currentView: "login" }}
+              />
+              <AppRoute
+                exact
+                path="/users/signup"
+                layout={MainLayout}
+                component={SignupAndLoginWrapper}
+                extraProps={{ currentView: "signup" }}
+              />
 
-        <AppRoute exact path="/embed/widget" layout={EmbedLayout} component={EmbedWidgetWrapper}/>
+              <AppRoute
+                exact
+                path="/settings"
+                layout={MainLayout}
+                component={this.userIsAuthenticated(Settings)}
+              />
 
-        <AppRoute exact path="/" layout={MainLayout} component={Home}/>
-        <AppRoute exact path="/login" layout={MainLayout} component={Login}/>
-        <AppRoute exact path="/signup" layout={MainLayout} component={SignUp} />
-        <AppRoute exact path="/test" layout={MainLayout} component={Test} />
-        <AppRoute exact path="/users/login" layout={MainLayout} component={SignupAndLoginWrapper} extraProps={ {currentView: "login" }}/>
-        <AppRoute exact path="/users/signup" layout={MainLayout} component={SignupAndLoginWrapper}  extraProps={ {currentView: "signup" }}/>
+              <AppRoute
+                exact
+                path="/workspace/:workspace_id"
+                layout={MainLayout}
+                component={this.userIsAuthenticated(ShowWorkspace)}
+              />
 
+              <AppRoute
+                exact
+                path="/workspace/:workspace_id/widget/new"
+                layout={MainLayout}
+                component={this.userIsAuthenticated(NewWidget)}
+              />
 
-        <AppRoute
-         exact
-         path="/settings"
-         layout={MainLayout}
-         component={this.userIsAuthenticated(Settings)}  />
+              <AppRoute
+                exact
+                path="/workspace/:workspace_id/widget/:widget_id"
+                layout={MainLayout}
+                component={this.userIsAuthenticated(ShowWidget)}
+              />
 
-         <AppRoute
-          exact
-          path="/workspace/:workspace_id"
-          layout={MainLayout}
-          component={this.userIsAuthenticated(ShowWorkspace)}/>
-
-          <AppRoute
-           exact
-           path="/workspace/:workspace_id/widget/new"
-           layout={MainLayout}
-           component={this.userIsAuthenticated(NewWidget)} />
-
-           <AppRoute
-            exact
-            path="/workspace/:workspace_id/widget/:widget_id"
-            layout={MainLayout}
-            component={this.userIsAuthenticated(ShowWidget)} />
-
-            <AppRoute
-             exact
-             path="/workspace/:workspace_id/widget/:widget_id/edit"
-             layout={MainLayout}
-             component={this.userIsAuthenticated(EditWidgetWrapper)}/>
-
-
-
-</Switch>
-
-
+              <AppRoute
+                exact
+                path="/workspace/:workspace_id/widget/:widget_id/edit"
+                layout={MainLayout}
+                component={this.userIsAuthenticated(EditWidgetWrapper)}
+              />
+            </Switch>
           </div>
-
-
-
-
-
-
-
         </CurrentUserContext.Provider>
       </React.Fragment>
     );
