@@ -27,3 +27,4 @@
 /config/master.key
 
 /backend/Gemfile.lock
+/frontend/src/assets/stylesheets/css
