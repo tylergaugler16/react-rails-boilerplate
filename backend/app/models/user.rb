@@ -50,7 +50,7 @@ class User < ApplicationRecord
     workspaces_for_user.each do |workspace|
       widgets = workspace.widgets
       widgets.each do |widget|
-        next unless widget.data.any?
+        next unless widget.data
         file_size_array = widget.data.map{|d| d&.file_upload&.file_size || 0}.reject{|val|  val.nil? || val == 0 }
         sum = file_size_array.reduce{|sum, x| sum + x}
         total_bytes += (sum || 0)
