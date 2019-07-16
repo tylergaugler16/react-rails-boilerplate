@@ -10552,10 +10552,13 @@ a {
 .header {
   height: 60px;
   background-color: #725AC1;
-  color: #ffffff;
   padding: 0px 40px; }
+  .header, .header a {
+    color: #ffffff; }
   .header .header-links-container {
     min-width: 350px; }
+    .header .header-links-container.is-small {
+      min-width: 200px; }
     .header .header-links-container .link-break {
       width: 2px;
       background-color: #ffffff;

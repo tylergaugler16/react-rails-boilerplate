@@ -231,10 +231,15 @@ a {
 .header{
   height: 60px;
   background-color: $dark-purple;
-  color: $white;
   padding: 0px 40px;
+  &, a{
+    color: $white;
+  }
   .header-links-container{
     min-width: 350px;
+    &.is-small{
+      min-width: 200px;
+    }
     .link-break{
       width: 2px;
       background-color: $white;
