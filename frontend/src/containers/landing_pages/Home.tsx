@@ -1,8 +1,8 @@
 import * as React from "react";
 
-import About from "containers/landing_pages/About";
-
 import { User } from "types";
+
+import WidgetlyWalkthrough from "containers/landing_pages/_WidgetlyWalkthrough";
 
 interface IProps {
   currentUser: User | null;
@@ -19,11 +19,15 @@ class Home extends React.Component<IProps, {}> {
 
   public render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">Welcome to Widgetly</h1>
-        </header>
-        <About test="hello" />
+      <div className="landing-home-container default-wrapper-padding">
+
+        <h1 className="title-1">Welcome to Widgetly</h1>
+        <h3> Easily add meaningful content to your website </h3>
+        <p>Select from a wide variety of widgets, copy link, and embed it on your website. </p>
+
+        <WidgetlyWalkthrough />
+
+
       </div>
     );
   }

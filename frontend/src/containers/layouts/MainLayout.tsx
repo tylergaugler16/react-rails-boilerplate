@@ -18,12 +18,12 @@ class MainLayout extends React.Component<IProps, {}> {
   public render() {
     const { children } = this.props;
     return (
-      <div>
-      <div className="header">
-        <AuthenticatedHeader {...this.props} />
-      </div>
-        {children}
-      </div>
+      <React.Fragment>
+        <div className="header">
+          <AuthenticatedHeader {...this.props} />
+        </div>
+          {children}
+      </React.Fragment>
     );
   }
 }

@@ -36,6 +36,7 @@ $accent-red: #EB5160;
 @import '_form';
 @import '_widget_data';
 @import '_widget';
+@import '_landing_pages';
 
 
 
@@ -69,6 +70,11 @@ p{
 .is-disabled{
   cursor: not-allowed;
 }
+
+.default-wrapper-padding{
+  padding: 40px 60px;
+}
+
 
 // flex classes
 .columns.is-centered{
@@ -203,6 +209,9 @@ a {
 // font-modifier styles
 .white-font{
   color: $white;
+}
+.dark-purple-font{
+  color: $dark-purple;
 }
 
 // reused ui element styling

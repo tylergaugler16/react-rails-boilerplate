@@ -41,7 +41,7 @@ class SignupAndLoginInactiveContainer extends React.Component<IProps, {}> {
         >
           <h1 className="title-1 white-font">Good to see you again!</h1>
           <p className="white-font">
-            If you already have an account,login
+            If you already have an account, login
             <span onClick={() => changeView("login")}>here.</span>
           </p>
           <div className="button-container">
