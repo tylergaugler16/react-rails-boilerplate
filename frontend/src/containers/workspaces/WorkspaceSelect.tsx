@@ -8,28 +8,27 @@ interface IProps {
   data: WorkspacesQuery;
   currentUser: User;
 }
-class WorkspaceSelect extends React.Component<IProps, {}> {
-  public constructor(props: IProps) {
-    super(props);
-  }
+const WorkspaceSelect = (props: IProps) => {
 
-  public render() {
-    const {
-      currentUser,
-      data: { workspaces }
-    } = this.props;
-    if (!currentUser || !workspaces) {
-      return null;
-    }
-    return (
-      <div className="App">
-        Select Workspace
-        {workspaces.map((workspace: Workspace) => (
-          <SelectWorkspaceBox workspace={workspace} key={workspace.id} />
-        ))}
-      </div>
-    );
+  const {
+    currentUser,
+    data: { workspaces }
+  } = props;
+  if (!currentUser || !workspaces) {
+    return null;
   }
+  return (
+    <div className="workspace-select-container is-centered-block">
+    <h1>Select Workspace</h1>
+    <p>Choose which workspace you'd like to access</p>
+    <div className="workspace-selection-options">
+      {workspaces.map((workspace: Workspace) => (
+        <SelectWorkspaceBox workspace={workspace} key={workspace.id} />
+      ))}
+    </div>
+    </div>
+  );
+
 }
 
 export default withWorkspaces(WorkspaceSelect);

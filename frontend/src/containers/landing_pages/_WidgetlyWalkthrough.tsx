@@ -1,9 +1,7 @@
 import * as React from "react";
 import { Link } from "react-router-dom";
 
-class WidgetlyWalkthrough extends React.Component<{}, {}> {
-
-  public render() {
+const WidgetlyWalkthrough = () => {
     return (
       <div className="widgetly-walkthrough-container">
 
@@ -48,7 +46,7 @@ class WidgetlyWalkthrough extends React.Component<{}, {}> {
 
       </div>
     );
-  }
+
 }
 
 export default WidgetlyWalkthrough;

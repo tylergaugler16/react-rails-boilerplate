@@ -1,0 +1,18 @@
+.workspace-select-container{
+  width: 80%;
+  max-width: 1000px;
+
+  .workspace-selection-options{
+
+    .select-workspace-box{
+      height: 200px;
+      width: 80%;
+      display: flex;
+      background-color: $dark-purple;
+      color: $white;
+      justify-content: center;
+      align-items: center;
+      font-size: 18px;
+    }
+  }
+}
