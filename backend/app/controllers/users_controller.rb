@@ -9,7 +9,7 @@ class UsersController < ApplicationController
 
   def authenticated_header_info
     user = current_user
-    render json: { user: user, workspaces: user.workspaces }
+    render json: { user: user }
   end
 
   # PATCH/PUT /users/1

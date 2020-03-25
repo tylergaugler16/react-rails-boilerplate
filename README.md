@@ -1,18 +1,38 @@
-# Widgetly
+# React Rails Boilerplate
 
-## *Easily add meaningful content to your website*
-____
+## Technologies Used
+1) Rails for api
+2) React for frontend js framework
+3) Postgres for db
+4) Typescript
+5) Webpack for js builds
+6) Sass for css builds
 
+## Setup
+```bash
+# Rails server
+$ cd backend
+# Install dependencies
+$ bundle install
+# Migrate db
+$ bundle exec rake db:migrate
+
+# React App
+$ cd frontend
+$ yarn install
+
+```
 
 ## Run Application
 
-```shell
+```bash
 
 # Rails server
 $ cd backend
 $ rails s --port 3001
 
 # React App
+$ cd frontend
 $ yarn start
 
 open http://localhost:3000
@@ -25,12 +45,12 @@ open http://localhost:3000
 
 # Rails server
 $ git subtree push --prefix backend heroku master # in root dir
-$ heroku run rake db:migrate --app widgetly-app # only if migrations need to be run
+$ heroku run rake db:migrate --app name-of-app-on-heroku # only if migrations need to be run
 
 # React App
 $ npm run production-build-client # in root dir
 
-open http://widgetly.s3-website-us-east-1.amazonaws.com
+TODO: instructions on how to get the script working. need to add a static site on aws 
 
 ```
 ## NOTES
@@ -41,22 +61,3 @@ To setup cloudFont this might be what i [need](https://medium.com/@omgwtfmarc/de
 
 When deploying to heroku, use this: [git subtree push --prefix backend heroku master;](https://coderwall.com/p/ssxp5q/heroku-deployment-without-the-app-being-at-the-repo-root-in-a-subfolder)
 
-
-
-## TO DO
-### Authentication
-* What is [multi provider authentication](https://stackoverflow.com/questions/46261290/multi-provider-authentication-layman-terms)?
-* Which is used in [omniauth](https://github.com/omniauth/omniauth)
-* https://developer.okta.com/blog/2018/09/18/simple-authentication-with-rails-and-omniauth
-* https://medium.com/@ajayramesh/social-login-with-omniauth-and-rails-5-0-ad2bbd2a998e
-* https://www.codementor.io/kristophmatthews/how-to-configure-your-first-rails-rest-api-du1084ym0
-* Add unique classNames to widgets, so if we want we can do real custom css
-
-## Resources
-* really cool [input text animations](https://tympanus.net/Development/TextInputEffects/). The github is [here](https://github.com/codrops/TextInputEffects)
-* This is how i'm going to create [custom inputs](https://jaredpalmer.com/formik/docs/api/field)
-* General [ux tips](https://www.designforfounders.com/web-app-ux/)
-
-
-### CSS INPUT animations
-* [a lot of just css animations](https://freefrontend.com/css-input-text/)

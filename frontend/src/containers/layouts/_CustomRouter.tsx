@@ -9,16 +9,8 @@ import Login from "containers/landing_pages/Login";
 import SignUp from "containers/landing_pages/Signup";
 import Test from "containers/landing_pages/Test";
 import SignupAndLoginWrapper from "containers/landing_pages/SignupAndLoginWrapper";
-import ShowWorkspace from "containers/workspaces/ShowWorkspace";
-
-import ShowWidget from "containers/widgets/ShowWidget";
-import NewWidget from "containers/widgets/NewWidget";
-import EditWidgetWrapper from "containers/widgets/EditWidgetWrapper";
-
-import EmbedWidgetWrapper from "containers/widgets/EmbedWidgetWrapper";
 
 import MainLayout from "containers/layouts/MainLayout";
-import EmbedLayout from "containers/layouts/EmbedLayout";
 import LandingLayout from "containers/layouts/LandingLayout";
 
 import { Route, Switch } from "react-router-dom";
@@ -70,12 +62,6 @@ class CustomRouter extends React.Component<IProps, {}> {
         >
           <div className="main-content">
             <Switch>
-              <AppRoute
-                exact
-                path="/embed/widget"
-                layout={EmbedLayout}
-                component={EmbedWidgetWrapper}
-              />
 
               {
                 currentUser ?
@@ -123,34 +109,6 @@ class CustomRouter extends React.Component<IProps, {}> {
                 path="/settings"
                 layout={MainLayout}
                 component={this.userIsAuthenticated(Settings)}
-              />
-
-              <AppRoute
-                exact
-                path="/workspace/:workspace_id"
-                layout={MainLayout}
-                component={this.userIsAuthenticated(ShowWorkspace)}
-              />
-
-              <AppRoute
-                exact
-                path="/workspace/:workspace_id/widget/new"
-                layout={MainLayout}
-                component={this.userIsAuthenticated(NewWidget)}
-              />
-
-              <AppRoute
-                exact
-                path="/workspace/:workspace_id/widget/:widget_id"
-                layout={MainLayout}
-                component={this.userIsAuthenticated(ShowWidget)}
-              />
-
-              <AppRoute
-                exact
-                path="/workspace/:workspace_id/widget/:widget_id/edit"
-                layout={MainLayout}
-                component={this.userIsAuthenticated(EditWidgetWrapper)}
               />
             </Switch>
           </div>

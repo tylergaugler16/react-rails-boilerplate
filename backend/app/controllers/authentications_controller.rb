@@ -59,30 +59,6 @@ class AuthenticationsController < ApplicationController
     render json: { token: nil, user: nil, message: 'Something went wrong!' }
   end
 
-  # def get_aws_presigned_url
-  # 
-  #   filename = params["objectName"]
-  #   content = params["contentType"]
-  #
-  #   storage = Fog::Storage.new(
-  #     provider: 'AWS',
-  #     aws_access_key_id: "AKIAZZCMSHDFJMGOW4PN",
-  #     aws_secret_access_key: "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"
-  #   )
-  #   # In the controller
-  #   options = {path_style: true}
-  #   headers = {"Content-Type" => content, "x-amz-acl" => "public-read"}
-  #
-  #   extension = File.extname(filename)
-  #   filePath = "#{current_user.id}/#{SecureRandom.hex(16)}#{extension}"
-  #   bucket = Rails.env.production? ? "widgetly-prod" : "widgetly-dev"
-  #   url = storage.put_object_url(bucket, filePath, 15.minutes.from_now.to_time.to_i, headers, options)
-  #   puts "signedUrlFromAWS\n:: #{url}"
-  #
-  #   render json: { signedUrl: url, filePath:  "https://s3.amazonaws.com/#{bucket}/#{filePath}"}
-  #
-  # end
-
   protected
 
     def render_errors(errors, status)

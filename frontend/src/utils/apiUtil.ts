@@ -2,7 +2,7 @@ import axios from 'axios';
 import * as humps from 'humps';
 
 export const apiUrl = process.env.REACT_APP_ENV === "production" ?
-                  "https://widgetly-app.herokuapp.com"
+                  "prod-url"
                 :
                   "http://localhost:3001"
 

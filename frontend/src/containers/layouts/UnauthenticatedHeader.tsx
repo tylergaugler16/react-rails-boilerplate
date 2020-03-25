@@ -12,7 +12,7 @@ class UnauthenticatedHeader extends React.Component<IProps, {}> {
   public render() {
     return (
       <div className="columns is-gapless is-vcentered is-full-height header-content">
-        <div className="column">Widgetly</div>
+        <div className="column">React-Rails-Boilerplate</div>
         <div className="column is-narrow is-pulled-right login-link">
 
         </div>

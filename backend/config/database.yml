@@ -1,13 +1,13 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: widgetly
+  database: react_rails_boilerplate
   pool: 5
 
 test:
   adapter: postgresql
   encoding: unicode
-  database: widgetly_test
+  database: react_rails_boilerplate
   pool: 5
 
 
@@ -17,5 +17,5 @@ production:
   adapter: postgresql
   username: qnmwiabgxixcmq
   host: ec2-54-83-50-174.compute-1.amazonaws.com
-  password: <%= ENV['WIDGETLY_DATABASE_PASSWORD'] %>
+  password: <%= ENV['REACT_RAILS_BOILERPLATE_DATABASE_PASSWORD'] %>
   pool: 5

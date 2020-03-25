@@ -69,7 +69,7 @@ module Authenticatable
       end
   
       def self.auth_secret
-        ENV['WIDGETLY_AUTH_SECRET']
+        ENV['REACT_RAILS_BOILERPLATE_AUTH_SECRET'] || "auth-secret"
       end
     end
 end

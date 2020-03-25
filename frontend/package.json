@@ -7,13 +7,11 @@
     "@types/react-color": "^2.14.1",
     "@types/react-router-dom": "^4.3.1",
     "@types/react-select": "^1.2.6",
-    "@uppy/aws-s3-multipart": "^1.0.0",
     "@uppy/core": "^1.0.0",
     "@uppy/dashboard": "^1.0.0",
     "@uppy/form": "^1.0.0",
     "@uppy/react": "^1.0.0",
     "autoprefixer": "7.1.6",
-    "aws-sdk": "^2.427.0",
     "axios": "^0.18.0",
     "babel-jest": "^23.6.0",
     "babel-loader": "^7.1.2",
@@ -71,7 +69,7 @@
     "start": "npm-run-all -p watch-css start-js",
     "build": "npm run build-css && react-scripts-ts build",
     "docker-install": "npm rebuild node-sass --force",
-    "production-build-client": "npm run build && aws s3 sync build/ s3://widgetly --profile tylerPersonal"
+    "production-build-client": "npm run build && aws s3 sync build/ s3://react-rails-boilerplate --profile tylerPersonal"
   },
   "devDependencies": {
     "@types/jest": "^23.3.5",
