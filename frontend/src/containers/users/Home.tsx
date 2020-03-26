@@ -17,7 +17,7 @@ class Home extends React.Component<IProps, {}> {
 
   private logout() {
     localStorage.removeItem("token");
-    this.props.infoAlert("Signed out!", "/signup");
+    this.props.infoAlert("Signed out!", "/users/signup");
   }
 
   public render() {

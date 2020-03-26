@@ -6,7 +6,6 @@ import UserIsAuthenticated from "components/UserIsAuthenticated";
 
 import WithCurrentUser from "queries/currentUser";
 import Login from "containers/landing_pages/Login";
-import SignUp from "containers/landing_pages/Signup";
 import Test from "containers/landing_pages/Test";
 import SignupAndLoginWrapper from "containers/landing_pages/SignupAndLoginWrapper";
 
@@ -62,7 +61,7 @@ class CustomRouter extends React.Component<IProps, {}> {
         >
           <div className="main-content">
             <Switch>
-
+              {/* use this pattern when a path should be used differently for a logged in and logged out user */}
               {
                 currentUser ?
                   <AppRoute exact path="/" layout={MainLayout} component={LoggedInHome} />
@@ -76,12 +75,6 @@ class CustomRouter extends React.Component<IProps, {}> {
                 path="/login"
                 layout={LandingLayout}
                 component={Login}
-              />
-              <AppRoute
-                exact
-                path="/signup"
-                layout={LandingLayout}
-                component={SignUp}
               />
               <AppRoute
                 exact
